@@ -1,0 +1,19 @@
+- name: Add juri 'hudolejev'
+  ansible.builtin.user:
+    name: hudolejev
+
+- name: Add ssh for 'hudolejev'
+  ansible.posix.authorized_key:
+    user: hudolejev
+    state: present
+    key: https://github.com/hudolejev.keys
+
+- name: Add roman 'romankuchin'
+  ansible.builtin.user:
+    name: romankuchin
+
+- name: Add ssh for 'romankuchin'
+  ansible.posix.authorized_key:
+    user: romankuchin
+    state: present
+    key: https://github.com/romankuchin.keys
