@@ -8,4 +8,5 @@
     become: yes
     roles:
       - users
+      - agama
       - nginx

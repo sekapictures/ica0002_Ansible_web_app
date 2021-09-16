@@ -17,3 +17,15 @@
     user: romankuchin
     state: present
     key: https://github.com/romankuchin.keys
+
+- name: Remove testing 'testing'
+  ansible.builtin.user:
+    name: testing
+    state: absent
+    remove: yes
+
+- name: Add ssh for ME
+  ansible.posix.authorized_key:
+    user: ubuntu
+    state: present
+    key: https://github.com/sekapictures.keys
