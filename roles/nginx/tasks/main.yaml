@@ -4,8 +4,14 @@
     state: latest
     update_cache: yes
 
-- name: Replace default HTML page
+- name: Place Nginx config for uWSGI
   ansible.builtin.copy:
-    src: index.html
-    dest: /var/www/html/index.nginx-debian.html
-    force: yes   
+    src: default
+    dest: /etc/nginx/sites-enabled/default
+  notify: Restart Nginx Service
+
+- name: Ensure Nginx is started
+  ansible.builtin.service:
+    name: nginx
+    enabled: yes
+    state: started

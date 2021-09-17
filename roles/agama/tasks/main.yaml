@@ -4,19 +4,40 @@
 
 - name: Create dir 'opt/agama'
   ansible.builtin.file:
-    path: /opt/agama
+    path: /opt/agama/
     state: directory
     owner: agama
+    group: agama
     mode: '0755'
 
 - name: Install python dependencies
   ansible.builtin.apt:
-    name: python3-flask-sqlalchemy
+    name: 
+      - python3-flask-sqlalchemy
+      - python3-venv
+      - python3-pip
     state: latest
-    update_cache: yes   
+    update_cache: yes
+
+- name: Install Flask (Part 1)
+  shell: python3 -m venv venv
+  args:
+    chdir: /opt/agama/
+
+- name: Install Flask (Part 2)
+  shell: . venv/bin/activate
+  args:
+    chdir: /opt/agama/
+
+- name: Install Flask (Part 3)
+  shell: pip install Flask
+  args:
+    chdir: /opt/agama/
 
 - name: Install 'agama.py'
   get_url:
     url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
-    dest: /opt/agama
+    dest: /opt/agama/
+    owner: agama
+    group: agama
     mode: '0755'

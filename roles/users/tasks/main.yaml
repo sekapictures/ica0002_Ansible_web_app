@@ -1,4 +1,4 @@
-- name: Add juri 'hudolejev'
+- name: Add user juri 'hudolejev'
   ansible.builtin.user:
     name: hudolejev
 
@@ -8,7 +8,7 @@
     state: present
     key: https://github.com/hudolejev.keys
 
-- name: Add roman 'romankuchin'
+- name: Add user roman 'romankuchin'
   ansible.builtin.user:
     name: romankuchin
 
@@ -17,15 +17,3 @@
     user: romankuchin
     state: present
     key: https://github.com/romankuchin.keys
-
-- name: Remove testing 'testing'
-  ansible.builtin.user:
-    name: testing
-    state: absent
-    remove: yes
-
-- name: Add ssh for ME
-  ansible.posix.authorized_key:
-    user: ubuntu
-    state: present
-    key: https://github.com/sekapictures.keys
