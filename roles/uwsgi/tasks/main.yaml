@@ -4,10 +4,10 @@
       - uwsgi
       - uwsgi-plugin-python3
     state: latest
-    update_cache: yes
+    
 
 - name: Place uWSGI configuration
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: agama.ini
     dest: /etc/uwsgi/apps-enabled/agama.ini
   notify: Restart uWSGI service
