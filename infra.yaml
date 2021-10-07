@@ -10,11 +10,19 @@
     roles:
       - init
 
+  - name: Setup
+    hosts: all 
+    become: yes
+    gather_facts: yes
+    tasks:
+      - setup: 
+
   - name: Database server
     hosts: db_servers
     become: yes
     roles:
       - mysql
+      - bind
 
   - name: Web server
     hosts: web_servers

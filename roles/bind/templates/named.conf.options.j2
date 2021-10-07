@@ -1,0 +1,19 @@
+acl lan {
+	{% for c in corpnets -%}
+	{{ c+" " }}
+	{%- endfor %}
+};
+
+options {
+	directory "/var/cache/bind";
+
+	forwarders {
+	 	{%- for r in route -%}
+        {{ r }}
+        {% endfor %}
+	};
+	allow-query { 
+		lan; 
+	};
+	dnssec-validation no;
+};

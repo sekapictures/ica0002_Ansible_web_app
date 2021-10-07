@@ -1,0 +1,14 @@
+$TTL	604800
+gleppy.io.	IN	SOA	sekapictures-1.gleppy.io. arsser.gleppy.io. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+{% for vm in groups['dns_servers'] %}
+gleppy.io.	IN	NS {{ vm }}
+{% endfor %}
+{% for vm in groups['all'] %}
+{{ vm }} IN A {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
+{% endfor %}
