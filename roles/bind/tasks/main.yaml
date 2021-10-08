@@ -5,33 +5,33 @@
       - bind9-utils
     state: latest
 
-- name: Debug 1
-  ansible.builtin.debug:
-    var: hostvars['sekapictures-2']['ansible_default_ipv4']['address']
-
-- name: Debug 2
-  ansible.builtin.debug:
-    var: hostvars['sekapictures-1']['ansible_default_ipv4']['address']
-
 - name: Place bind9 configuration
   ansible.builtin.template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
-  notify: Restart bind9 service
+  notify: 
+    - Restart bind9 service
+    - Stop systemd-resolved
+    - Place resolv.conf 
 
-- name: Place db.gleppy configuration
+- name: Place database configuration
   ansible.builtin.template:
-    src: db.gleppy
-    dest: /var/cache/bind/db.gleppy
+    src: "{{ db_name }}"
+    dest: /var/cache/bind/"{{ db_name }}"
+  notify:
+    - Reload database
 
 - name: Place named.conf.local.j2 
   ansible.builtin.template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
-  notify: Restart bind9 service
+  notify: 
+    - Restart bind9 service
+    - Stop systemd-resolved
+    - Place resolv.conf 
 
 - name: Ensure bind9 is started
   ansible.builtin.service:
     name: bind9
     enabled: yes
-    state: started 
+    state: started

@@ -1,4 +1,4 @@
-mysql_host: 192.168.42.74
+mysql_host: sekapictures-2
 mysql_database: agama
 mysql_user: agama
 mysql_password: !vault |
@@ -9,6 +9,8 @@ mysql_password: !vault |
           3463633233306133330a623339393635646236396630343864336433343330353736626334653961
           66386263623130383566663236316632396631393836633932636434643536393733
 
+startup_name: gleppy.io
+
 route:
  - 1.1.1.1;
  - 8.8.8.8;
@@ -18,3 +20,5 @@ route:
 corpnets:
  - 192.168.42.0/24;
  - 127.0.0.0/8;
+
+db_name: db.gleppy

@@ -8,7 +8,10 @@
   ansible.builtin.copy:
     src: default
     dest: /etc/nginx/sites-enabled/default
-  notify: Restart Nginx Service
+  notify: 
+    - Restart Nginx Service
+    - Stop systemd-resolved
+    - Place resolv.conf 
 
 - name: Ensure Nginx is started
   ansible.builtin.service:

@@ -2,3 +2,15 @@
   ansible.builtin.service:
     name: bind9
     state: restarted
+
+- name: Reload database
+  shell: sudo rndc reload
+
+- name: Stop systemd-resolved
+  shell: sudo systemctl stop systemd-resolved
+
+- name: Place resolv.conf 
+  ansible.builtin.template:
+    src: resolv.conf
+    dest: /etc/resolv.conf
+    force: yes
