@@ -23,6 +23,8 @@
     roles:
       - mysql
       - bind
+      - node_exporter
+      - nginx
 
   - name: Web server
     hosts: web_servers
@@ -31,3 +33,5 @@
       - agama
       - uwsgi
       - nginx
+      - node_exporter
+      - prometheus

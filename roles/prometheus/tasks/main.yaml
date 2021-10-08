@@ -1,0 +1,19 @@
+- name: Install Prometheus packages
+  ansible.builtin.apt:
+    name: 
+      - prometheus
+    state: latest
+
+- name: Place Prometheus config 1
+  ansible.builtin.template:
+    src: prometheus
+    dest: /etc/default/prometheus
+  notify: Restart Prometheus
+
+- name: Place Prometheus config 2
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /etc/prometheus/prometheus.yml
+  notify: 
+    - Restart Prometheus
+    - Restart node_exporters

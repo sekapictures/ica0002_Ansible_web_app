@@ -5,8 +5,8 @@
 
 
 - name: Place Nginx config for uWSGI
-  ansible.builtin.copy:
-    src: default
+  ansible.builtin.template:
+    src: default.j2
     dest: /etc/nginx/sites-enabled/default
   notify: 
     - Restart Nginx Service

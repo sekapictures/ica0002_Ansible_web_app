@@ -1,5 +1,8 @@
-sekapictures-1 ansible_host=193.40.156.86 ansible_port=19622 ansible_ssh_user=ubuntu
-sekapictures-2 ansible_host=193.40.156.86 ansible_port=19722 ansible_ssh_user=ubuntu
+sekapictures-1 ansible_port=19622
+sekapictures-2 ansible_port=19722
+
+# sekapictures-1 ansible_host=193.40.156.86 ansible_port=19622 ansible_ssh_user=ubuntu
+# sekapictures-2 ansible_host=193.40.156.86 ansible_port=19722 ansible_ssh_user=ubuntu
 
 [db_servers]
 sekapictures-2
@@ -7,5 +10,13 @@ sekapictures-2
 [dns_servers]
 sekapictures-2
 
+[prometheus]
+sekapictures-1
+
 [web_servers]
 sekapictures-1
+
+[all:vars]
+ansible_host=193.40.156.86
+ansible_python_interpreter=python3
+ansible_user=ubuntu

@@ -11,8 +11,8 @@
     dest: /etc/bind/named.conf.options
   notify: 
     - Restart bind9 service
-    - Stop systemd-resolved
-    - Place resolv.conf 
+    #- Stop systemd-resolved
+    #- Place resolv.conf 
 
 - name: Place database configuration
   ansible.builtin.template:

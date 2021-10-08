@@ -1,0 +1,11 @@
+- name: Install node_exporters packages
+  ansible.builtin.apt:
+    name: 
+      - prometheus-node-exporter
+    state: latest
+
+- name: Ensure node_explorer is started
+  ansible.builtin.service:
+    name: prometheus-node-exporter
+    enabled: yes
+    state: started

@@ -6,4 +6,12 @@ server {
 		uwsgi_pass localhost:5000;
 		include uwsgi_params;
 	}
+
+	location /node_exporter {
+		proxy_pass http://localhost:9100/metrics;
+	}
+
+	location /prometheus {
+		proxy_pass http://localhost:9090/;
+	}
 }
