@@ -1,0 +1,17 @@
+
+- name: Install nessesary package for grafana
+  apt: 
+      name: apt-transport-https
+      state: present
+      update_cache: yes
+  notify: 
+    - Add grafana gpg key
+    - Add grafana repo
+    - Install grafana
+    - Enable and start grafana service
+
+- name: Place mysql configuration
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+  notify: Restart grafana service

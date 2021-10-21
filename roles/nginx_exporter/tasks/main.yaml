@@ -1,0 +1,19 @@
+- name: prometheus-nginx-exporter
+  ansible.builtin.apt:
+    name: prometheus-nginx-exporter
+    state: latest
+
+# - name: Ensure nginx-exporter is started
+#   ansible.builtin.service:
+#     name: prometheus-nginx-exporter
+#     enabled: yes
+#     state: started
+
+- name: Place Nginx config for nginx-exporter
+  ansible.builtin.template:
+    src: exporter.j2
+    dest: /etc/nginx/sites-enabled/exporter
+  notify: 
+    - Restart Nginx
+    - Restart Prometheus
+    - Restart node_exporters

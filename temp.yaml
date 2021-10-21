@@ -1,0 +1,11 @@
+  - name: TEMP
+    hosts: db_servers
+    become: yes
+    roles:
+      - mysql_exporter
+
+  - name: TEMP_ALL
+    hosts: all
+    become: yes
+    roles:
+      - nginx_exporter

@@ -25,6 +25,10 @@
       - bind
       - node_exporter
       - nginx
+      - bind-exporter
+      - mysql_exporter
+      - nginx_exporter
+      - grafana
 
   - name: Web server
     hosts: web_servers
@@ -35,3 +39,5 @@
       - nginx
       - node_exporter
       - prometheus
+      - bind-exporter
+      - nginx_exporter

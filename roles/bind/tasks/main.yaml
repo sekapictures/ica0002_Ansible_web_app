@@ -17,7 +17,7 @@
 - name: Place database configuration
   ansible.builtin.template:
     src: "{{ db_name }}"
-    dest: /var/cache/bind/"{{ db_name }}"
+    dest: /var/cache/bind/
   notify:
     - Reload database
 
