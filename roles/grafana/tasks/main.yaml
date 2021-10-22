@@ -9,9 +9,9 @@
     - Add grafana repo
     - Install grafana
     - Enable and start grafana service
+    - Place grafana configuration
+    - Restart grafana service
+    - Restart prometheus-mysqld-exporter
+    - Restart mysql service
 
-- name: Place mysql configuration
-  ansible.builtin.template:
-    src: grafana.ini.j2
-    dest: /etc/grafana/grafana.ini
-  notify: Restart grafana service
+

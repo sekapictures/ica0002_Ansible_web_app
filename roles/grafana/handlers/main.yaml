@@ -19,7 +19,22 @@
     enabled: yes
     state: started
 
+- name: Place grafana configuration
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+
 - name: Restart grafana service
   ansible.builtin.service:
     name: grafana-server
+    state: restarted
+
+- name: Restart prometheus-mysqld-exporter
+  ansible.builtin.service:
+    name: prometheus-mysqld-exporter
+    state: restarted
+
+- name: Restart mysql service
+  ansible.builtin.service:
+    name: mysql
     state: restarted
