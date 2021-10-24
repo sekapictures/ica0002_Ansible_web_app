@@ -9,8 +9,8 @@
     dest: /etc/nginx/sites-enabled/exporter
   notify: 
     - Restart Nginx
-    - Restart Prometheus
-    - Restart node_exporters
+    #- Restart Prometheus
+    - Restart prometheus-nginx-exporter
 
 - name: Ensure nginx-exporter is started
   ansible.builtin.service:

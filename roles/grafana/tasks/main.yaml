@@ -10,8 +10,13 @@
     - Install grafana
     - Enable and start grafana service
     - Place grafana configuration
+    - Add grafana password
+    - Place prometheus datasource
+    - Place prometheus dashboard
+    - Place main.json
     - Restart grafana service
     - Restart prometheus-mysqld-exporter
     - Restart mysql service
+    - Restart bind9 service
 
 

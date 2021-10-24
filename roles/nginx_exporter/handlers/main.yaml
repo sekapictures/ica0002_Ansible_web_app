@@ -8,7 +8,7 @@
 #     name: prometheus
 #     state: restarted
 
-- name: Restart node_exporters
+- name: Restart prometheus-nginx-exporter
   ansible.builtin.service:
-    name: prometheus-node-exporter
+    name: prometheus-nginx-exporter
     state: restarted

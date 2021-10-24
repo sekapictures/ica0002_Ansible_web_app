@@ -29,6 +29,7 @@
       - mysql_exporter
       - nginx_exporter
       - grafana
+    tags: d
 
   - name: Web server
     hosts: web_servers

@@ -1,0 +1,31 @@
+- name: Restart Nginx
+  ansible.builtin.service:
+    name: nginx
+    state: restarted
+
+- name: Restart node_exporters
+  ansible.builtin.service:
+    name: prometheus-node-exporter
+    state: restarted
+
+- name: Restart prometheus-mysqld-exporter
+  ansible.builtin.service:
+    name: prometheus-mysqld-exporter
+    state: restarted
+
+- name: Restart mysql service
+  ansible.builtin.service:
+    name: mysql
+    state: restarted
+
+- name: Ensure bind-exporter is started
+  ansible.builtin.service:
+    name: prometheus-bind-exporter
+    enabled: yes
+    state: restarted
+
+- name: Ensure nginx-exporter is started
+  ansible.builtin.service:
+    name: prometheus-nginx-exporter
+    enabled: yes
+    state: restarted

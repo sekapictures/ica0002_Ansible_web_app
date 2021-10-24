@@ -19,10 +19,31 @@
     enabled: yes
     state: started
 
+- name: Add grafana password
+  shell: grafana-cli admin reset-admin-password "{{mysql_exporter_pass}}"
+
+- name: Place prometheus datasource
+  ansible.builtin.template:
+    src: prometheus.yaml
+    dest: /etc/grafana/provisioning/datasources/
+
+- name: Place prometheus dashboard
+  ansible.builtin.template:
+    src: pdashboard.yaml
+    dest: /etc/grafana/provisioning/dashboards/
+    force: yes
+
 - name: Place grafana configuration
   ansible.builtin.template:
     src: grafana.ini.j2
     dest: /etc/grafana/grafana.ini
+    force: yes
+
+- name: Place main.json 
+  ansible.builtin.template:
+    src: main.json
+    dest: /var/lib/grafana/dashboards/
+    force: yes
 
 - name: Restart grafana service
   ansible.builtin.service:
@@ -37,4 +58,9 @@
 - name: Restart mysql service
   ansible.builtin.service:
     name: mysql
+    state: restarted
+
+- name: Restart bind9 service
+  ansible.builtin.service:
+    name: bind9
     state: restarted
