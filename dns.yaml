@@ -4,11 +4,11 @@
     become: yes
     gather_facts: yes
     roles: 
-      - restart
+      - influxdb
       
-  - name: restart web_server
-    hosts: web_servers
-    become: yes
-    gather_facts: yes
-    roles: 
-      - restart-2
+  # - name: restart web_server
+  #   hosts: web_servers
+  #   become: yes
+  #   gather_facts: yes
+  #   roles: 
+  #     - restart-2

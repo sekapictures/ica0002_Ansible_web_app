@@ -1,0 +1,58 @@
+- name: Check that the influxdb key exists
+  ansible.builtin.stat:
+    path: /etc/apt/trusted.gpg.d/influxdb.gpg
+  register: influxdb_result
+
+- name: Import InfluxDB GPG signing key
+  ansible.builtin.shell:
+    wget -qO- https://repos.influxdata.com/influxdb.key | gpg --dearmor > /etc/apt/trusted.gpg.d/influxdb.gpg   
+  when: not influxdb_result.stat.exists
+
+# - name: Import InfluxDB GPG signing key
+#   ansible.builtin.apt_key:
+#     key: https://repos.influxdata.com/influxdb.key 
+#     state: present
+
+- name: Add InfluxDB repository
+  ansible.builtin.apt_repository:
+    repo: deb https://repos.influxdata.com/ubuntu trusty stable
+    state: present
+
+- name: Update and upgrade apt packages
+  become: true
+  ansible.builtin.apt:
+    upgrade: yes
+    update_cache: yes
+
+- name: Install influxdb service with apt
+  ansible.builtin.apt:
+    name: influxdb
+    state: latest
+
+- name: Start influxdb service
+  ansible.builtin.service:
+    name: influxdb
+    state: started
+
+
+# - name: Start influxdb
+#   ansible.builtin.service:
+#     name: influxdb
+#     state: restarted
+#   register: influxdb_status
+
+# - name: create influxdb dir
+#   ansible.builtin.file: 
+#   file:
+#     path: /
+#     state: directory
+
+
+
+# # - name: influxdb install step 2
+# #   ansible.builtin.shell: 
+# #     echo "deb [signed-by=/etc/apt/trusted.gpg.d/influxdb.gpg] https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" > /etc/apt/sources.list.d/influxdb.list
+# #   when: not influxdb_result.stat.exists
+
+
+

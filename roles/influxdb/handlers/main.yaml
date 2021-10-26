@@ -1,0 +1,4 @@
+- name: Start influxdb service
+  ansible.builtin.service:
+    name: influxdb
+    state: started

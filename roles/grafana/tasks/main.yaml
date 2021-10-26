@@ -8,9 +8,9 @@
     - Add grafana gpg key
     - Add grafana repo
     - Install grafana
+    - Add grafana password
     - Enable and start grafana service
     - Place grafana configuration
-    - Add grafana password
     - Place prometheus datasource
     - Place prometheus dashboard
     - Place main.json
