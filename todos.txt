@@ -1,0 +1,6 @@
+The problems:
+ - grafana is not starting with first ansible play 
+   + this is the permission problem
+   + add new permissions for: grafana log, grafana database
+ - problem with mysqlexporter
+   + Access denied for user 'exporter'@'127.0.0.1' (bruhhh)

@@ -13,14 +13,14 @@
       state: present
       update_cache: yes
 
+- name: Add grafana password
+  shell: grafana-cli admin reset-admin-password "{{mysql_exporter_pass}}"
+
 - name: Enable and start grafana service
   service:
     name: grafana-server
     enabled: yes
     state: started
-
-- name: Add grafana password
-  shell: grafana-cli admin reset-admin-password "{{mysql_exporter_pass}}"
 
 - name: Place prometheus datasource
   ansible.builtin.template:
