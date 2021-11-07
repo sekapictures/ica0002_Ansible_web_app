@@ -1,0 +1,10 @@
+- name: Reload daemon
+  shell: sudo systemctl daemon-reload
+
+- name: Start prometheus-influxdb-stats-exporter
+  shell: sudo service prometheus-influxdb-stats-exporter start
+
+- name: Restart prometheus-influxdb-stats-exporter
+  shell: sudo service prometheus-influxdb-stats-exporter restart
+
+  

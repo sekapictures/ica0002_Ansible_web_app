@@ -1,0 +1,23 @@
+- name: Place influxdb_exporter binary
+  ansible.builtin.copy:
+    src: influxdb_exporter_linux
+    dest: /usr/local/bin/prometheus-influxdb-stats-exporter
+    force: yes
+    mode: '0777'
+  notify: 
+    - Reload daemon
+    - Start prometheus-influxdb-stats-exporter
+    - Restart prometheus-influxdb-stats-exporter
+
+
+
+- name: Place prometheus-influxdb-stats-exporter.service 
+  ansible.builtin.template:
+    src: prometheus-influxdb-stats-exporter.service
+    dest: /etc/systemd/system/
+    force: yes
+    mode: '0777'
+  notify: 
+    - Reload daemon
+    - Start prometheus-influxdb-stats-exporter
+    - Restart prometheus-influxdb-stats-exporter

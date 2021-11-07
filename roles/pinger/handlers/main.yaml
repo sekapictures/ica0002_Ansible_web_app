@@ -1,0 +1,10 @@
+- name: Reload daemon
+  shell: sudo systemctl daemon-reload
+
+- name: Start pinger
+  shell: sudo service pinger start
+
+- name: Restart pinger
+  shell: sudo service pinger restart
+
+  

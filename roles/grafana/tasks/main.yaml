@@ -3,7 +3,6 @@
   apt: 
       name: apt-transport-https
       state: present
-      update_cache: yes
   notify: 
     - Add grafana gpg key
     - Add grafana repo
@@ -14,9 +13,10 @@
     - Place prometheus datasource
     - Place prometheus dashboard
     - Place main.json
+    - Place syslog.json 
     - Restart grafana service
-    - Restart prometheus-mysqld-exporter
-    - Restart mysql service
-    - Restart bind9 service
-
-
+    # - Restart prometheus-mysqld-exporter
+    # - Restart mysql service
+    # - Restart bind9 service
+    - Give permissions to grafana.log
+    - Give permissions to grafana.db

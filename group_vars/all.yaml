@@ -1,6 +1,8 @@
 mysql_host: sekapictures-2
+influx_host: sekapictures-2
 mysql_database: agama
 mysql_user: agama
+mysql_exporter_user: exporter
 mysql_password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           66373136333362313933346432316361323165643238373462626333613966356362613832363062

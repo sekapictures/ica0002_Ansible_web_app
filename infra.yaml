@@ -21,6 +21,7 @@
     hosts: db_servers
     become: yes
     roles:
+      - rsyslog
       - mysql
       - bind
       - node_exporter
@@ -29,12 +30,16 @@
       - mysql_exporter
       - nginx_exporter
       - grafana
+      - influxdb
+      - pinger
+      - influxdb_exporter
     tags: d
 
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
+      - rsyslog
       - agama
       - uwsgi
       - nginx

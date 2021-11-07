@@ -11,10 +11,10 @@
   apt: 
       name: grafana
       state: present
-      update_cache: yes
 
 - name: Add grafana password
   shell: grafana-cli admin reset-admin-password "{{mysql_exporter_pass}}"
+  no_log: true
 
 - name: Enable and start grafana service
   service:
@@ -33,6 +33,7 @@
     dest: /etc/grafana/provisioning/dashboards/
     force: yes
 
+
 - name: Place grafana configuration
   ansible.builtin.template:
     src: grafana.ini.j2
@@ -45,22 +46,43 @@
     dest: /var/lib/grafana/dashboards/
     force: yes
 
+- name: Place syslog.json 
+  ansible.builtin.template:
+    src: syslog.json
+    dest: /var/lib/grafana/dashboards/
+    force: yes
+
+# - name: Restart prometheus-mysqld-exporter
+#   ansible.builtin.service:
+#     name: prometheus-mysqld-exporter
+#     state: restarted
+
+# - name: Restart mysql service
+#   ansible.builtin.service:
+#     name: mysql
+#     state: restarted
+
+# - name: Restart bind9 service
+#   ansible.builtin.service:
+#     name: bind9
+#     state: restarted
+
+
+- name: Give permissions to grafana.log
+  ansible.builtin.file:
+    path: /var/log/grafana/grafana.log
+    owner: root
+    group: root
+    mode: '0666'
+
+- name: Give permissions to grafana.db
+  ansible.builtin.file:
+    path: /var/lib/grafana/grafana.db 
+    owner: root
+    group: root
+    mode: '0666'
+
 - name: Restart grafana service
   ansible.builtin.service:
     name: grafana-server
-    state: restarted
-
-- name: Restart prometheus-mysqld-exporter
-  ansible.builtin.service:
-    name: prometheus-mysqld-exporter
-    state: restarted
-
-- name: Restart mysql service
-  ansible.builtin.service:
-    name: mysql
-    state: restarted
-
-- name: Restart bind9 service
-  ansible.builtin.service:
-    name: bind9
     state: restarted

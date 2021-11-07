@@ -1,0 +1,8 @@
+- name: Place rsyslog.conf 
+  ansible.builtin.template:
+    src: rsyslog.conf.j2
+    dest: /etc/rsyslog.d/10-telegraf.conf
+    force: yes
+    mode: '0777'
+  notify: 
+    - Restart rsyslog

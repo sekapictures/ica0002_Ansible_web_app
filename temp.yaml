@@ -2,4 +2,8 @@
     hosts: db_servers
     become: yes
     roles:
-      - mysql_exporter
+      # - influxdb
+      # - pinger
+      # - rsyslog
+      # - influxdb_exporter
+      - prometheus
