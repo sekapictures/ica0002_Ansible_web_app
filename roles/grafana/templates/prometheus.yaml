@@ -7,3 +7,15 @@ datasources:
     access: proxy
     url: http://sekapictures-1:9090/prometheus
     editable: true
+
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    database: latency
+    url: http://sekapictures-2:8086
+
+  - name: InfluxDB
+    type: telegraf
+    access: proxy
+    database: telegraf
+    url: http://sekapictures-2:8086
