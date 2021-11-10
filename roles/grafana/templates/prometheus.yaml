@@ -14,8 +14,8 @@ datasources:
     database: latency
     url: http://sekapictures-2:8086
 
-  - name: InfluxDB
-    type: telegraf
+  - name: InfluxDB-Telegraf
+    type: influxdb
     access: proxy
     database: telegraf
     url: http://sekapictures-2:8086

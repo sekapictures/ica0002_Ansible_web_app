@@ -29,6 +29,15 @@
     name: influxdb
     state: latest
 
+- name: Place influxdb.conf 
+  ansible.builtin.template:
+    src: telegraf.conf
+    dest: /etc/influxdb/influxdb.conf
+    force: yes
+    mode: '0777'
+  notify:
+    - Restart influxdb
+    
 - name: Start influxdb service
   ansible.builtin.service:
     name: influxdb

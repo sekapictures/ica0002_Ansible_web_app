@@ -29,6 +29,6 @@
     login_unix_socket: /var/run/mysqld/mysqld.sock
     host: "%"
     priv: "{{ mysql_database }}.*:ALL"
-    no_log: true
+  no_log: true
 
 
