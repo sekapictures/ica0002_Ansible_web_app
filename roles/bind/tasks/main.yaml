@@ -9,15 +9,18 @@
   ansible.builtin.template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
+    mode: '0766'
   notify: 
     - Restart bind9 service
-    #- Stop systemd-resolved
-    #- Place resolv.conf 
+    # - Stop systemd-resolved
+    # - Delete resolv.conf link
+    # - Place resolv.conf 
 
 - name: Place database configuration
   ansible.builtin.template:
     src: "{{ db_name }}"
     dest: /var/cache/bind/
+    mode: '0766'
   notify:
     - Reload database
 
@@ -25,9 +28,11 @@
   ansible.builtin.template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
+    mode: '0766'
   notify: 
     - Restart bind9 service
     - Stop systemd-resolved
+    - Delete resolv.conf link
     - Place resolv.conf 
 
 - name: Ensure bind9 is started

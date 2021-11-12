@@ -49,3 +49,9 @@
     - Reload daemon
     - Restart pinger
 
+- name: Pinger is started
+  ansible.builtin.service:
+    name: pinger
+    enabled: yes
+    state: started
+

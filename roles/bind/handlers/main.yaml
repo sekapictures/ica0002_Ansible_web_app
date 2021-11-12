@@ -9,8 +9,12 @@
 - name: Stop systemd-resolved
   shell: sudo systemctl stop systemd-resolved
 
+- name: Delete resolv.conf link
+  shell: sudo rm /etc/resolv.conf
+
 - name: Place resolv.conf 
   ansible.builtin.template:
     src: resolv.conf
     dest: /etc/resolv.conf
     force: yes
+    mode: '0766'

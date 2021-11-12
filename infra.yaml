@@ -9,6 +9,7 @@
     become: yes
     roles:
       - init
+      - backup
 
   - name: Setup
     hosts: all 
@@ -21,7 +22,6 @@
     hosts: db_servers
     become: yes
     roles:
-      - rsyslog
       - mysql
       - bind
       - node_exporter
@@ -33,13 +33,13 @@
       - influxdb
       - pinger
       - influxdb_exporter
+      - rsyslog
     tags: d
 
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
-      - rsyslog
       - agama
       - uwsgi
       - nginx
@@ -47,3 +47,4 @@
       - prometheus
       - bind_exporter
       - nginx_exporter
+      - rsyslog

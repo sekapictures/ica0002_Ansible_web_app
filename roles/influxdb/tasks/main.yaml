@@ -31,17 +31,17 @@
 
 - name: Place influxdb.conf 
   ansible.builtin.template:
-    src: telegraf.conf
+    src: influxdb.conf
     dest: /etc/influxdb/influxdb.conf
     force: yes
     mode: '0777'
   notify:
     - Restart influxdb
     
-- name: Start influxdb service
-  ansible.builtin.service:
-    name: influxdb
-    state: started
+#- name: Start influxdb service
+#  ansible.builtin.service:
+#    name: influxdb
+#    state: started
 
 - name: Install telegraf service with apt
   ansible.builtin.apt:

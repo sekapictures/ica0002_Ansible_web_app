@@ -1,9 +1,11 @@
   - name: TEMP
     hosts: db_servers
     become: yes
+    gather_facts: yes
     roles:
       # - influxdb
       # - pinger
       # - rsyslog
       # - influxdb_exporter
-      - prometheus
+      # - prometheus
+      - backup
