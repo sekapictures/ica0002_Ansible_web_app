@@ -1,5 +1,5 @@
-sekapictures-1 ansible_port=3522
-sekapictures-2 ansible_port=7022
+sekapictures-1 ansible_port=12522
+sekapictures-2 ansible_port=7722
 
 # sekapictures-1 ansible_host=193.40.156.86 ansible_port=19622 ansible_ssh_user=ubuntu
 # sekapictures-2 ansible_host=193.40.156.86 ansible_port=19722 ansible_ssh_user=ubuntu

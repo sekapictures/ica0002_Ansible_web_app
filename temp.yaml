@@ -8,4 +8,7 @@
       # - rsyslog
       # - influxdb_exporter
       # - prometheus
+      - mysql
       - backup
+      - mysql_backup
+      - influxdb_backup

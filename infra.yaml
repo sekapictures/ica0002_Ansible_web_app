@@ -34,6 +34,8 @@
       - pinger
       - influxdb_exporter
       - rsyslog
+      - mysql_backup
+      - influxdb_backup
     tags: d
 
   - name: Web server

@@ -6,3 +6,23 @@
     generate_ssh_key: yes
     ssh_key_bits: 2048
     ssh_key_file: /home/backup/.ssh/id_rsa
+
+- name: Place /home/backup/.ssh/known_hosts
+  ansible.builtin.template:
+    src: known_hosts.j2
+    dest: /home/backup/.ssh/known_hosts
+    owner: backup
+    group: backup
+    mode: '0774'
+
+- name: Create /home/backup/restore
+  ansible.builtin.file:
+    path: /home/backup/restore
+    state: directory
+    owner: backup
+    mode: '0774'
+
+- name: Install Duplicity service with apt
+  ansible.builtin.apt:
+    name: duplicity
+    state: latest
