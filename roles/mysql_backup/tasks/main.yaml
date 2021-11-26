@@ -27,7 +27,7 @@
 
 - name: Create /etc/cron.d/mysql-backup 
   ansible.builtin.template:
-    src: mysql-backup
+    src: mysql-backup.j2
     dest: /etc/cron.d/mysql-backup 
     force: yes
     mode: '0744'

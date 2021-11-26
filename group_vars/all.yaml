@@ -1,4 +1,5 @@
 mysql_host: sekapictures-2
+web_host: sekapictures-1
 influx_host: sekapictures-2
 mysql_database: agama
 mysql_user: agama
@@ -38,4 +39,16 @@ mysql_exporter_pass: !vault |
 backup_server_ssh_key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
 
 mysql_backup_user: backup
+
+mysql_replication_user: replication
+
+mysql_replication_pass: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          36653234363439373566376530383038363434376166323266626166633737333832306239306332
+          3266626338303364333132303832643237363865616236610a616130623763623636353062323739
+          33393332316234623835333265336666646436303061656365656536623631626630366139363362
+          3165626563336430630a306662336235386338613538353363613739323239343736363533616536
+          6536
+
+node_id: "{{ hostvars[inventory_hostname]['ansible_default_ipv4']['address'].split('.')[-1] }}"
 

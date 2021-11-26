@@ -22,7 +22,8 @@
     hosts: db_servers
     become: yes
     roles:
-      - mysql
+      - role: mysql 
+        tags: mysql_tag
       - bind
       - node_exporter
       - nginx
@@ -37,6 +38,17 @@
       - mysql_backup
       - influxdb_backup
     tags: d
+
+  # - name: Grafana server
+  #   hosts: grafana
+  #   become: yes
+  #   roles:
+  #     - grafana
+  #     - influxdb
+  #     - influxdb
+  #     - pinger
+  #     - influxdb_exporter
+  #     - rsyslog
 
   - name: Web server
     hosts: web_servers

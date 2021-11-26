@@ -46,6 +46,12 @@
     dest: /var/lib/grafana/dashboards/
     force: yes
 
+- name: Place mysql.json 
+  ansible.builtin.template:
+    src: mysql.json
+    dest: /var/lib/grafana/dashboards/
+    force: yes
+
 - name: Place syslog.json 
   ansible.builtin.template:
     src: syslog.json
