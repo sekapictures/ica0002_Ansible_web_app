@@ -1,0 +1,31 @@
+
+- name: Install nessesary package for grafana
+  apt: 
+      name: apt-transport-https
+      state: present
+  notify: 
+    - Add grafana gpg key
+    - Add grafana repo
+    - Install grafana
+    - Add grafana password
+    - Enable and start grafana service
+    - Place grafana configuration
+    - Place prometheus datasource
+    - Place prometheus dashboard
+    - Place main.json
+    - Place syslog.json 
+    - Place mysql.json
+    - Restart grafana service
+    # - Restart prometheus-mysqld-exporter
+    # - Restart mysql service
+    # - Restart bind9 service
+    - Give permissions to grafana.log
+    - Give permissions to grafana.db
+
+- name: Grafana Docker container
+  community.docker.docker_container:
+    container_default_behavior: no_defaults
+    name: grafana
+    image: grafana/grafana
+    published_ports: "3001:3000"
+    #volumes: /opt/grafana:/etc/grafana

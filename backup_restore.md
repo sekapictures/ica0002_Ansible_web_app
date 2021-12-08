@@ -28,7 +28,7 @@ You will be connected to database server.
 Restore MySQL data from the backup.
 Copy in sequence:
 
-1.    sudo -u backup duplicity --no-encryption restore rsync://sekapictures@backup.gleppy.io//home/sekapictures/ /home/backup/restore/
+1.    sudo -u backup duplicity --no-encryption restore rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/ /home/backup/restore/
 2.    sudo su
 3.    mysql agama < /home/backup/restore/agama.sql
 
@@ -40,12 +40,9 @@ After this MySQL data is restored.
 
 Restore InfluxDB data from the backup.
 
-1.    sudo -u backup duplicity --no-encryption restore rsync://sekapictures@backup.gleppy.io//home/sekapictures/ /home/backup/restore/
+1.    sudo -u backup duplicity --no-encryption restore rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/ /home/backup/restore/
 2.    sudo -u backup influxd restore -portable -database telegraf /home/backup/restore/
 
 <STEP 5>
 Check that backup is restored.
 
-
-
-sudo -u backup influxd restore -portable -database telegraf /home/backup/influxdb

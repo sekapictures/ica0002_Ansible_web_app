@@ -1,5 +1,12 @@
+  - name: Setup
+    hosts: all 
+    become: yes
+    gather_facts: yes
+    tasks:
+      - setup: 
+
   - name: TEMP
-    hosts: db_servers
+    hosts: grafana
     become: yes
     gather_facts: yes
     roles:
@@ -8,7 +15,12 @@
       # - rsyslog
       # - influxdb_exporter
       # - prometheus
-      - mysql
-      - backup
-      - mysql_backup
-      - influxdb_backup
+      # - mysql
+      # - backup
+      # - mysql_backup
+      # - influxdb_backup
+      - nginx
+      - bind
+      - docker
+      - grafana
+

@@ -1,22 +1,49 @@
+- name: Grafana Docker container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana
+    published_ports: "{{ grafana_port }}:3000"
+    container_default_behavior: no_defaults
+    volumes: /opt/grafana:/etc/grafana
 
-- name: Install nessesary package for grafana
-  apt: 
-      name: apt-transport-https
-      state: present
-  notify: 
-    - Add grafana gpg key
-    - Add grafana repo
-    - Install grafana
-    - Add grafana password
-    - Enable and start grafana service
-    - Place grafana configuration
-    - Place prometheus datasource
-    - Place prometheus dashboard
-    - Place main.json
-    - Place syslog.json 
-    - Restart grafana service
-    # - Restart prometheus-mysqld-exporter
-    # - Restart mysql service
-    # - Restart bind9 service
-    - Give permissions to grafana.log
-    - Give permissions to grafana.db
+- name: Create Grafana directories
+  ansible.builtin.file:
+    path: "/opt/grafana/conf/provisioning/{{ item }}"
+    state: directory
+    recurse: yes
+  loop:
+     - dashboards
+     - datasources
+
+# - name: Place Grafana config
+#   ansible.builtin.copy:
+#     src: grafana.ini.j2
+#     dest: /opt/grafana/grafana.ini
+#   notify: Restart Grafana container
+
+- name: Place grafana configuration
+  ansible.builtin.template:
+    src: grafana.ini.j2
+    dest: /opt/grafana/grafana.ini
+    force: yes
+  notify: Restart Grafana container
+  no_log: true
+  
+- name: Place Grafana dashboards
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /opt/grafana/conf/provisioning/dashboards/"{{ item }}"
+  loop:
+     - main.json
+     - mysql.json
+     - syslog.json
+     - pdashboard.yaml
+  notify: Restart Grafana container
+  
+- name: Place Grafana datasources
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /opt/grafana/conf/provisioning/datasources/"{{ item }}"
+  loop:
+     - prometheus.yaml
+  notify: Restart Grafana container

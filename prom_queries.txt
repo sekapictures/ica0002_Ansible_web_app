@@ -1,5 +1,2 @@
 curl -i -XPOST 'http://localhost:8086/write?db=rtt' --data-binary 'latency,dst=google.com value=5.6'
 
-todos
-- create user pinger
-- 

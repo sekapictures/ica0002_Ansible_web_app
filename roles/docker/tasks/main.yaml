@@ -1,0 +1,16 @@
+- name: Install Docker package
+  ansible.builtin.apt:
+    name:
+      - docker.io
+      - python3-docker
+
+- name: Start Docker service
+  ansible.builtin.service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Change /var/run/docker.sock permissions
+  ansible.builtin.file:
+    path: /var/run/docker.sock
+    mode: '0766'

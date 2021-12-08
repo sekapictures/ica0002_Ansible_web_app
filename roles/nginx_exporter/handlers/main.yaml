@@ -2,7 +2,7 @@
   ansible.builtin.service:
     name: nginx
     state: restarted
-
+    
 # - name: Restart Prometheus
 #   ansible.builtin.service:
 #     name: prometheus
