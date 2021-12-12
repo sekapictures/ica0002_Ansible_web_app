@@ -6,7 +6,7 @@
       - setup: 
 
   - name: TEMP
-    hosts: dns_servers
+    hosts: all
     become: yes
     gather_facts: yes
     roles:
@@ -21,10 +21,10 @@
       # - influxdb_backup
       #- nginx
       # - bind
-       - docker
-       - grafana
-       - agama
+      #  - docker
+      #  - grafana
+      #  - agama
        #- nginx
-       #- keepalived
-       #- haproxy
-      #- zeta
+       - keepalived
+      #  - haproxy
+      # - zeta

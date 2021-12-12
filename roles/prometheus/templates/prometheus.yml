@@ -53,9 +53,9 @@ scrape_configs:
         {{ "- " + vm + ":9101"}}
         {% endfor %}
 
-  # - job_name: keepalived
-  #   static_configs:
-  #     - targets:
-  #       {% for vm in groups['all'] -%}
-  #       {{ "- " + vm + ":9165"}}
-  #       {% endfor %}
+  - job_name: keepalived
+    static_configs:
+      - targets:
+        {% for vm in groups['all'] -%}
+        {{ "- " + vm + ":9165"}}
+        {% endfor %}

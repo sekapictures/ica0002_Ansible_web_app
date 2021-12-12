@@ -1,5 +1,5 @@
 ---
-- name: 2 Agama Docker containers "{{ agama_instances }}" 
+- name: 2 Agama Docker containers "{{ agama_instances }}" TEST
   template:
     dest: /zeta
     src: zeta.j2

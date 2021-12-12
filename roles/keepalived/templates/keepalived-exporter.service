@@ -3,7 +3,7 @@ Description=Keepalived exporter
 After=network-online.target
 
 [Service]
-User=ubuntu
+User=root
 Type=simple
 ExecStart=/usr/local/bin/keepalived-exporter
 
