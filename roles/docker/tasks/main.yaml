@@ -3,6 +3,28 @@
     name:
       - docker.io
       - python3-docker
+  register: docker_install
+
+- name: iptables-persistent 
+  apt:
+    name: iptables-persistent 
+
+- name: iptables-save -t mangle
+  shell: iptables-save -t mangle
+  when: docker_install.changed
+
+- name: /var/local/iptables.mangle
+  template:
+    src: iptables.mangle
+    dest: /var/local/iptables.mangle
+  when: docker_install.changed
+
+- name: Perform iptables-restore
+  community.general.iptables_state:
+    path: /var/local/iptables.mangle
+    state: restored
+    table: mangle
+  when: docker_install.changed
 
 - name: Start Docker service
   ansible.builtin.service:
