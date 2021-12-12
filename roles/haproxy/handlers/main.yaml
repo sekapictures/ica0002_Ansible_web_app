@@ -1,0 +1,12 @@
+- name: Restart haproxy
+  service:
+    name: haproxy
+    state: restarted
+  
+- name: Restart prometheus-haproxy-exporter
+  service:
+    name: prometheus-haproxy-exporter
+    state: restarted
+  
+
+  

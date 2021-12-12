@@ -3,15 +3,14 @@
     name: nginx
     state: latest
 
-
-- name: Place Nginx config for uWSGI
+- name: Place Nginx config
   ansible.builtin.template:
     src: default.j2
     dest: /etc/nginx/sites-enabled/default
   notify: 
     - Restart Nginx Service
-    - Stop systemd-resolved
-    - Place resolv.conf 
+    # - Stop systemd-resolved
+    # - Place resolv.conf 
 
 - name: Ensure Nginx is started
   ansible.builtin.service:

@@ -4,8 +4,8 @@ server {
 
 {% if inventory_hostname in groups['web_servers'] %}
 	location / {
-		uwsgi_pass localhost:5000;
-		include uwsgi_params;
+		proxy_pass http://localhost:{{ agama_port + 1}};
+		proxy_set_header Host $http_host;
 	}
 {% endif %}
 
@@ -44,4 +44,12 @@ server {
 	}
 {% endif %}
 
+	location /haproxy-metrics {
+		proxy_pass http://localhost:9101/metrics;
+	}
+
+	location /keepalived-metrics {
+		proxy_pass http://localhost:9165/metrics;
+	}
+	
 }

@@ -50,7 +50,7 @@
   notify:
     - Reset MySQL source
     - Reset MySQL replica
-    - Restart uWSGI service
+    #- Restart uWSGI service
 
 - name: Reset MySQL host
   community.mysql.mysql_variables:
@@ -62,4 +62,4 @@
   notify:
     - Reset MySQL source
     - Reset MySQL replica
-    - Restart uWSGI service
+    #- Restart uWSGI service

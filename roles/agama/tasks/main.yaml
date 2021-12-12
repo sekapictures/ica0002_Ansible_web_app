@@ -1,36 +1,46 @@
-- name: Add user 'agama'
-  ansible.builtin.user:
-    name: agama
-
-- name: Create dir 'opt/agama'
+- name: Create Agama /opt/agama
   ansible.builtin.file:
-    path: /opt/agama/
+    path: /opt/agama
     state: directory
-    owner: agama
-    group: agama
-    mode: '0755'
+    recurse: yes
 
-- name: Install python dependencies
-  ansible.builtin.apt:
-    name: 
-      - python3-flask-sqlalchemy
-      - python3-pymysql
-      - python3-venv
-      - python3-pip
-    state: latest
-    
-
-- name: Install Flask 
-  ansible.builtin.pip:
-    name: flask
-  notify: 
-    - Install Flask (Part 1)
-    - Install Flask (Part 2)
-
-- name: Install 'agama.py'
+- name: Download Ansible Dockerfile
   get_url:
-    url: https://raw.githubusercontent.com/hudolejev/agama/master/agama.py
-    dest: /opt/agama/
-    owner: agama
-    group: agama
-    mode: '0755'
+    url: https://raw.githubusercontent.com/hudolejev/agama/master/Dockerfile
+    dest: /opt/agama/Dockerfile
+
+- name: Build Agama docker image
+  community.docker.docker_image:
+    name: agama
+    source: build
+    build:
+      path: /opt/agama
+    
+- name: Agama Docker containers:"{{ agama_instances }}" 
+  community.docker.docker_container:
+    name: "agama{{ item }}"
+    image: agama
+    published_ports: "{{ agama_port + item | int }}:8000"
+    container_default_behavior: no_defaults
+    env:
+      AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+  with_sequence: count={{ agama_instances }}
+
+# - name: Restart agama container
+#   docker_container:
+#     name: agama
+#     image: agama
+#     restart: yes
+#     container_default_behavior: no_defaults
+#     env:
+#       AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+
+- name: Start Agama containers:"{{ agama_instances }}" 
+  docker_container:
+    name: "agama{{ item }}"
+    image: agama
+    state: started
+    container_default_behavior: no_defaults
+    env:
+      AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+  with_sequence: count={{ agama_instances }}

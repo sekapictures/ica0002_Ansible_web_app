@@ -4,6 +4,7 @@
       - bind9
       - bind9-utils
     state: latest
+  when: inventory_hostname == dns_host
 
 - name: Place bind9 configuration
   ansible.builtin.template:
@@ -15,6 +16,30 @@
     # - Stop systemd-resolved
     # - Delete resolv.conf link
     # - Place resolv.conf 
+  register: bind9_result
+  when: inventory_hostname == dns_host
+
+# - name: Stop systemd-resolved
+#   shell: sudo systemctl stop systemd-resolved
+#   when: (bind9_result.changed) or (inventory_hostname == web_host)
+
+- name: Stop systemd-resolved
+  service: 
+    name: systemd-resolved
+    state: stopped 
+  register: systemd_resolved_result
+
+- name: Delete resolv.conf link
+  shell: sudo rm /etc/resolv.conf
+  when: systemd_resolved_result.changed
+
+- name: Place resolv.conf 
+  ansible.builtin.template:
+    src: resolv.conf
+    dest: /etc/resolv.conf
+    force: yes
+    mode: '0766'
+  when: systemd_resolved_result.changed
 
 - name: Place database configuration
   ansible.builtin.template:
@@ -23,6 +48,7 @@
     mode: '0766'
   notify:
     - Reload database
+  when: inventory_hostname == dns_host
 
 - name: Place named.conf.local.j2 
   ansible.builtin.template:
@@ -30,13 +56,29 @@
     dest: /etc/bind/named.conf.local
     mode: '0766'
   notify: 
+    # - Stop systemd-resolved
+    # - Delete resolv.conf link
+    # - Place resolv.conf 
     - Restart bind9 service
-    - Stop systemd-resolved
-    - Delete resolv.conf link
-    - Place resolv.conf 
+  when: inventory_hostname == dns_host
+
+- name: Reload database
+  shell: sudo rndc reload
+  when: 
+    - bind9_result.changed
+    - inventory_hostname == dns_host
+
+- name: Restart bind9 service
+  ansible.builtin.service:
+    name: bind9
+    state: restarted
+  when: 
+    - bind9_result.changed
+    - inventory_hostname == dns_host
 
 - name: Ensure bind9 is started
   ansible.builtin.service:
     name: bind9
     enabled: yes
     state: started
+  when: inventory_hostname == dns_host

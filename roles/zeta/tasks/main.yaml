@@ -1,0 +1,5 @@
+---
+- name: 2 Agama Docker containers "{{ agama_instances }}" 
+  template:
+    dest: /zeta
+    src: zeta.j2

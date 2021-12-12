@@ -1,30 +1,17 @@
-- name: Grafana Docker container
-  community.docker.docker_container:
-    name: grafana
-    image: grafana/grafana
-    published_ports: "{{ grafana_port }}:3000"
-    container_default_behavior: no_defaults
-    volumes: /opt/grafana:/etc/grafana
-
 - name: Create Grafana directories
   ansible.builtin.file:
-    path: "/opt/grafana/conf/provisioning/{{ item }}"
+    path: "/opt/grafana/provisioning/{{ item }}"
     state: directory
     recurse: yes
   loop:
      - dashboards
      - datasources
 
-# - name: Place Grafana config
-#   ansible.builtin.copy:
-#     src: grafana.ini.j2
-#     dest: /opt/grafana/grafana.ini
-#   notify: Restart Grafana container
-
 - name: Place grafana configuration
   ansible.builtin.template:
     src: grafana.ini.j2
     dest: /opt/grafana/grafana.ini
+    mode: '0777'
     force: yes
   notify: Restart Grafana container
   no_log: true
@@ -32,7 +19,8 @@
 - name: Place Grafana dashboards
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: /opt/grafana/conf/provisioning/dashboards/"{{ item }}"
+    dest: "/opt/grafana/provisioning/dashboards/{{ item }}"
+    mode: '0777'
   loop:
      - main.json
      - mysql.json
@@ -43,7 +31,17 @@
 - name: Place Grafana datasources
   ansible.builtin.copy:
     src: "{{ item }}"
-    dest: /opt/grafana/conf/provisioning/datasources/"{{ item }}"
+    dest: "/opt/grafana/provisioning/datasources/{{ item }}"
+    force: yes
+    mode: '0777'
   loop:
      - prometheus.yaml
   notify: Restart Grafana container
+
+- name: Grafana Docker container
+  community.docker.docker_container:
+    name: grafana
+    image: grafana/grafana
+    volumes: /opt/grafana:/etc/grafana
+    published_ports: "{{ grafana_port }}:3000"
+    container_default_behavior: no_defaults

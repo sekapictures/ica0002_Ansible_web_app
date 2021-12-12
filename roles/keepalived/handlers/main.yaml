@@ -1,0 +1,13 @@
+- name: Restart keepalived
+  service:
+    name: keepalived
+    state: restarted
+
+- name: Reload daemon
+  shell: sudo systemctl daemon-reload
+
+- name: Start keepalived-exporter.service
+  shell: sudo service keepalived-exporter start
+
+- name: Restart keepalived-exporter.service
+  shell: sudo service keepalived-exporter restart

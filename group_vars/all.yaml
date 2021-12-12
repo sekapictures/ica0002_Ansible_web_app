@@ -1,5 +1,8 @@
 mysql_host: sekapictures-2
+dns_host: sekapictures-2
 web_host: sekapictures-1
+prometheus_host: sekapictures-1
+web_app_haproxy: sekapictures-1
 influx_host: sekapictures-2
 mysql_database: agama
 mysql_user: agama
@@ -61,4 +64,10 @@ grafana_admin_pass: !vault |
           3130653464633532370a356663663434303864363532373131343338623434383466376563366262
           62336362313761316333313039316666313936306536613330303961373262333332
 
-grafana_port: 8181
+grafana_port: 8180
+
+# will be incrimented by 1, so result is agama_port + 1 
+agama_port: 8000
+
+# how many agama docker containers will be running
+agama_instances: 2

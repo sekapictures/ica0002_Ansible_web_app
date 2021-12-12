@@ -1,0 +1,33 @@
+---
+
+- name: Install haproxy
+  apt:
+    name:
+      - haproxy
+
+- name: /etc/haproxy/haproxy.cfg
+  template:
+    dest: /etc/haproxy/haproxy.cfg
+    src: haproxy.cfg.j2
+  notify: Restart haproxy
+
+- name: Haproxy started
+  service:
+    name: haproxy
+    state: started
+  
+- name: prometheus-haproxy-exporter 
+  apt:
+    name:
+      - prometheus-haproxy-exporter 
+
+- name: /etc/default/prometheus-haproxy-exporter
+  template:
+    dest: /etc/default/prometheus-haproxy-exporter
+    src: prometheus-haproxy-exporter.j2
+  notify: 
+    - Restart haproxy
+    - Restart prometheus-haproxy-exporter
+  
+
+  

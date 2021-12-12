@@ -6,7 +6,7 @@
       - setup: 
 
   - name: TEMP
-    hosts: grafana
+    hosts: all
     become: yes
     gather_facts: yes
     roles:
@@ -14,13 +14,16 @@
       # - pinger
       # - rsyslog
       # - influxdb_exporter
-      # - prometheus
+       #- prometheus
       # - mysql
       # - backup
       # - mysql_backup
       # - influxdb_backup
-      - nginx
-      - bind
-      - docker
-      - grafana
-
+      #- nginx
+      #- grafana
+      # - bind
+      # - agama
+       #- nginx
+       #- keepalived
+       #- haproxy
+      - zeta

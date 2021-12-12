@@ -1,8 +1,3 @@
-- name: Restart bind9 service
-  ansible.builtin.service:
-    name: bind9
-    state: restarted
-
 - name: Reload database
   shell: sudo rndc reload
 
@@ -18,3 +13,8 @@
     dest: /etc/resolv.conf
     force: yes
     mode: '0766'
+
+- name: Restart bind9 service
+  ansible.builtin.service:
+    name: bind9
+    state: restarted

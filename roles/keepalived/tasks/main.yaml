@@ -1,0 +1,53 @@
+---
+- name: Install keepalived
+  apt:
+    name:
+      - keepalived
+  register: keepalived_installed
+
+- name: /etc/keepalived/keepalived.conf
+  template:
+    dest: /etc/keepalived/keepalived.conf
+    src: keepalived.conf.j2
+  notify: Restart keepalived
+
+- name: /usr/local/bin/haproxy_check
+  template:
+    dest: /usr/local/bin/haproxy_check
+    src: haproxy_check.j2
+    mode: '0755'
+  notify:
+    - Restart keepalived
+
+- name: keepalived started
+  service:
+    name: keepalived
+    state: started
+  
+- name: Download keepalived exporter 
+  shell: wget https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.0.0/keepalived-exporter-1.0.0.linux-amd64.tar.gz
+  when: keepalived_installed.changed
+
+- name: Unzip keepalived exporter
+  shell: tar xvzf keepalived-exporter-1.0.0.linux-amd64.tar.gz keepalived-exporter-1.0.0.linux-amd64/keepalived-exporter
+  when: keepalived_installed.changed
+
+- name: Install keepalived exporter 
+  shell: sudo mv keepalived-exporter-1.0.0.linux-amd64/keepalived-exporter /usr/local/bin/
+  when: keepalived_installed.changed
+
+- name: Place keepalived-exporter.service 
+  ansible.builtin.template:
+    src: keepalived-exporter.service
+    dest: /etc/systemd/system/
+    mode: '0755'
+  notify: 
+    - Reload daemon
+    - Start keepalived-exporter.service
+    - Restart keepalived-exporter.service
+
+- name: keepalived-exporter started
+  service: 
+    name: keepalived-exporter
+    state: started
+    

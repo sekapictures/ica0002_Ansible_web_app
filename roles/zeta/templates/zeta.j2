@@ -1,0 +1,11 @@
+{{ hostvars['sekapictures-1']['ansible_default_ipv4']['address']}}:{{ hostvars['sekapictures-1']['ansible_port'] | int - 22 + 88}}
+
+
+
+  {% set counter = [] %}
+  {%- for vm in groups['haproxy'] -%}
+  {% for x in range(agama_instances) -%}
+  {{ counter.append(loop.index) | default("", True) -}}
+  server s{{ counter | length}} {{ vm }}:{{ agama_port + loop.index }} check
+  {% endfor %} 
+  {%- endfor %}

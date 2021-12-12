@@ -1,0 +1,11 @@
+[Unit]
+Description=Keepalived exporter
+After=network-online.target
+
+[Service]
+User=ubuntu
+Type=simple
+ExecStart=/usr/local/bin/keepalived-exporter
+
+[Install]
+WantedBy=multi-user.target
