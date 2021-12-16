@@ -29,11 +29,11 @@ server {
 	}
 {% endif %}
 
-{% if inventory_hostname in groups['grafana'] %}
-
 	location /bind-metrics {
 		proxy_pass http://localhost:9119/metrics;
 	}
+
+{% if inventory_hostname in groups['grafana'] %}
 
 	location /grafana {
 		proxy_pass http://localhost:{{ grafana_port }};

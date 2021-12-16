@@ -6,7 +6,7 @@
       - setup: 
 
   - name: TEMP
-    hosts: all
+    hosts: dns_master
     become: yes
     gather_facts: yes
     roles:
@@ -14,7 +14,7 @@
       # - pinger
       # - rsyslog
       # - influxdb_exporter
-       #- prometheus
+      # - prometheus
       # - mysql
       # - backup
       # - mysql_backup
@@ -24,7 +24,8 @@
       #  - docker
       #  - grafana
       #  - agama
-       #- nginx
-       - keepalived
+      # - nginx
+      #  - keepalived
       #  - haproxy
-      # - zeta
+      - zeta
+      # - dns_records

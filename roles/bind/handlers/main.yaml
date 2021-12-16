@@ -1,3 +1,18 @@
+- name: Place /var/cache/bind/
+  ansible.builtin.lineinfile:
+    path: /var/cache/bind/"{{ item }}"
+    regexp: '; Serial'
+    line: '                {{ dns_serial }}      	; Serial'
+  when: inventory_hostname in groups['dns_master']
+  loop:
+    - "{{ db_name }}"
+    - db.reverse
+
+- name: Restart bind9 service
+  ansible.builtin.service:
+    name: bind9
+    state: restarted
+
 - name: Reload database
   shell: sudo rndc reload
 
@@ -13,8 +28,3 @@
     dest: /etc/resolv.conf
     force: yes
     mode: '0766'
-
-- name: Restart bind9 service
-  ansible.builtin.service:
-    name: bind9
-    state: restarted

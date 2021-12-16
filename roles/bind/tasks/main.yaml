@@ -2,9 +2,10 @@
   ansible.builtin.apt:
     name: 
       - bind9
+      - python3-dnspython
       - bind9-utils
     state: latest
-  when: inventory_hostname == dns_host
+  #when: inventory_hostname == dns_host
 
 - name: Place bind9 configuration
   ansible.builtin.template:
@@ -17,7 +18,8 @@
     # - Delete resolv.conf link
     # - Place resolv.conf 
   register: bind9_result
-  when: inventory_hostname == dns_host
+  no_log: true
+  #when: inventory_hostname == dns_host
 
 # - name: Stop systemd-resolved
 #   shell: sudo systemctl stop systemd-resolved
@@ -33,7 +35,7 @@
   shell: sudo rm /etc/resolv.conf
   when: systemd_resolved_result.changed
 
-- name: Place resolv.conf 
+- name: Place /etc/resolv.conf
   ansible.builtin.template:
     src: resolv.conf
     dest: /etc/resolv.conf
@@ -41,32 +43,73 @@
     mode: '0766'
   when: systemd_resolved_result.changed
 
-- name: Place database configuration
+- name: Place /var/cache/bind/
   ansible.builtin.template:
-    src: "{{ db_name }}"
+    src: "{{ item }}"
     dest: /var/cache/bind/
     mode: '0766'
+    force: no
   notify:
     - Reload database
-  when: inventory_hostname == dns_host
+    - Restart bind9 service
+  when: inventory_hostname in groups['dns_master']
+  loop: 
+    - "{{ db_name }}"
+    - db.reverse
 
-- name: Place named.conf.local.j2 
+- name: Set CNAME records
+  community.general.nsupdate:
+    key_name: "dns_update_key"
+    key_secret: "{{ dns_update_key }}"
+    key_algorithm: "hmac-sha256"
+    server: "localhost"
+    zone: "{{ startup_name }}"
+    record: "{{ item.key }}"
+    type: "CNAME"
+    value: "{{ item.value }}"
+  loop: "{{ dns_cname_records | dict2items }}"
+  when: inventory_hostname in groups['dns_master']
+  # run_once: true
+  notify: 
+    - Place "{{ db_name }}"
+    - Place db.reverse
+
+- name: Set A records
+  community.general.nsupdate:
+    key_name: "dns_update_key"
+    key_secret: "{{ dns_update_key }}"
+    key_algorithm: "hmac-sha256"
+    server: "localhost"
+    zone: "{{ startup_name }}"
+    record: "{{ item.key }}"
+    type: "A"
+    value: "{{ item.value }}"
+  loop: "{{ dns_a_records | dict2items }}"
+  when: inventory_hostname in groups['dns_master']
+  # run_once: true
+  notify: 
+    - Place "{{ db_name }}"
+    - Place db.reverse
+
+
+- name: Place /etc/bind/named.conf.local
   ansible.builtin.template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
     mode: '0766'
+    force: yes
   notify: 
     # - Stop systemd-resolved
     # - Delete resolv.conf link
     # - Place resolv.conf 
     - Restart bind9 service
-  when: inventory_hostname == dns_host
+  # when: inventory_hostname == dns_host
 
 - name: Reload database
   shell: sudo rndc reload
   when: 
     - bind9_result.changed
-    - inventory_hostname == dns_host
+    - inventory_hostname in groups['dns_master']
 
 - name: Restart bind9 service
   ansible.builtin.service:
@@ -74,11 +117,11 @@
     state: restarted
   when: 
     - bind9_result.changed
-    - inventory_hostname == dns_host
+    - inventory_hostname in groups['dns_master']
 
 - name: Ensure bind9 is started
   ansible.builtin.service:
     name: bind9
     enabled: yes
     state: started
-  when: inventory_hostname == dns_host
+  # when: inventory_hostname == dns_host

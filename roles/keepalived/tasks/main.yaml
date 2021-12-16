@@ -26,15 +26,15 @@
   
 - name: Download keepalived exporter 
   shell: wget https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
-  # when: keepalived_installed.changed
+  when: keepalived_installed.changed
 
 - name: Unzip keepalived exporter
   shell: tar xvzf keepalived-exporter-1.2.0.linux-amd64.tar.gz keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
-  # when: keepalived_installed.changed
+  when: keepalived_installed.changed
 
 - name: Install keepalived exporter 
   shell: sudo mv keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter /usr/local/bin/
-  # when: keepalived_installed.changed
+  when: keepalived_installed.changed
 
 - name: Place keepalived-exporter.service 
   ansible.builtin.template:

@@ -1,5 +1,12 @@
 ---
-- name: 2 Agama Docker containers "{{ agama_instances }}" TEST
-  template:
-    dest: /zeta
-    src: zeta.j2
+# - name: TEST
+#   template:
+#     dest: /zeta
+#     src: zeta.j2
+
+- name: Place "{{ db_name }}"
+  ansible.builtin.lineinfile:
+    path: /zeta
+    regexp: '; Serial'
+    line: '                {{ dns_serial }}      	; Serial'
+  when: inventory_hostname in groups['dns_master']

@@ -1,6 +1,6 @@
 $TTL	604800
-{{ startup_name }}.	IN	SOA	sekapictures-1.{{ startup_name }}. arsser.{{ startup_name }}. (
-			      2		; Serial
+{{ startup_name }}.	IN	SOA	sekapictures-2.{{ startup_name }}. arsser.{{ startup_name }}. (
+                {{ dns_serial }}      	; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -12,4 +12,3 @@ $TTL	604800
 {% for vm in groups['all'] %}
 {{ vm }} IN A {{ hostvars[vm]['ansible_default_ipv4']['address'] }}
 {% endfor %}
-backup IN A {{ backup_server }}

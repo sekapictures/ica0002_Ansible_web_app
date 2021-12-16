@@ -33,12 +33,12 @@
       - mysql_exporter
       - nginx_exporter
       #- grafana
-      - influxdb
-      - pinger
-      - influxdb_exporter
+      # - influxdb
+      # - pinger
+      # - influxdb_exporter
       - rsyslog
       - mysql_backup
-      - influxdb_backup
+      # - influxdb_backup
       #- docker
       - keepalived
       - haproxy
@@ -53,9 +53,24 @@
       # - uwsgi
       - nginx
       - node_exporter
-      - prometheus
+      # - prometheus
       - nginx_exporter
       - rsyslog
+
+  - name: Prometheus server
+    hosts: prometheus
+    become: yes
+    roles:
+      - prometheus
+
+  - name: Influxdb server
+    hosts: influxdb
+    become: yes
+    roles:
+      - influxdb
+      - pinger
+      - influxdb_exporter
+      - influxdb_backup
 
   # - name: DNS server
   #   hosts: dns_servers
