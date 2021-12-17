@@ -1,5 +1,6 @@
-sekapictures-1 ansible_port=12122
-sekapictures-2 ansible_port=8922
+sekapictures-1 ansible_port=14122
+sekapictures-2 ansible_port=17522
+sekapictures-3 ansible_port=13322
 
 # sekapictures-1 ansible_host=193.40.156.86 ansible_port=19622 ansible_ssh_user=ubuntu
 # sekapictures-2 ansible_host=193.40.156.86 ansible_port=19722 ansible_ssh_user=ubuntu
@@ -11,22 +12,24 @@ sekapictures-2
 [dns_servers]
 sekapictures-1
 sekapictures-2
+sekapictures-3
 
 [dns_master]
-sekapictures-2
+sekapictures-3
 
 [dns_slaves]
 sekapictures-1
+sekapictures-2
 
 [dns_servers:children]
 dns_master
 dns_slaves
 
 [prometheus]
-sekapictures-1
+sekapictures-3
 
 [grafana]
-sekapictures-2
+sekapictures-3
 
 [web_servers]
 sekapictures-1
@@ -37,7 +40,7 @@ sekapictures-1
 sekapictures-2
 
 [influxdb]
-sekapictures-2
+sekapictures-3
 
 [all:vars]
 ansible_host=193.40.156.86

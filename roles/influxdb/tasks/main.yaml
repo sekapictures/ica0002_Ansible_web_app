@@ -8,21 +8,10 @@
     wget -qO- https://repos.influxdata.com/influxdb.key | gpg --dearmor > /etc/apt/trusted.gpg.d/influxdb.gpg   
   when: not influxdb_result.stat.exists
 
-# - name: Import InfluxDB GPG signing key
-#   ansible.builtin.apt_key:
-#     key: https://repos.influxdata.com/influxdb.key 
-#     state: present
-
 - name: Add InfluxDB repository
   ansible.builtin.apt_repository:
     repo: deb https://repos.influxdata.com/ubuntu trusty stable
     state: present
-
-# - name: Update and upgrade apt packages
-#   become: true
-#   ansible.builtin.apt:
-#     upgrade: yes
-#     update_cache: yes
 
 - name: Install influxdb service with apt
   ansible.builtin.apt:
@@ -34,14 +23,9 @@
     src: influxdb.conf
     dest: /etc/influxdb/influxdb.conf
     force: yes
-    mode: '0777'
+    mode: '0744'
   notify:
     - Restart influxdb
-    
-#- name: Start influxdb service
-#  ansible.builtin.service:
-#    name: influxdb
-#    state: started
 
 - name: Install telegraf service with apt
   ansible.builtin.apt:
@@ -53,34 +37,18 @@
     src: telegraf.conf
     dest: /etc/telegraf/telegraf.conf
     force: yes
-    mode: '0777'
+    mode: '0744'
   notify:
     - Restart telegraf
+
+- name: Start influxdb service
+  ansible.builtin.service:
+    name: influxdb
+    state: started
+    enabled: yes
 
 - name: Start telegraf service
   ansible.builtin.service:
     name: telegraf
     state: started
-
-
-# - name: Start influxdb
-#   ansible.builtin.service:
-#     name: influxdb
-#     state: restarted
-#   register: influxdb_status
-
-# - name: create influxdb dir
-#   ansible.builtin.file: 
-#   file:
-#     path: /
-#     state: directory
-
-
-
-# # - name: influxdb install step 2
-# #   ansible.builtin.shell: 
-# #     echo "deb [signed-by=/etc/apt/trusted.gpg.d/influxdb.gpg] https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" > /etc/apt/sources.list.d/influxdb.list
-# #   when: not influxdb_result.stat.exists
-
-
-
+    enabled: yes

@@ -11,7 +11,7 @@
   ansible.builtin.template:
     src: grafana.ini.j2
     dest: /opt/grafana/grafana.ini
-    mode: '0777'
+    mode: '0744'
     force: yes
   notify: Restart Grafana container
   no_log: true
@@ -20,7 +20,7 @@
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "/opt/grafana/provisioning/dashboards/{{ item }}"
-    mode: '0777'
+    mode: '0744'
   loop:
      - main.json
      - mysql.json
@@ -33,7 +33,7 @@
     src: "{{ item }}"
     dest: "/opt/grafana/provisioning/datasources/{{ item }}"
     force: yes
-    mode: '0777'
+    mode: '0744'
   loop:
      - prometheus.yaml
   notify: Restart Grafana container
@@ -43,5 +43,6 @@
     name: grafana
     image: grafana/grafana
     volumes: /opt/grafana:/etc/grafana
+    restart_policy: always
     published_ports: "{{ grafana_port }}:3000"
     container_default_behavior: no_defaults

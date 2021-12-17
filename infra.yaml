@@ -18,70 +18,72 @@
     tasks:
       - setup: 
 
+  - name: DNS server
+    hosts: dns_servers
+    become: yes
+    roles:
+      - bind
+      - bind_exporter
+
+  - name: Docker
+    hosts: all
+    become: yes
+    roles:
+      - docker
+
   - name: Database server
     hosts: db_servers
     become: yes
     roles:
       - role: mysql 
         tags: mysql_tag
-      - bind
-      - docker
-      - agama
       - node_exporter
       - nginx
-      - bind_exporter
       - mysql_exporter
       - nginx_exporter
-      #- grafana
-      # - influxdb
-      # - pinger
-      # - influxdb_exporter
       - rsyslog
       - mysql_backup
-      # - influxdb_backup
-      #- docker
-      - keepalived
-      - haproxy
-    tags: d
+    tags: db
 
   - name: Web server
     hosts: web_servers
     become: yes
     roles:
-      - docker
       - agama
-      # - uwsgi
       - nginx
       - node_exporter
-      # - prometheus
       - nginx_exporter
       - rsyslog
+    tags: web
 
   - name: Prometheus server
     hosts: prometheus
     become: yes
     roles:
       - prometheus
-
-  - name: Influxdb server
-    hosts: influxdb
-    become: yes
-    roles:
-      - influxdb
-      - pinger
-      - influxdb_exporter
-      - influxdb_backup
-
-  # - name: DNS server
-  #   hosts: dns_servers
-  #   become: yes
-  #   roles:
-  #     - bind
-  #     - bind_exporter
+    tags: prometheus
 
   - name: Grafana server
     hosts: grafana
     become: yes
     roles:
       - grafana
-    tags: gr
+    tags: grafana
+
+  - name: Haproxy
+    hosts: haproxy
+    become: yes
+    roles:
+      - haproxy
+      - keepalived
+    tags: haproxy
+
+  - name: InfluxDB
+    hosts: influxdb
+    become: yes
+    roles:
+      - influxdb
+      - pinger
+      - influxdb_backup
+      - influxdb_exporter
+    tags: influxdb

@@ -1,6 +1,6 @@
 $TTL	604800
-42.168.192.in-addr.arpa.	IN	SOA	sekapictures-2.{{ startup_name }}. arsser.{{ startup_name }}. (
-                {{ dns_serial }}      	; Serial
+42.168.192.in-addr.arpa.	IN	SOA	{{ dns_master }}.{{ startup_name }}. arsser.{{ startup_name }}. (
+   {{ dns_serial }}     ; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire

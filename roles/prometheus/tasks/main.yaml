@@ -16,4 +16,10 @@
     dest: /etc/prometheus/prometheus.yml
   notify: 
     - Restart Prometheus
-    - Restart node_exporters
+    # - Restart node_exporters
+
+- name: Prometheus started
+  service:
+    name: prometheus
+    enabled: yes
+    state: started

@@ -1,4 +1,4 @@
-{% if inventory_hostname != mysql_host -%}
+{% if inventory_hostname != mysql_master -%}
 15 1 * * 0 backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
 30 1 * * 0 backup duplicity --no-encryption full /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
 30 1 * * 1-6 backup duplicity --no-encryption incremental /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/

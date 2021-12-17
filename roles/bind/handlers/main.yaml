@@ -1,6 +1,6 @@
 - name: Place /var/cache/bind/
   ansible.builtin.lineinfile:
-    path: /var/cache/bind/"{{ item }}"
+    path: /var/cache/bind/
     regexp: '; Serial'
     line: '                {{ dns_serial }}      	; Serial'
   when: inventory_hostname in groups['dns_master']

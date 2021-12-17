@@ -20,10 +20,11 @@
   community.docker.docker_container:
     name: "agama{{ item }}"
     image: agama
+    restart_policy: always
     published_ports: "{{ agama_port + item | int }}:8000"
     container_default_behavior: no_defaults
     env:
-      AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+      AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_master}}/{{mysql_database}}
   with_sequence: count={{ agama_instances }}
 
 # - name: Restart agama container
@@ -33,14 +34,15 @@
 #     restart: yes
 #     container_default_behavior: no_defaults
 #     env:
-#       AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+#       AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_master}}/{{mysql_database}}
 
 - name: Start Agama containers:"{{ agama_instances }}" 
   docker_container:
     name: "agama{{ item }}"
     image: agama
     state: started
+    restart_policy: always
     container_default_behavior: no_defaults
     env:
-      AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_host}}/{{mysql_database}}
+      AGAMA_DATABASE_URI: mysql+pymysql://{{mysql_user}}:{{mysql_password}}@{{mysql_master}}/{{mysql_database}}
   with_sequence: count={{ agama_instances }}

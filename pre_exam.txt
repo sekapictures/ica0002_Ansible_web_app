@@ -1,0 +1,562 @@
+R 17 dets  2021 23:02:30 EET
++ hostname
+seka-VirtualBox
++ ansible-playbook infra.yaml --diff
+
+PLAY [Ansible connection test] *************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
+
+TASK [test_connection : Ansible ping module] ***********************************
+ok: [sekapictures-3]
+ok: [sekapictures-2]
+ok: [sekapictures-1]
+
+PLAY [Initialization] **********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-3]
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+
+TASK [init : Update APT cache] *************************************************
+changed: [sekapictures-3]
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [backup : Create user backup] *********************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+changed: [sekapictures-3]
+
+TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmp1po52537/known_hosts.j2
+@@ -0,0 +1,2 @@
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
+\ No newline at end of file
+
+changed: [sekapictures-3]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmpclttuyqf/known_hosts.j2
+@@ -0,0 +1,2 @@
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
+\ No newline at end of file
+
+changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmptgjo88y2/known_hosts.j2
+@@ -0,0 +1,2 @@
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
+\ No newline at end of file
+
+changed: [sekapictures-2]
+
+TASK [backup : Create /home/backup/restore] ************************************
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0774",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [sekapictures-1]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0774",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [sekapictures-2]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0774",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [sekapictures-3]
+
+TASK [backup : Install Duplicity service with apt] *****************************
+The following additional packages will be installed:
+  librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-paramiko
+Suggested packages:
+  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
+  python-future-doc python-lockfile-doc python3-gssapi
+The following NEW packages will be installed:
+  duplicity librsync2 python3-bcrypt python3-fasteners python3-future
+  python3-lockfile python3-monotonic python3-paramiko
+0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-3]
+The following additional packages will be installed:
+  librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-paramiko
+Suggested packages:
+  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
+  python-future-doc python-lockfile-doc python3-gssapi
+The following NEW packages will be installed:
+  duplicity librsync2 python3-bcrypt python3-fasteners python3-future
+  python3-lockfile python3-monotonic python3-paramiko
+0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
+The following additional packages will be installed:
+  librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-paramiko
+Suggested packages:
+  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
+  python-future-doc python-lockfile-doc python3-gssapi
+The following NEW packages will be installed:
+  duplicity librsync2 python3-bcrypt python3-fasteners python3-future
+  python3-lockfile python3-monotonic python3-paramiko
+0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
+
+PLAY [Setup] *******************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-3]
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+
+TASK [setup] *******************************************************************
+ok: [sekapictures-1]
+ok: [sekapictures-3]
+ok: [sekapictures-2]
+
+PLAY [Database server] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+
+TASK [mysql : Install mysql packages] ******************************************
+The following additional packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libencode-locale-perl libevent-core-2.1-7
+  libevent-pthreads-2.1-7 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
+  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libtimedate-perl liburi-perl mecab-ipadic
+  mecab-ipadic-utf8 mecab-utils mysql-client-8.0 mysql-client-core-8.0
+  mysql-common mysql-server-8.0 mysql-server-core-8.0
+Suggested packages:
+  libdata-dump-perl libipc-sharedcache-perl libwww-perl mailx tinyca
+  python-pymysql-doc
+The following NEW packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libencode-locale-perl libevent-core-2.1-7
+  libevent-pthreads-2.1-7 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
+  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libtimedate-perl liburi-perl mecab-ipadic
+  mecab-ipadic-utf8 mecab-utils mysql-client-8.0 mysql-client-core-8.0
+  mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
+  python3-pymysql
+0 upgraded, 26 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
+The following additional packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libencode-locale-perl libevent-core-2.1-7
+  libevent-pthreads-2.1-7 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
+  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libtimedate-perl liburi-perl mecab-ipadic
+  mecab-ipadic-utf8 mecab-utils mysql-client-8.0 mysql-client-core-8.0
+  mysql-common mysql-server-8.0 mysql-server-core-8.0
+Suggested packages:
+  libdata-dump-perl libipc-sharedcache-perl libwww-perl mailx tinyca
+  python-pymysql-doc
+The following NEW packages will be installed:
+  libcgi-fast-perl libcgi-pm-perl libencode-locale-perl libevent-core-2.1-7
+  libevent-pthreads-2.1-7 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
+  libhtml-template-perl libhttp-date-perl libhttp-message-perl libio-html-perl
+  liblwp-mediatypes-perl libmecab2 libtimedate-perl liburi-perl mecab-ipadic
+  mecab-ipadic-utf8 mecab-utils mysql-client-8.0 mysql-client-core-8.0
+  mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
+  python3-pymysql
+0 upgraded, 26 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
+
+TASK [mysql : Place mysql configuration] ***************************************
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmpok3mvax_/override.cnf
+@@ -0,0 +1,7 @@
++[mysqld]
++bind-address = 0.0.0.0
++skip-host-cache
++log-bin = /var/log/mysql/mysql-bin.log
++relay-log = /var/log/mysql/mysql-relay.log
++replicate-do-db = agama
++server-id = 141
+
+changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmp8hr02fmm/override.cnf
+@@ -0,0 +1,7 @@
++[mysqld]
++bind-address = 0.0.0.0
++skip-host-cache
++log-bin = /var/log/mysql/mysql-bin.log
++relay-log = /var/log/mysql/mysql-relay.log
++replicate-do-db = agama
++server-id = 175
+
+changed: [sekapictures-2]
+
+TASK [mysql : Ensure mysql is started] *****************************************
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+
+TASK [mysql : MySQL database] **************************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [mysql : MySQL user] ******************************************************
+changed: [sekapictures-2]
+changed: [sekapictures-1]
+
+TASK [mysql : MySQL user for replication] **************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [mysql : MySQL replica read only mode ON] *********************************
+skipping: [sekapictures-2]
+changed: [sekapictures-1]
+
+TASK [mysql : Reset MySQL host] ************************************************
+skipping: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [bind : Install bind9] ****************************************************
+The following additional packages will be installed:
+  bind9-dnsutils bind9-libs dns-root-data python3-ply
+Suggested packages:
+  bind-doc resolvconf python-ply-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data python3-dnspython python3-ply
+The following packages will be upgraded:
+  bind9-dnsutils bind9-libs
+2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
+changed: [sekapictures-2]
+The following additional packages will be installed:
+  bind9-dnsutils bind9-libs dns-root-data python3-ply
+Suggested packages:
+  bind-doc resolvconf python-ply-doc
+The following NEW packages will be installed:
+  bind9 bind9-utils dns-root-data python3-dnspython python3-ply
+The following packages will be upgraded:
+  bind9-dnsutils bind9-libs
+2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
+changed: [sekapictures-1]
+
+TASK [bind : Place bind9 configuration] ****************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [bind : Stop systemd-resolved] ********************************************
+changed: [sekapictures-2]
+changed: [sekapictures-1]
+
+TASK [bind : Delete resolv.conf link] ******************************************
+changed: [sekapictures-2]
+changed: [sekapictures-1]
+
+TASK [bind : Place /etc/resolv.conf] *******************************************
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmpd4k00yzy/resolv.conf
+@@ -0,0 +1,4 @@
++nameserver  192.168.42.133
++nameserver  192.168.42.141
++ 192.168.42.175
++search gleppy.io
+\ No newline at end of file
+
+changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmpx4qspi4c/resolv.conf
+@@ -0,0 +1,4 @@
++nameserver  192.168.42.133
++nameserver  192.168.42.141
++ 192.168.42.175
++search gleppy.io
+\ No newline at end of file
+
+changed: [sekapictures-2]
+
+TASK [bind : Place /var/cache/bind/] *******************************************
+skipping: [sekapictures-1] => (item=db.gleppy) 
+skipping: [sekapictures-1] => (item=db.reverse) 
+skipping: [sekapictures-2] => (item=db.gleppy) 
+skipping: [sekapictures-2] => (item=db.reverse) 
+
+TASK [bind : Set CNAME records] ************************************************
+skipping: [sekapictures-1] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-1] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-2] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
+
+TASK [bind : Set A records] ****************************************************
+skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
+skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
+
+TASK [bind : Place /etc/bind/named.conf.local] *********************************
+--- before: /etc/bind/named.conf.local
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmpdrfiipk5/named.conf.local.j2
+@@ -1,8 +1,15 @@
+-//
+-// Do any local configuration here
+-//
++zone "gleppy.io" {
++    type slave;
++    masters { 192.168.42.133; };
++    file "db.gleppy";
++};
+ 
+-// Consider adding the 1918 zones here, if they are not used in your
+-// organization
+-//include "/etc/bind/zones.rfc1918";
++server 192.168.42.133 {
++    keys { dns_transfer_key;};
++};
+ 
++zone "42.168.192.in-addr.arpa" {
++    type slave;
++    masters { 192.168.42.133; };
++    file "db.reverse";
++};
+
+changed: [sekapictures-2]
+--- before: /etc/bind/named.conf.local
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmp4o6sqn3_/named.conf.local.j2
+@@ -1,8 +1,15 @@
+-//
+-// Do any local configuration here
+-//
++zone "gleppy.io" {
++    type slave;
++    masters { 192.168.42.133; };
++    file "db.gleppy";
++};
+ 
+-// Consider adding the 1918 zones here, if they are not used in your
+-// organization
+-//include "/etc/bind/zones.rfc1918";
++server 192.168.42.133 {
++    keys { dns_transfer_key;};
++};
+ 
++zone "42.168.192.in-addr.arpa" {
++    type slave;
++    masters { 192.168.42.133; };
++    file "db.reverse";
++};
+
+changed: [sekapictures-1]
+
+TASK [bind : Reload database] **************************************************
+skipping: [sekapictures-1]
+skipping: [sekapictures-2]
+
+TASK [bind : Restart bind9 service] ********************************************
+skipping: [sekapictures-1]
+skipping: [sekapictures-2]
+
+TASK [bind : Ensure bind9 is started] ******************************************
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+
+TASK [docker : Install Docker package] *****************************************
+The following additional packages will be installed:
+  bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
+  ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-doc
+  rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
+  python3-websocket runc ubuntu-fan
+0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
+changed: [sekapictures-1]
+The following additional packages will be installed:
+  bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
+  ubuntu-fan
+Suggested packages:
+  ifupdown aufs-tools cgroupfs-mount | cgroup-lite debootstrap docker-doc
+  rinse zfs-fuse | zfsutils
+The following NEW packages will be installed:
+  bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
+  python3-websocket runc ubuntu-fan
+0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
+changed: [sekapictures-2]
+
+TASK [docker : iptables-persistent] ********************************************
+The following additional packages will be installed:
+  netfilter-persistent
+The following NEW packages will be installed:
+  iptables-persistent netfilter-persistent
+0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
+changed: [sekapictures-1]
+The following additional packages will be installed:
+  netfilter-persistent
+The following NEW packages will be installed:
+  iptables-persistent netfilter-persistent
+0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
+changed: [sekapictures-2]
+
+TASK [docker : iptables-save -t mangle] ****************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [docker : /var/local/iptables.mangle] *************************************
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmp2lnyiq34/iptables.mangle
+@@ -0,0 +1,8 @@
++*mangle
++:PREROUTING ACCEPT [0:0]
++:INPUT ACCEPT [0:0]
++:FORWARD ACCEPT [0:0]
++:OUTPUT ACCEPT [0:0]
++:POSTROUTING ACCEPT [0:0]
++-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
++COMMIT
+
+changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-4238a8wfwdxt/tmp7v3z5fz1/iptables.mangle
+@@ -0,0 +1,8 @@
++*mangle
++:PREROUTING ACCEPT [0:0]
++:INPUT ACCEPT [0:0]
++:FORWARD ACCEPT [0:0]
++:OUTPUT ACCEPT [0:0]
++:POSTROUTING ACCEPT [0:0]
++-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
++COMMIT
+
+changed: [sekapictures-2]
+
+TASK [docker : Perform iptables-restore] ***************************************
+[WARNING]: Attempts to restore iptables state without rollback in case of
+mistake may lead the ansible controller to loose access to the hosts and never
+regain it before fixing firewall rules through a serial console, or any other
+way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
+to a value >2 and not greater than 'ansible_timeout' (=15) (recommended).
+[WARNING]: Attempts to restore iptables state without rollback in case of
+mistake may lead the ansible controller to loose access to the hosts and never
+regain it before fixing firewall rules through a serial console, or any other
+way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
+to a value >2 and not greater than 'ansible_timeout' (=15) (recommended).
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [docker : Start Docker service] *******************************************
+ok: [sekapictures-2]
+ok: [sekapictures-1]
+
+TASK [docker : Change /var/run/docker.sock permissions] ************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "mode": "0660",
++    "mode": "0766",
+     "path": "/var/run/docker.sock"
+ }
+
+changed: [sekapictures-1]
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "mode": "0660",
++    "mode": "0766",
+     "path": "/var/run/docker.sock"
+ }
+
+changed: [sekapictures-2]
+
+TASK [agama : Create Agama /opt/agama] *****************************************
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/agama",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [sekapictures-1]
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+     "path": "/opt/agama",
+-    "state": "absent"
++    "state": "directory"
+ }
+
+changed: [sekapictures-2]
+
+TASK [agama : Download Ansible Dockerfile] *************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [agama : Build Agama docker image] ****************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+
+TASK [agama : Agama Docker containers:"2"] *************************************
+fatal: [sekapictures-1]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'mysql_host' is undefined\n\nThe error appears to be in '/home/seka/ica0002/roles/agama/tasks/main.yaml': line 19, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: Agama Docker containers:\"{{ agama_instances }}\"\n  ^ here\nWe could be wrong, but this one looks like it might be an issue with\nmissing quotes. Always quote template expression brackets when they\nstart a value. For instance:\n\n    with_items:\n      - {{ foo }}\n\nShould be written as:\n\n    with_items:\n      - \"{{ foo }}\"\n"}
+fatal: [sekapictures-2]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'mysql_host' is undefined\n\nThe error appears to be in '/home/seka/ica0002/roles/agama/tasks/main.yaml': line 19, column 3, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n- name: Agama Docker containers:\"{{ agama_instances }}\"\n  ^ here\nWe could be wrong, but this one looks like it might be an issue with\nmissing quotes. Always quote template expression brackets when they\nstart a value. For instance:\n\n    with_items:\n      - {{ foo }}\n\nShould be written as:\n\n    with_items:\n      - \"{{ foo }}\"\n"}
+
+RUNNING HANDLER [mysql : Reset MySQL source] ***********************************
+
+RUNNING HANDLER [mysql : Reset MySQL replica] **********************************
+
+RUNNING HANDLER [bind : Restart bind9 service] *********************************
+
+RUNNING HANDLER [mysql_exporter : Restart mysql service] ***********************
+
+PLAY RECAP *********************************************************************
+sekapictures-1             : ok=35   changed=26   unreachable=0    failed=1    skipped=6    rescued=0    ignored=0   
+sekapictures-2             : ok=35   changed=26   unreachable=0    failed=1    skipped=6    rescued=0    ignored=0   
+sekapictures-3             : ok=10   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
