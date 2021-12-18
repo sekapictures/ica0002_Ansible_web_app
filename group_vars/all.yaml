@@ -1,9 +1,7 @@
-mysql_host: sekapictures-2
-dns_host: sekapictures-2
-web_host: sekapictures-1
-prometheus_host: sekapictures-1
-web_app_haproxy: sekapictures-1
-influx_host: sekapictures-2
+mysql_master: sekapictures-2
+prometheus_host: sekapictures-3
+dns_master: sekapictures-3
+influx_host: sekapictures-3
 mysql_database: agama
 mysql_user: agama
 mysql_exporter_user: exporter
@@ -32,7 +30,7 @@ corpnets:
 
 db_name: db.gleppy
 
-dns_serial: "{{ (hostvars['sekapictures-2']['ansible_date_time']['date'] + hostvars['sekapictures-2']['ansible_date_time']['time']) | replace('-','') | replace(':','') }}"
+dns_serial: "{{ (hostvars['sekapictures-2']['ansible_date_time']['time']) | replace('-','') | replace(':','') }}"
 
 dns_cname_records:
   grafana: "{{ groups['grafana'][0] }}"
@@ -43,6 +41,7 @@ dns_cname_records:
   mysql2: "{{ groups['db_servers'][1] }}"
   ns1: "{{ groups['dns_servers'][0] }}"
   ns2: "{{ groups['dns_servers'][1] }}"
+  ns3: "{{ groups['dns_servers'][2] }}"
   prometheus: "{{ groups['prometheus'][0] }}"
   web1: "{{ groups['web_servers'][0] }}"
   web2: "{{ groups['web_servers'][1] }}"

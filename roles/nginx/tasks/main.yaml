@@ -8,9 +8,7 @@
     src: default.j2
     dest: /etc/nginx/sites-enabled/default
   notify: 
-    - Restart Nginx Service
-    # - Stop systemd-resolved
-    # - Place resolv.conf 
+    - Restart Nginx service
 
 - name: Ensure Nginx is started
   ansible.builtin.service:

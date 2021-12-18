@@ -33,3 +33,4 @@
   ansible.builtin.service:
     name: prometheus-mysqld-exporter
     state: started
+    enabled: yes

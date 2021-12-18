@@ -10,12 +10,12 @@
   loop:
     - stopreplica
     - resetprimary
-  when: inventory_hostname == mysql_host
+  when: inventory_hostname == mysql_master
 
 - name: Reset MySQL replica
   community.mysql.mysql_replication:
     mode: "{{ item }}"
-    primary_host: "{{ mysql_host }}"
+    primary_host: "{{ mysql_master }}"
     primary_user: "{{ mysql_replication_user }}"
     primary_password: "{{ mysql_replication_pass }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
@@ -24,7 +24,7 @@
     - changeprimary
     - resetreplica
     - startreplica
-  when: inventory_hostname != mysql_host
+  when: inventory_hostname != mysql_master
 
 - name: Restart uWSGI service
   ansible.builtin.service:

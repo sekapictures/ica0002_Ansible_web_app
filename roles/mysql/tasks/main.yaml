@@ -1,4 +1,4 @@
-- name: Install  mysql packages
+- name: Install mysql packages
   ansible.builtin.apt:
     name: 
       - mysql-server
@@ -46,7 +46,7 @@
     value: 'ON'
     mode: persist
     login_unix_socket: /var/run/mysqld/mysqld.sock
-  when: inventory_hostname != mysql_host
+  when: inventory_hostname != mysql_master
   notify:
     - Reset MySQL source
     - Reset MySQL replica
@@ -58,7 +58,7 @@
     value: 'OFF'
     mode: persist
     login_unix_socket: /var/run/mysqld/mysqld.sock
-  when: inventory_hostname == mysql_host
+  when: inventory_hostname == mysql_master
   notify:
     - Reset MySQL source
     - Reset MySQL replica

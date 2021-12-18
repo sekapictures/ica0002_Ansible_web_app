@@ -3,7 +3,7 @@
     path: /home/backup/influxdb
     state: directory
     owner: backup
-    mode: '0774'
+    mode: '0744'
 
 - name: Create /etc/cron.d/influxdb-backup 
   ansible.builtin.template:

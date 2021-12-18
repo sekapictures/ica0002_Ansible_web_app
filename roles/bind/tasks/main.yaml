@@ -5,25 +5,17 @@
       - python3-dnspython
       - bind9-utils
     state: latest
-  #when: inventory_hostname == dns_host
 
 - name: Place bind9 configuration
   ansible.builtin.template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
     mode: '0766'
+    force: yes
   notify: 
     - Restart bind9 service
-    # - Stop systemd-resolved
-    # - Delete resolv.conf link
-    # - Place resolv.conf 
   register: bind9_result
   no_log: true
-  #when: inventory_hostname == dns_host
-
-# - name: Stop systemd-resolved
-#   shell: sudo systemctl stop systemd-resolved
-#   when: (bind9_result.changed) or (inventory_hostname == web_host)
 
 - name: Stop systemd-resolved
   service: 
@@ -41,7 +33,7 @@
     dest: /etc/resolv.conf
     force: yes
     mode: '0766'
-  when: systemd_resolved_result.changed
+  # when: systemd_resolved_result.changed
 
 - name: Place /var/cache/bind/
   ansible.builtin.template:
@@ -57,6 +49,21 @@
     - "{{ db_name }}"
     - db.reverse
 
+- name: Place /etc/bind/named.conf.local
+  ansible.builtin.template:
+    src: named.conf.local.j2
+    dest: /etc/bind/named.conf.local
+    mode: '0766'
+    force: yes
+  notify: 
+    - Restart bind9 service
+
+- name: Reload database
+  shell: sudo rndc reload
+  when: 
+    - bind9_result.changed
+    - inventory_hostname in groups['dns_master']
+  
 - name: Set CNAME records
   community.general.nsupdate:
     key_name: "dns_update_key"
@@ -69,10 +76,8 @@
     value: "{{ item.value }}"
   loop: "{{ dns_cname_records | dict2items }}"
   when: inventory_hostname in groups['dns_master']
-  # run_once: true
   notify: 
-    - Place "{{ db_name }}"
-    - Place db.reverse
+    - Place /var/cache/bind/
 
 - name: Set A records
   community.general.nsupdate:
@@ -86,42 +91,18 @@
     value: "{{ item.value }}"
   loop: "{{ dns_a_records | dict2items }}"
   when: inventory_hostname in groups['dns_master']
-  # run_once: true
   notify: 
-    - Place "{{ db_name }}"
-    - Place db.reverse
-
-
-- name: Place /etc/bind/named.conf.local
-  ansible.builtin.template:
-    src: named.conf.local.j2
-    dest: /etc/bind/named.conf.local
-    mode: '0766'
-    force: yes
-  notify: 
-    # - Stop systemd-resolved
-    # - Delete resolv.conf link
-    # - Place resolv.conf 
-    - Restart bind9 service
-  # when: inventory_hostname == dns_host
-
-- name: Reload database
-  shell: sudo rndc reload
-  when: 
-    - bind9_result.changed
-    - inventory_hostname in groups['dns_master']
-
-- name: Restart bind9 service
-  ansible.builtin.service:
-    name: bind9
-    state: restarted
-  when: 
-    - bind9_result.changed
-    - inventory_hostname in groups['dns_master']
+    - Place /var/cache/bind/
+# - name: Restart bind9 service
+#   ansible.builtin.service:
+#     name: bind9
+#     state: restarted
+#   when: 
+#     - bind9_result.changed
+#     - inventory_hostname in groups['dns_master']
 
 - name: Ensure bind9 is started
   ansible.builtin.service:
     name: bind9
     enabled: yes
     state: started
-  # when: inventory_hostname == dns_host

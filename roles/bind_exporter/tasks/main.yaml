@@ -2,12 +2,10 @@
   ansible.builtin.apt:
     name: prometheus-bind-exporter
     state: latest
-  # when: inventory_hostname == dns_host
 
 - name: Ensure bind-exporter is started
   ansible.builtin.service:
     name: prometheus-bind-exporter
     enabled: yes
     state: started 
-  # when: inventory_hostname == dns_host
   

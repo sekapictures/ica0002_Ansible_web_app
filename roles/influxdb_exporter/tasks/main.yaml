@@ -1,15 +1,8 @@
-- name: Place influxdb_exporter binary
-  ansible.builtin.copy:
-    src: influxdb_exporter_linux
+- name: Download influxdb_exporter binary
+  get_url:
+    url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_386
     dest: /usr/local/bin/prometheus-influxdb-stats-exporter
-    force: yes
     mode: '0777'
-  notify: 
-    - Reload daemon
-    - Start prometheus-influxdb-stats-exporter
-    - Restart prometheus-influxdb-stats-exporter
-
-
 
 - name: Place prometheus-influxdb-stats-exporter.service 
   ansible.builtin.template:
@@ -19,5 +12,15 @@
     mode: '0777'
   notify: 
     - Reload daemon
-    - Start prometheus-influxdb-stats-exporter
     - Restart prometheus-influxdb-stats-exporter
+  register: influx_install
+
+- name: Reload daemon
+  shell: sudo systemctl daemon-reload
+  when: influx_install.changed
+
+- name: Start influxdb_exporter
+  service:
+    name: prometheus-influxdb-stats-exporter
+    enabled: yes
+    state: started

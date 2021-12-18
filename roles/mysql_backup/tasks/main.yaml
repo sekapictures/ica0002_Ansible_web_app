@@ -4,7 +4,7 @@
     state: directory
     owner: backup
     group: backup
-    mode: '0774'
+    mode: '0744'
 
 - name: MySQL user backup
   community.mysql.mysql_user:
