@@ -1,16 +1,16 @@
-- name: Place /var/cache/bind/
+- name: Place /var/cache/bind/db.gleppy
   ansible.builtin.lineinfile:
-<<<<<<< HEAD
-    path: /var/cache/bind/{{ item }}
-=======
-    path: /var/cache/bind/
->>>>>>> f37a65da53ef33d51d3034f272c91743a5b8f485
+    path: '/var/cache/bind/{{ db_name }}'
     regexp: '; Serial'
     line: '                {{ dns_serial }}      	; Serial'
   when: inventory_hostname in groups['dns_master']
-  loop:
-    - "{{ db_name }}"
-    - db.reverse
+
+- name: Place /var/cache/bind/db.reverse
+  ansible.builtin.lineinfile:
+    path: '/var/cache/bind/db.reverse'
+    regexp: '; Serial'
+    line: '                {{ dns_serial }}      	; Serial'
+  when: inventory_hostname in groups['dns_master']
 
 - name: Restart bind9 service
   ansible.builtin.service:

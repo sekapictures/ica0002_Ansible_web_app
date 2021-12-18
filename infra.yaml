@@ -31,7 +31,6 @@
     roles:
       - docker
 
-<<<<<<< HEAD
   - name: Nginx
     hosts: all
     become: yes
@@ -39,8 +38,6 @@
       - nginx
       - nginx_exporter
 
-=======
->>>>>>> f37a65da53ef33d51d3034f272c91743a5b8f485
   - name: Database server
     hosts: db_servers
     become: yes
@@ -48,15 +45,9 @@
       - role: mysql 
         tags: mysql_tag
       - node_exporter
-<<<<<<< HEAD
       # - nginx
       - mysql_exporter
       # - nginx_exporter
-=======
-      - nginx
-      - mysql_exporter
-      - nginx_exporter
->>>>>>> f37a65da53ef33d51d3034f272c91743a5b8f485
       - rsyslog
       - mysql_backup
     tags: db
@@ -66,15 +57,9 @@
     become: yes
     roles:
       - agama
-<<<<<<< HEAD
       # - nginx
       - node_exporter
       # - nginx_exporter
-=======
-      - nginx
-      - node_exporter
-      - nginx_exporter
->>>>>>> f37a65da53ef33d51d3034f272c91743a5b8f485
       - rsyslog
     tags: web
 

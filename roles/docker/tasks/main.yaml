@@ -32,7 +32,7 @@
     state: started
     enabled: yes
 
-- name: Change /var/run/docker.sock permissions
-  ansible.builtin.file:
-    path: /var/run/docker.sock
-    mode: '0766'
+# - name: Change /var/run/docker.sock permissions
+#   ansible.builtin.file:
+#     path: /var/run/docker.sock
+#     mode: '0666'

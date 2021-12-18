@@ -20,7 +20,8 @@
 - name: Stop systemd-resolved
   service: 
     name: systemd-resolved
-    state: stopped 
+    state: stopped
+    enabled: no 
   register: systemd_resolved_result
 
 - name: Delete resolv.conf link
@@ -77,7 +78,8 @@
   loop: "{{ dns_cname_records | dict2items }}"
   when: inventory_hostname in groups['dns_master']
   notify: 
-    - Place /var/cache/bind/
+    - Place /var/cache/bind/db.gleppy
+    - Place /var/cache/bind/db.reverse
 
 - name: Set A records
   community.general.nsupdate:
@@ -92,7 +94,9 @@
   loop: "{{ dns_a_records | dict2items }}"
   when: inventory_hostname in groups['dns_master']
   notify: 
-    - Place /var/cache/bind/
+    - Place /var/cache/bind/db.gleppy
+    - Place /var/cache/bind/db.reverse
+
 # - name: Restart bind9 service
 #   ansible.builtin.service:
 #     name: bind9
