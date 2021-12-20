@@ -2,14 +2,22 @@
   get_url:
     url: https://github.com/carlpett/influxdb_stats_exporter/releases/download/v0.1.1/influx_stats_exporter_linux_386
     dest: /usr/local/bin/prometheus-influxdb-stats-exporter
-    mode: '0777'
+    mode: '0744'
+  register: influxdb_exporter_downloaded
 
+- name: change permissions
+  file: 
+    path: /usr/local/bin/prometheus-influxdb-stats-exporter
+    owner: prometheus
+    group: prometheus
+    mode: '0744'
+  
 - name: Place prometheus-influxdb-stats-exporter.service 
   ansible.builtin.template:
     src: prometheus-influxdb-stats-exporter.service
     dest: /etc/systemd/system/
     force: yes
-    mode: '0777'
+    mode: '0744'
   notify: 
     - Reload daemon
     - Restart prometheus-influxdb-stats-exporter
@@ -24,3 +32,4 @@
     name: prometheus-influxdb-stats-exporter
     enabled: yes
     state: started
+    

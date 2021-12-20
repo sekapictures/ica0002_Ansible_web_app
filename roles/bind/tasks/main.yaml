@@ -10,7 +10,7 @@
   ansible.builtin.template:
     src: named.conf.options.j2
     dest: /etc/bind/named.conf.options
-    mode: '0766'
+    mode: '0644'
     force: yes
   notify: 
     - Restart bind9 service
@@ -33,14 +33,14 @@
     src: resolv.conf
     dest: /etc/resolv.conf
     force: yes
-    mode: '0766'
+    mode: '0644'
   # when: systemd_resolved_result.changed
 
 - name: Place /var/cache/bind/
   ansible.builtin.template:
     src: "{{ item }}"
     dest: /var/cache/bind/
-    mode: '0766'
+    mode: '0644'
     force: no
   notify:
     - Reload database
@@ -54,7 +54,7 @@
   ansible.builtin.template:
     src: named.conf.local.j2
     dest: /etc/bind/named.conf.local
-    mode: '0766'
+    mode: '0644'
     force: yes
   notify: 
     - Restart bind9 service

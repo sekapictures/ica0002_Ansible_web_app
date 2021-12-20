@@ -9,7 +9,7 @@
     src: my.cnf.j2
     dest: /var/lib/prometheus/.my.cnf
     force: yes
-    mode: '0766'
+    mode: '0664'
   notify: 
     - Restart prometheus-mysqld-exporter
     - Restart mysql service

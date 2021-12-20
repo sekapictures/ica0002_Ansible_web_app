@@ -30,5 +30,5 @@
     src: mysql-backup.j2
     dest: /etc/cron.d/mysql-backup 
     force: yes
-    mode: '0744'
+    mode: '0644'
   

@@ -12,7 +12,9 @@
     src: pinger.service
     dest: /etc/systemd/system/
     force: yes
-    mode: '0766'
+    owner: pinger
+    group: pinger
+    mode: '0764'
   notify: 
     - Reload daemon
     - Start pinger
@@ -22,7 +24,9 @@
     src: pinger.sh
     dest: /usr/local/bin/pinger
     force: yes
-    mode: '0777'
+    owner: pinger
+    group: pinger
+    mode: '0764'
   notify: 
     - Reload daemon
     - Restart pinger
@@ -31,14 +35,16 @@
   ansible.builtin.file:
     path: /etc/pinger
     state: directory
-    mode: '0777'
+    owner: pinger
+    group: pinger
+    mode: '0764'
 
 - name: Place pinger.conf 
   ansible.builtin.template:
     src: pinger.conf.j2
     dest: /etc/pinger/pinger.conf
     force: yes
-    mode: '0777'
+    mode: '0764'
   notify: 
     - Reload daemon
     - Restart pinger
