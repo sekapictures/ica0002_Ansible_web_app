@@ -29,13 +29,11 @@
   notify: Restart Grafana container
   
 - name: Place Grafana datasources
-  ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "/opt/grafana/provisioning/datasources/{{ item }}"
+  ansible.builtin.template:
+    src: prometheus.yaml.j2
+    dest: /opt/grafana/provisioning/datasources/prometheus.yaml
     force: yes
-    mode: '0744'
-  loop:
-     - prometheus.yaml
+    mode: '0744'    
   notify: Restart Grafana container
 
 - name: Grafana Docker container

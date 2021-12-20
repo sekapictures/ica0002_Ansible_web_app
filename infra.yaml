@@ -24,12 +24,14 @@
     roles:
       - bind
       - bind_exporter
+    tags: dns
 
   - name: Docker
     hosts: all
     become: yes
     roles:
       - docker
+    tags: docker
 
   - name: Nginx
     hosts: all

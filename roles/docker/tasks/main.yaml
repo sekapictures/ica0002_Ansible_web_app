@@ -5,6 +5,11 @@
       - python3-docker
   register: docker_install
 
+- name: add user to docker group
+  user:
+    name: ubuntu
+    group: docker
+
 - name: iptables-persistent 
   apt:
     name: iptables-persistent 

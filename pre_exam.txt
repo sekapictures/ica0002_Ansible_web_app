@@ -1,4 +1,4 @@
-E 20 dets  2021 13:30:54 EET
+E 20 dets  2021 18:08:27 EET
 + hostname
 seka-VirtualBox
 + ansible-playbook infra.yaml --diff
@@ -6,35 +6,43 @@ seka-VirtualBox
 PLAY [Ansible connection test] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [test_connection : Ansible ping module] ***********************************
-ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
+ok: [sekapictures-1]
 
 PLAY [Initialization] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [init : Update APT cache] *************************************************
-changed: [sekapictures-1]
 changed: [sekapictures-3]
+changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [backup : Create user backup] *********************************************
 changed: [sekapictures-3]
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpedmlm_g7/known_hosts.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpd270r99w/known_hosts.j2
+@@ -0,0 +1,2 @@
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
+\ No newline at end of file
+
+changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpxcvnsiwj/known_hosts.j2
 @@ -0,0 +1,2 @@
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
 +backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
@@ -42,21 +50,13 @@ TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
 
 changed: [sekapictures-3]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpvasnuwyu/known_hosts.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpxvlc79ig/known_hosts.j2
 @@ -0,0 +1,2 @@
 +backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
 +backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
 \ No newline at end of file
 
 changed: [sekapictures-2]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp5igw883v/known_hosts.j2
-@@ -0,0 +1,2 @@
-+backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-+backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-\ No newline at end of file
-
-changed: [sekapictures-1]
 
 TASK [backup : Create /home/backup/restore] ************************************
 --- before
@@ -72,6 +72,20 @@ TASK [backup : Create /home/backup/restore] ************************************
 +    "state": "directory"
  }
 
+changed: [sekapictures-1]
+--- before
++++ after
+@@ -1,6 +1,6 @@
+ {
+-    "mode": "0755",
+-    "owner": 0,
++    "mode": "0774",
++    "owner": 34,
+     "path": "/home/backup/restore",
+-    "state": "absent"
++    "state": "directory"
+ }
+
 changed: [sekapictures-3]
 --- before
 +++ after
@@ -87,20 +101,6 @@ changed: [sekapictures-3]
  }
 
 changed: [sekapictures-2]
---- before
-+++ after
-@@ -1,6 +1,6 @@
- {
--    "mode": "0755",
--    "owner": 0,
-+    "mode": "0774",
-+    "owner": 34,
-     "path": "/home/backup/restore",
--    "state": "absent"
-+    "state": "directory"
- }
-
-changed: [sekapictures-1]
 
 TASK [backup : Install Duplicity service with apt] *****************************
 The following additional packages will be installed:
@@ -113,17 +113,6 @@ The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
-changed: [sekapictures-1]
-The following additional packages will be installed:
-  librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
-  python3-monotonic python3-paramiko
-Suggested packages:
-  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
-  python-future-doc python-lockfile-doc python3-gssapi
-The following NEW packages will be installed:
-  duplicity librsync2 python3-bcrypt python3-fasteners python3-future
-  python3-lockfile python3-monotonic python3-paramiko
-0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 The following additional packages will be installed:
   librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
@@ -136,25 +125,36 @@ The following NEW packages will be installed:
   python3-lockfile python3-monotonic python3-paramiko
 0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-2]
+The following additional packages will be installed:
+  librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
+  python3-monotonic python3-paramiko
+Suggested packages:
+  python3-boto ncftp lftp tahoe-lafs python3-swiftclient python3-pip par2
+  python-future-doc python-lockfile-doc python3-gssapi
+The following NEW packages will be installed:
+  duplicity librsync2 python3-bcrypt python3-fasteners python3-future
+  python3-lockfile python3-monotonic python3-paramiko
+0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 
 PLAY [Setup] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [setup] *******************************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 ok: [sekapictures-3]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [bind : Install bind9] ****************************************************
 The following additional packages will be installed:
@@ -176,7 +176,7 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+changed: [sekapictures-3]
 The following additional packages will be installed:
   bind9-dnsutils bind9-libs dns-root-data python3-ply
 Suggested packages:
@@ -186,7 +186,7 @@ The following NEW packages will be installed:
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
 2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+changed: [sekapictures-2]
 
 TASK [bind : Place bind9 configuration] ****************************************
 changed: [sekapictures-3]
@@ -194,43 +194,43 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [bind : Stop systemd-resolved] ********************************************
-changed: [sekapictures-3]
 changed: [sekapictures-2]
+changed: [sekapictures-3]
 changed: [sekapictures-1]
 
 TASK [bind : Delete resolv.conf link] ******************************************
+changed: [sekapictures-3]
 changed: [sekapictures-2]
 changed: [sekapictures-1]
-changed: [sekapictures-3]
 
 TASK [bind : Place /etc/resolv.conf] *******************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpp_wrduyr/resolv.conf
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpnszoa3pe/resolv.conf
 @@ -0,0 +1,3 @@
-+nameserver 192.168.42.175
-+nameserver 192.168.42.57
++nameserver 192.168.42.61
++nameserver 192.168.42.90
++search gleppy.io
+\ No newline at end of file
+
+changed: [sekapictures-3]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpe21ewaif/resolv.conf
+@@ -0,0 +1,3 @@
++nameserver 192.168.42.61
++nameserver 192.168.42.90
 +search gleppy.io
 \ No newline at end of file
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp0vgid48k/resolv.conf
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp41c5okrl/resolv.conf
 @@ -0,0 +1,3 @@
-+nameserver 192.168.42.175
-+nameserver 192.168.42.57
++nameserver 192.168.42.61
++nameserver 192.168.42.90
 +search gleppy.io
 \ No newline at end of file
 
 changed: [sekapictures-2]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpv1i4vma8/resolv.conf
-@@ -0,0 +1,3 @@
-+nameserver 192.168.42.175
-+nameserver 192.168.42.57
-+search gleppy.io
-\ No newline at end of file
-
-changed: [sekapictures-3]
 
 TASK [bind : Place /var/cache/bind/] *******************************************
 skipping: [sekapictures-1] => (item=db.gleppy) 
@@ -238,11 +238,11 @@ skipping: [sekapictures-1] => (item=db.reverse)
 skipping: [sekapictures-2] => (item=db.gleppy) 
 skipping: [sekapictures-2] => (item=db.reverse) 
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpqm6u87z2/db.gleppy
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpojukg3jl/db.gleppy
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +gleppy.io.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
-+   113247     ; Serial
++   161001     ; Serial
 +			 604800		; Refresh
 +			  86400		; Retry
 +			2419200		; Expire
@@ -251,17 +251,17 @@ skipping: [sekapictures-2] => (item=db.reverse)
 +gleppy.io.	IN	NS sekapictures-1
 +gleppy.io.	IN	NS sekapictures-2
 +gleppy.io.	IN	NS sekapictures-3
-+sekapictures-1 IN A 192.168.42.175
-+sekapictures-2 IN A 192.168.42.57
-+sekapictures-3 IN A 192.168.42.183
++sekapictures-1 IN A 192.168.42.61
++sekapictures-2 IN A 192.168.42.90
++sekapictures-3 IN A 192.168.42.136
 
 changed: [sekapictures-3] => (item=db.gleppy)
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpbxpcnl9f/db.reverse
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp_o8854pv/db.reverse
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +42.168.192.in-addr.arpa.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
-+   113247     ; Serial
++   161001     ; Serial
 +			 604800		; Refresh
 +			  86400		; Retry
 +			2419200		; Expire
@@ -270,15 +270,15 @@ changed: [sekapictures-3] => (item=db.gleppy)
 +42.168.192.in-addr.arpa.	IN	NS sekapictures-1.gleppy.io.
 +42.168.192.in-addr.arpa.	IN	NS sekapictures-2.gleppy.io.
 +42.168.192.in-addr.arpa.	IN	NS sekapictures-3.gleppy.io.
-+175 IN PTR sekapictures-1.gleppy.io.
-+57 IN PTR sekapictures-2.gleppy.io.
-+183 IN PTR sekapictures-3.gleppy.io.
++61 IN PTR sekapictures-1.gleppy.io.
++90 IN PTR sekapictures-2.gleppy.io.
++136 IN PTR sekapictures-3.gleppy.io.
 
 changed: [sekapictures-3] => (item=db.reverse)
 
 TASK [bind : Place /etc/bind/named.conf.local] *********************************
 --- before: /etc/bind/named.conf.local
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpewpvkyew/named.conf.local.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpcxzgck_u/named.conf.local.j2
 @@ -1,8 +1,14 @@
 -//
 -// Do any local configuration here
@@ -303,53 +303,53 @@ TASK [bind : Place /etc/bind/named.conf.local] *********************************
 
 changed: [sekapictures-3]
 --- before: /etc/bind/named.conf.local
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpuuo3j7tt/named.conf.local.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmprvwsssxb/named.conf.local.j2
 @@ -1,8 +1,15 @@
 -//
 -// Do any local configuration here
 -//
 +zone "gleppy.io" {
 +    type slave;
-+    masters { 192.168.42.183; };
++    masters { 192.168.42.136; };
 +    file "db.gleppy";
 +};
  
 -// Consider adding the 1918 zones here, if they are not used in your
 -// organization
 -//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.183 {
++server 192.168.42.136 {
 +    keys { dns_transfer_key;};
 +};
  
 +zone "42.168.192.in-addr.arpa" {
 +    type slave;
-+    masters { 192.168.42.183; };
++    masters { 192.168.42.136; };
 +    file "db.reverse";
 +};
 
 changed: [sekapictures-1]
 --- before: /etc/bind/named.conf.local
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp18flani9/named.conf.local.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp_obd1vq4/named.conf.local.j2
 @@ -1,8 +1,15 @@
 -//
 -// Do any local configuration here
 -//
 +zone "gleppy.io" {
 +    type slave;
-+    masters { 192.168.42.183; };
++    masters { 192.168.42.136; };
 +    file "db.gleppy";
 +};
  
 -// Consider adding the 1918 zones here, if they are not used in your
 -// organization
 -//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.183 {
++server 192.168.42.136 {
 +    keys { dns_transfer_key;};
 +};
  
 +zone "42.168.192.in-addr.arpa" {
 +    type slave;
-+    masters { 192.168.42.183; };
++    masters { 192.168.42.136; };
 +    file "db.reverse";
 +};
 
@@ -365,23 +365,23 @@ skipping: [sekapictures-1] => (item={'key': 'grafana', 'value': 'sekapictures-3'
 skipping: [sekapictures-1] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-1] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
@@ -412,7 +412,7 @@ TASK [bind_exporter : Install bind-exporter] ***********************************
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+changed: [sekapictures-3]
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
@@ -420,12 +420,12 @@ changed: [sekapictures-1]
 The following NEW packages will be installed:
   prometheus-bind-exporter
 0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+changed: [sekapictures-2]
 
 TASK [bind_exporter : Ensure bind-exporter is started] *************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 RUNNING HANDLER [bind : Place /var/cache/bind/db.gleppy] ***********************
 --- before: /var/cache/bind/db.gleppy (content)
@@ -433,8 +433,8 @@ RUNNING HANDLER [bind : Place /var/cache/bind/db.gleppy] ***********************
 @@ -1,6 +1,6 @@
  $TTL	604800
  gleppy.io.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
--   113247     ; Serial
-+                113247      	; Serial
+-   161001     ; Serial
++                161001      	; Serial
  			 604800		; Refresh
  			  86400		; Retry
  			2419200		; Expire
@@ -447,8 +447,8 @@ RUNNING HANDLER [bind : Place /var/cache/bind/db.reverse] **********************
 @@ -1,6 +1,6 @@
  $TTL	604800
  42.168.192.in-addr.arpa.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
--   113247     ; Serial
-+                113247      	; Serial
+-   161001     ; Serial
++                161001      	; Serial
  			 604800		; Refresh
  			  86400		; Retry
  			2419200		; Expire
@@ -456,9 +456,9 @@ RUNNING HANDLER [bind : Place /var/cache/bind/db.reverse] **********************
 changed: [sekapictures-3]
 
 RUNNING HANDLER [bind : Restart bind9 service] *********************************
-changed: [sekapictures-1]
-changed: [sekapictures-2]
 changed: [sekapictures-3]
+changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [bind : Reload database] ***************************************
 changed: [sekapictures-3]
@@ -466,8 +466,8 @@ changed: [sekapictures-3]
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [docker : Install Docker package] *****************************************
@@ -481,7 +481,7 @@ The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
 0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+changed: [sekapictures-2]
 The following additional packages will be installed:
   bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
   ubuntu-fan
@@ -503,7 +503,7 @@ The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
 0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [docker : iptables-persistent] ********************************************
 The following additional packages will be installed:
@@ -511,13 +511,13 @@ The following additional packages will be installed:
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
 0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+changed: [sekapictures-3]
 The following additional packages will be installed:
   netfilter-persistent
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
 0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+changed: [sekapictures-2]
 The following additional packages will be installed:
   netfilter-persistent
 The following NEW packages will be installed:
@@ -526,26 +526,13 @@ The following NEW packages will be installed:
 changed: [sekapictures-1]
 
 TASK [docker : iptables-save -t mangle] ****************************************
-changed: [sekapictures-3]
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
+changed: [sekapictures-3]
 
 TASK [docker : /var/local/iptables.mangle] *************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp5gre9e2s/iptables.mangle
-@@ -0,0 +1,8 @@
-+*mangle
-+:PREROUTING ACCEPT [0:0]
-+:INPUT ACCEPT [0:0]
-+:FORWARD ACCEPT [0:0]
-+:OUTPUT ACCEPT [0:0]
-+:POSTROUTING ACCEPT [0:0]
-+-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
-+COMMIT
-
-changed: [sekapictures-2]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpdi7iv0ud/iptables.mangle
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpyd1v06kr/iptables.mangle
 @@ -0,0 +1,8 @@
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -558,7 +545,7 @@ changed: [sekapictures-2]
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpeuj5zesd/iptables.mangle
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpmpb20na7/iptables.mangle
 @@ -0,0 +1,8 @@
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -570,6 +557,19 @@ changed: [sekapictures-1]
 +COMMIT
 
 changed: [sekapictures-3]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpo35qan8p/iptables.mangle
+@@ -0,0 +1,8 @@
++*mangle
++:PREROUTING ACCEPT [0:0]
++:INPUT ACCEPT [0:0]
++:FORWARD ACCEPT [0:0]
++:OUTPUT ACCEPT [0:0]
++:POSTROUTING ACCEPT [0:0]
++-A POSTROUTING -o ens3 -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --set-mss 1400 --clamp-mss-to-pmtu
++COMMIT
+
+changed: [sekapictures-2]
 
 TASK [docker : Perform iptables-restore] ***************************************
 [WARNING]: Attempts to restore iptables state without rollback in case of
@@ -587,20 +587,20 @@ mistake may lead the ansible controller to loose access to the hosts and never
 regain it before fixing firewall rules through a serial console, or any other
 way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
 to a value >2 and not greater than 'ansible_timeout' (=15) (recommended).
-changed: [sekapictures-1]
 changed: [sekapictures-3]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [docker : Start Docker service] *******************************************
+ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
-ok: [sekapictures-2]
 
 PLAY [Nginx] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [nginx : Install nginx] ***************************************************
@@ -617,7 +617,7 @@ The following NEW packages will be installed:
   libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
   libwebp6 libxpm4 nginx nginx-common nginx-core
 0 upgraded, 17 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+changed: [sekapictures-1]
 The following additional packages will be installed:
   fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
   libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
@@ -645,135 +645,11 @@ The following NEW packages will be installed:
   libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
   libwebp6 libxpm4 nginx nginx-common nginx-core
 0 upgraded, 17 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+changed: [sekapictures-3]
 
 TASK [nginx : Place Nginx config] **********************************************
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp88gpiwlf/default.j2
-@@ -1,91 +1,36 @@
--##
--# You should look at the following URL's in order to grasp a solid understanding
--# of Nginx configuration files in order to fully unleash the power of Nginx.
--# https://www.nginx.com/resources/wiki/start/
--# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
--# https://wiki.debian.org/Nginx/DirectoryStructure
--#
--# In most cases, administrators will remove this file from sites-enabled/ and
--# leave it as reference inside of sites-available where it will continue to be
--# updated by the nginx packaging team.
--#
--# This file will automatically load configuration files provided by other
--# applications, such as Drupal or Wordpress. These applications will be made
--# available underneath a path with that package name, such as /drupal8.
--#
--# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
--##
--
--# Default server configuration
--#
- server {
- 	listen 80 default_server;
--	listen [::]:80 default_server;
--
--	# SSL configuration
--	#
--	# listen 443 ssl default_server;
--	# listen [::]:443 ssl default_server;
--	#
--	# Note: You should disable gzip for SSL traffic.
--	# See: https://bugs.debian.org/773332
--	#
--	# Read up on ssl_ciphers to ensure a secure configuration.
--	# See: https://bugs.debian.org/765782
--	#
--	# Self signed certs generated by the ssl-cert package
--	# Don't use them in a production server!
--	#
--	# include snippets/snakeoil.conf;
--
--	root /var/www/html;
--
--	# Add index.php to the list if you are using PHP
--	index index.html index.htm index.nginx-debian.html;
--
--	server_name _;
-+	server_name ubuntu@193.40.156.86;
- 
- 	location / {
--		# First attempt to serve request as file, then
--		# as directory, then fall back to displaying a 404.
--		try_files $uri $uri/ =404;
-+		proxy_pass http://localhost:8001;
-+		proxy_set_header Host $http_host;
- 	}
- 
--	# pass PHP scripts to FastCGI server
--	#
--	#location ~ \.php$ {
--	#	include snippets/fastcgi-php.conf;
--	#
--	#	# With php-fpm (or other unix sockets):
--	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
--	#	# With php-cgi (or other tcp sockets):
--	#	fastcgi_pass 127.0.0.1:9000;
--	#}
-+	location /node-metrics {
-+		proxy_pass http://localhost:9100/metrics;
-+	}
- 
--	# deny access to .htaccess files, if Apache's document root
--	# concurs with nginx's one
--	#
--	#location ~ /\.ht {
--	#	deny all;
--	#}
--}
-+	location /nginx-metrics {
-+		proxy_pass http://localhost:9113/metrics;
-+	}
- 
- 
--# Virtual Host configuration for example.com
--#
--# You can move that to a different file under sites-available/ and symlink that
--# to sites-enabled/ to enable it.
--#
--#server {
--#	listen 80;
--#	listen [::]:80;
--#
--#	server_name example.com;
--#
--#	root /var/www/example.com;
--#	index index.html;
--#
--#	location / {
--#		try_files $uri $uri/ =404;
--#	}
--#}
-+	location /mysql-metrics {
-+		proxy_pass http://localhost:9104/metrics;
-+	}
-+
-+	location /bind-metrics {
-+		proxy_pass http://localhost:9119/metrics;
-+	}
-+
-+
-+	location /haproxy-metrics {
-+		proxy_pass http://localhost:9101/metrics;
-+	}
-+
-+	location /keepalived-metrics {
-+		proxy_pass http://localhost:9165/metrics;
-+	}
-+	
-+}
-\ No newline at end of file
-
-changed: [sekapictures-1]
---- before: /etc/nginx/sites-enabled/default
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpgx8wwggz/default.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp3tcep93n/default.j2
 @@ -1,91 +1,40 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -901,7 +777,131 @@ changed: [sekapictures-1]
 
 changed: [sekapictures-3]
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmppvimzwnb/default.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp3b0xb3im/default.j2
+@@ -1,91 +1,36 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
+-
+-# Default server configuration
+-#
+ server {
+ 	listen 80 default_server;
+-	listen [::]:80 default_server;
+-
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
+-
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+-	server_name _;
++	server_name ubuntu@193.40.156.86;
+ 
+ 	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+-		try_files $uri $uri/ =404;
++		proxy_pass http://localhost:8001;
++		proxy_set_header Host $http_host;
+ 	}
+ 
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
++	location /node-metrics {
++		proxy_pass http://localhost:9100/metrics;
++	}
+ 
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
+-}
++	location /nginx-metrics {
++		proxy_pass http://localhost:9113/metrics;
++	}
+ 
+ 
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++	location /mysql-metrics {
++		proxy_pass http://localhost:9104/metrics;
++	}
++
++	location /bind-metrics {
++		proxy_pass http://localhost:9119/metrics;
++	}
++
++
++	location /haproxy-metrics {
++		proxy_pass http://localhost:9101/metrics;
++	}
++
++	location /keepalived-metrics {
++		proxy_pass http://localhost:9165/metrics;
++	}
++	
++}
+\ No newline at end of file
+
+changed: [sekapictures-1]
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpy5fpx9vu/default.j2
 @@ -1,91 +1,36 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -1026,9 +1026,9 @@ changed: [sekapictures-3]
 changed: [sekapictures-2]
 
 TASK [nginx : Ensure Nginx is started] *****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [nginx_exporter : prometheus-nginx-exporter] ******************************
 The following NEW packages will be installed:
@@ -1038,15 +1038,15 @@ changed: [sekapictures-2]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
 0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+changed: [sekapictures-1]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
 0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+changed: [sekapictures-3]
 
 TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp07qrd1s3/exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp73v53b24/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +    listen 8080 default_server;
@@ -1057,7 +1057,7 @@ TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpuj84ntfv/exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmps5pb7_50/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +    listen 8080 default_server;
@@ -1068,7 +1068,7 @@ changed: [sekapictures-1]
 
 changed: [sekapictures-3]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpz75kl7ne/exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpwq0gotfh/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +    listen 8080 default_server;
@@ -1081,8 +1081,8 @@ changed: [sekapictures-2]
 
 TASK [nginx_exporter : Restart Nginx] ******************************************
 changed: [sekapictures-2]
-changed: [sekapictures-3]
 changed: [sekapictures-1]
+changed: [sekapictures-3]
 
 TASK [nginx_exporter : Ensure nginx-exporter is started] ***********************
 changed: [sekapictures-1]
@@ -1091,8 +1091,8 @@ changed: [sekapictures-2]
 
 RUNNING HANDLER [nginx : Restart Nginx service] ********************************
 changed: [sekapictures-2]
-changed: [sekapictures-1]
 changed: [sekapictures-3]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [nginx_exporter : Restart prometheus-nginx-exporter] ***********
 changed: [sekapictures-1]
@@ -1102,8 +1102,8 @@ changed: [sekapictures-2]
 PLAY [Database server] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : Install mysql packages] ******************************************
 The following additional packages will be installed:
@@ -1125,7 +1125,7 @@ The following NEW packages will be installed:
   mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
   python3-pymysql
 0 upgraded, 26 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+changed: [sekapictures-2]
 The following additional packages will be installed:
   libcgi-fast-perl libcgi-pm-perl libencode-locale-perl libevent-core-2.1-7
   libevent-pthreads-2.1-7 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
@@ -1145,11 +1145,11 @@ The following NEW packages will be installed:
   mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
   python3-pymysql
 0 upgraded, 26 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [mysql : Place mysql configuration] ***************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpu6tbr5vd/override.cnf
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp5eo5vcf3/override.cnf
 @@ -0,0 +1,7 @@
 +[mysqld]
 +bind-address = 0.0.0.0
@@ -1157,37 +1157,37 @@ TASK [mysql : Place mysql configuration] ***************************************
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 57
-
-changed: [sekapictures-2]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp0vm6fcm7/override.cnf
-@@ -0,0 +1,7 @@
-+[mysqld]
-+bind-address = 0.0.0.0
-+skip-host-cache
-+log-bin = /var/log/mysql/mysql-bin.log
-+relay-log = /var/log/mysql/mysql-relay.log
-+replicate-do-db = agama
-+server-id = 175
++server-id = 61
 
 changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpo5tc12z7/override.cnf
+@@ -0,0 +1,7 @@
++[mysqld]
++bind-address = 0.0.0.0
++skip-host-cache
++log-bin = /var/log/mysql/mysql-bin.log
++relay-log = /var/log/mysql/mysql-relay.log
++replicate-do-db = agama
++server-id = 90
+
+changed: [sekapictures-2]
 
 TASK [mysql : Ensure mysql is started] *****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql : MySQL database] **************************************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [mysql : MySQL user] ******************************************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [mysql : MySQL user for replication] **************************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [mysql : MySQL replica read only mode ON] *********************************
 skipping: [sekapictures-2]
@@ -1207,7 +1207,7 @@ The following NEW packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl moreutils
   prometheus-node-exporter prometheus-node-exporter-collectors smartmontools
 0 upgraded, 7 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+changed: [sekapictures-2]
 The following additional packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl moreutils
   prometheus-node-exporter-collectors smartmontools
@@ -1217,11 +1217,11 @@ The following NEW packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl moreutils
   prometheus-node-exporter prometheus-node-exporter-collectors smartmontools
 0 upgraded, 7 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [node_exporter : Ensure node_explorer is started] *************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_exporter : Install prometheus-mysqld-exporter] *********************
 The following additional packages will be installed:
@@ -1239,25 +1239,25 @@ changed: [sekapictures-1]
 
 TASK [mysql_exporter : Place my.cnf.j2] ****************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpgns7ycus/my.cnf.j2
-@@ -0,0 +1,3 @@
-+[client]
-+user=exporter
-+password=18caratsofbadluck
-
-changed: [sekapictures-1]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpsnedom37/my.cnf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpmg9x5vhb/my.cnf.j2
 @@ -0,0 +1,3 @@
 +[client]
 +user=exporter
 +password=18caratsofbadluck
 
 changed: [sekapictures-2]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp3jzppkh6/my.cnf.j2
+@@ -0,0 +1,3 @@
++[client]
++user=exporter
++password=18caratsofbadluck
+
+changed: [sekapictures-1]
 
 TASK [mysql_exporter : Create user exporter] ***********************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 Pausing for 10 seconds
@@ -1265,12 +1265,12 @@ Pausing for 10 seconds
 ok: [sekapictures-1]
 
 TASK [mysql_exporter : Start prometheus-mysqld-exporter] ***********************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [rsyslog : Place rsyslog.conf] ********************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmply1bvbh2/rsyslog.conf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpl0fh1gpc/rsyslog.conf.j2
 @@ -0,0 +1,10 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -1285,7 +1285,7 @@ TASK [rsyslog : Place rsyslog.conf] ********************************************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpp6hyn4ut/rsyslog.conf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp13j0tn_9/rsyslog.conf.j2
 @@ -0,0 +1,10 @@
 +$ActionQueueType LinkedList # use asynchronous processing
 +$ActionQueueFileName srvrfwd # set file name, also enables disk mode
@@ -1335,8 +1335,8 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [mysql_backup : MySQL user backup] ****************************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [mysql_backup : Place /home/backup/.my.cnf] *******************************
 changed: [sekapictures-1]
@@ -1344,7 +1344,7 @@ changed: [sekapictures-2]
 
 TASK [mysql_backup : Create /etc/cron.d/mysql-backup] **************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpqdzhg5t2/mysql-backup.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp8i7zwdxg/mysql-backup.j2
 @@ -0,0 +1,3 @@
 +10 22 * * 0 backup mysqldump agama > /home/backup/mysql/agama.sql
 +20 22 * * 0  backup duplicity --no-encryption full /home/backup/mysql/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
@@ -1352,7 +1352,7 @@ TASK [mysql_backup : Create /etc/cron.d/mysql-backup] **************************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpxgw1ljga/mysql-backup.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpl0bb547t/mysql-backup.j2
 @@ -0,0 +1 @@
 +
 
@@ -1375,8 +1375,8 @@ changed: [sekapictures-1] => (item=resetreplica)
 changed: [sekapictures-1] => (item=startreplica)
 
 RUNNING HANDLER [mysql_exporter : Restart prometheus-mysqld-exporter] **********
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [mysql_exporter : Restart mysql service] ***********************
 changed: [sekapictures-2]
@@ -1389,8 +1389,8 @@ changed: [sekapictures-2]
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [agama : Create Agama /opt/agama] *****************************************
 --- before
@@ -1419,21 +1419,10 @@ changed: [sekapictures-2]
 changed: [sekapictures-1]
 
 TASK [agama : Build Agama docker image] ****************************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [agama : Agama Docker containers:"2"] *************************************
---- before
-+++ after
-@@ -1,4 +1,4 @@
- {
--    "exists": false,
--    "running": false
-+    "exists": true,
-+    "running": true
- }
-
-changed: [sekapictures-2] => (item=1)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1455,7 +1444,7 @@ changed: [sekapictures-1] => (item=1)
 +    "running": true
  }
 
-changed: [sekapictures-2] => (item=2)
+changed: [sekapictures-2] => (item=1)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1467,12 +1456,23 @@ changed: [sekapictures-2] => (item=2)
  }
 
 changed: [sekapictures-1] => (item=2)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "exists": false,
+-    "running": false
++    "exists": true,
++    "running": true
+ }
+
+changed: [sekapictures-2] => (item=2)
 
 TASK [agama : Start Agama containers:"2"] **************************************
 ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-2] => (item=1)
-ok: [sekapictures-2] => (item=2)
 ok: [sekapictures-1] => (item=2)
+ok: [sekapictures-2] => (item=2)
 
 TASK [node_exporter : Install node_exporters packages] *************************
 ok: [sekapictures-1]
@@ -1483,8 +1483,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [rsyslog : Place rsyslog.conf] ********************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 PLAY [Prometheus server] *******************************************************
 
@@ -1515,11 +1515,11 @@ changed: [sekapictures-3]
 
 TASK [prometheus : Place Prometheus config 1] **********************************
 --- before: /etc/default/prometheus
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpszo5driv/prometheus
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp2ak3_y_8/prometheus
 @@ -1,5 +1,5 @@
  # Set the command-line arguments to pass to the server.
 -ARGS=""
-+ARGS="--web.external-url http://"193.40.156.86":"18380"/prometheus"
++ARGS="--web.external-url http://"193.40.156.86":"13680"/prometheus"
  
  # Prometheus supports the following options:
  #  --config.file="/etc/prometheus/prometheus.yml"
@@ -1535,7 +1535,7 @@ changed: [sekapictures-3]
 
 TASK [prometheus : Place Prometheus config 2] **********************************
 --- before: /etc/prometheus/prometheus.yml
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpzo2pklaw/prometheus.yml
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp6uw9hjq8/prometheus.yml
 @@ -1,44 +1,57 @@
 -# Sample config for Prometheus.
 -
@@ -4493,7 +4493,7 @@ changed: [sekapictures-1]
 
 TASK [haproxy : /etc/haproxy/haproxy.cfg] **************************************
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp37za0yv0/haproxy.cfg.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpy7plz19v/haproxy.cfg.j2
 @@ -1,34 +1,35 @@
  global
 -	log /dev/log	local0
@@ -4562,7 +4562,7 @@ TASK [haproxy : /etc/haproxy/haproxy.cfg] **************************************
 
 changed: [sekapictures-1]
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpkbly_4jq/haproxy.cfg.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpqyj6hrid/haproxy.cfg.j2
 @@ -1,34 +1,35 @@
  global
 -	log /dev/log	local0
@@ -4632,8 +4632,8 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [haproxy : Haproxy started] ***********************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : prometheus-haproxy-exporter] ***********************************
 The following NEW packages will be installed:
@@ -4647,13 +4647,13 @@ changed: [sekapictures-2]
 
 TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmplkya00en/prometheus-haproxy-exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpihm1kkcs/prometheus-haproxy-exporter.j2
 @@ -2,15 +2,15 @@
  # Due to shell scaping, to pass backslashes for regexes, you need to double
  # them (\\d for \d). If running under systemd, you need to double them again
  # (\\\\d to mean \d), and escape newlines too.
 -ARGS=""
-+ARGS="--haproxy.scrape-uri="http://193.40.156.86:17588/stats;csv""
++ARGS="--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv""
  
  # Prometheus-haproxy-exporter supports the following options:
 -#
@@ -4665,20 +4665,20 @@ TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
 +#--web.telemetry-path="/haproxy-metrics"
  #    Path under which to expose metrics.
 -#  --haproxy.scrape-uri="http://localhost/;csv"
-+#--haproxy.scrape-uri="http://193.40.156.86:17588/stats;csv"
++#--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv"
  #    URI on which to scrape HAProxy.
  #  --haproxy.ssl-verify
  #    Flag that enables SSL certificate verification for the scrape URI
 
 changed: [sekapictures-1]
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpei9yjbz8/prometheus-haproxy-exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp0539rbbn/prometheus-haproxy-exporter.j2
 @@ -2,15 +2,15 @@
  # Due to shell scaping, to pass backslashes for regexes, you need to double
  # them (\\d for \d). If running under systemd, you need to double them again
  # (\\\\d to mean \d), and escape newlines too.
 -ARGS=""
-+ARGS="--haproxy.scrape-uri="http://193.40.156.86:17588/stats;csv""
++ARGS="--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv""
  
  # Prometheus-haproxy-exporter supports the following options:
 -#
@@ -4690,7 +4690,7 @@ changed: [sekapictures-1]
 +#--web.telemetry-path="/haproxy-metrics"
  #    Path under which to expose metrics.
 -#  --haproxy.scrape-uri="http://localhost/;csv"
-+#--haproxy.scrape-uri="http://193.40.156.86:17588/stats;csv"
++#--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv"
  #    URI on which to scrape HAProxy.
  #  --haproxy.ssl-verify
  #    Flag that enables SSL certificate verification for the scrape URI
@@ -4725,35 +4725,7 @@ changed: [sekapictures-1]
 
 TASK [keepalived : /etc/keepalived/keepalived.conf] ****************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpphwrt29k/keepalived.conf.j2
-@@ -0,0 +1,22 @@
-+vrrp_script check_haproxy {                 
-+    script "/usr/local/bin/haproxy_check" 
-+    weight 20                              
-+    interval 1               
-+}
-+vrrp_instance agama {             
-+    interface ens3
-+    virtual_router_id 65
-+        priority 99
-+        advert_int 1                            
-+    virtual_ipaddress {                     
-+        192.168.100.175/24                   
-+    }
-+    unicast_peer {
-+                        192.168.42.175
-+                                  
-+                                          
-+            }
-+    track_script {
-+        check_haproxy
-+    }
-+}
-\ No newline at end of file
-
-changed: [sekapictures-2]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpou11da28/keepalived.conf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp2wxvfsh7/keepalived.conf.j2
 @@ -0,0 +1,22 @@
 +vrrp_script check_haproxy {                 
 +    script "/usr/local/bin/haproxy_check" 
@@ -4766,11 +4738,11 @@ changed: [sekapictures-2]
 +        priority 100
 +        advert_int 1                            
 +    virtual_ipaddress {                     
-+        192.168.100.175/24                   
++        192.168.100.61/24                   
 +    }
 +    unicast_peer {
 +                                          
-+                        192.168.42.57
++                        192.168.42.90
 +                                  
 +            }
 +    track_script {
@@ -4780,10 +4752,38 @@ changed: [sekapictures-2]
 \ No newline at end of file
 
 changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpmxrecfsh/keepalived.conf.j2
+@@ -0,0 +1,22 @@
++vrrp_script check_haproxy {                 
++    script "/usr/local/bin/haproxy_check" 
++    weight 20                              
++    interval 1               
++}
++vrrp_instance agama {             
++    interface ens3
++    virtual_router_id 65
++        priority 99
++        advert_int 1                            
++    virtual_ipaddress {                     
++        192.168.100.61/24                   
++    }
++    unicast_peer {
++                        192.168.42.61
++                                  
++                                          
++            }
++    track_script {
++        check_haproxy
++    }
++}
+\ No newline at end of file
+
+changed: [sekapictures-2]
 
 TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpgyndz2fv/haproxy_check.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp7pnj8lzn/haproxy_check.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
@@ -4791,7 +4791,7 @@ TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmprjuy1yx2/haproxy_check.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpp_wphmaf/haproxy_check.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
@@ -4808,8 +4808,8 @@ changed: [sekapictures-2]
 changed: [sekapictures-1]
 
 TASK [keepalived : Unzip keepalived exporter] **********************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [keepalived : Install keepalived exporter] ********************************
 changed: [sekapictures-1]
@@ -4817,7 +4817,7 @@ changed: [sekapictures-2]
 
 TASK [keepalived : Place keepalived-exporter.service] **************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpvmt1hctq/keepalived-exporter.service
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpb6swoido/keepalived-exporter.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Keepalived exporter
@@ -4833,7 +4833,7 @@ TASK [keepalived : Place keepalived-exporter.service] **************************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpwnxzfsdz/keepalived-exporter.service
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpewoo07ss/keepalived-exporter.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Keepalived exporter
@@ -4858,24 +4858,24 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 RUNNING HANDLER [haproxy : Restart prometheus-haproxy-exporter] ****************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [keepalived : Restart keepalived] ******************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 RUNNING HANDLER [keepalived : Reload daemon] ***********************************
 changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 RUNNING HANDLER [keepalived : Start keepalived-exporter.service] ***************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [keepalived : Restart keepalived-exporter.service] *************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 PLAY [InfluxDB] ****************************************************************
 
@@ -4904,7 +4904,7 @@ changed: [sekapictures-3]
 
 TASK [influxdb : Place influxdb.conf] ******************************************
 --- before: /etc/influxdb/influxdb.conf
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpzwo8t2eu/influxdb.conf
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmprwjfreqm/influxdb.conf
 @@ -1,596 +1,22 @@
 -### Welcome to the InfluxDB configuration file.
 -
@@ -5537,7 +5537,7 @@ changed: [sekapictures-3]
 
 TASK [pinger : Place pinger.service] *******************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp5t03i7ol/pinger.service
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpn_91to9y/pinger.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Pinging Machine
@@ -5556,7 +5556,7 @@ changed: [sekapictures-3]
 
 TASK [pinger : Place pinger.sh script] *****************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpi6tl9c3q/pinger.sh
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp8iq17fa1/pinger.sh
 @@ -0,0 +1,26 @@
 +#!/bin/bash
 +
@@ -5608,7 +5608,7 @@ changed: [sekapictures-3]
 
 TASK [pinger : Place pinger.conf] **********************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp6dd4332l/pinger.conf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp_jds99rg/pinger.conf.j2
 @@ -0,0 +1,3 @@
 +database_url=http://sekapictures-3:8086
 +database_name=latency
@@ -5638,7 +5638,7 @@ changed: [sekapictures-3]
 
 TASK [influxdb_backup : Create /etc/cron.d/influxdb-backup] ********************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmp51rhht7p/influxdb-backup.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp43thy_yk/influxdb-backup.j2
 @@ -0,0 +1,3 @@
 +15 1 * * 0 backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
 +30 1 * * 0 backup duplicity --no-encryption full /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
@@ -5649,9 +5649,23 @@ changed: [sekapictures-3]
 TASK [influxdb_exporter : Download influxdb_exporter binary] *******************
 changed: [sekapictures-3]
 
+TASK [influxdb_exporter : change permissions] **********************************
+--- before
++++ after
+@@ -1,5 +1,5 @@
+ {
+-    "group": 0,
+-    "owner": 0,
++    "group": 120,
++    "owner": 113,
+     "path": "/usr/local/bin/prometheus-influxdb-stats-exporter"
+ }
+
+changed: [sekapictures-3]
+
 TASK [influxdb_exporter : Place prometheus-influxdb-stats-exporter.service] ****
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2026nhochmwv/tmpv49tgy8q/prometheus-influxdb-stats-exporter.service
++++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpbd9518n0/prometheus-influxdb-stats-exporter.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Influxdb stats exporter
@@ -5695,20 +5709,20 @@ changed: [sekapictures-3]
 PLAY RECAP *********************************************************************
 sekapictures-1             : ok=93   changed=69   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
 sekapictures-2             : ok=92   changed=69   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-sekapictures-3             : ok=87   changed=69   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+sekapictures-3             : ok=88   changed=70   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + ansible-playbook infra.yaml --diff
 
 PLAY [Ansible connection test] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 ok: [sekapictures-1]
 
 TASK [test_connection : Ansible ping module] ***********************************
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 PLAY [Initialization] **********************************************************
@@ -5725,18 +5739,18 @@ ok: [sekapictures-1]
 
 TASK [backup : Create user backup] *********************************************
 ok: [sekapictures-2]
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [backup : Create /home/backup/restore] ************************************
-ok: [sekapictures-3]
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [backup : Install Duplicity service with apt] *****************************
 ok: [sekapictures-1]
@@ -5746,20 +5760,20 @@ ok: [sekapictures-2]
 PLAY [Setup] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [setup] *******************************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [bind : Install bind9] ****************************************************
@@ -5773,9 +5787,9 @@ ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [bind : Stop systemd-resolved] ********************************************
-ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [bind : Delete resolv.conf link] ******************************************
 skipping: [sekapictures-1]
@@ -5784,8 +5798,8 @@ skipping: [sekapictures-3]
 
 TASK [bind : Place /etc/resolv.conf] *******************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [bind : Place /var/cache/bind/] *******************************************
 skipping: [sekapictures-1] => (item=db.gleppy) 
@@ -5796,9 +5810,9 @@ ok: [sekapictures-3] => (item=db.gleppy)
 ok: [sekapictures-3] => (item=db.reverse)
 
 TASK [bind : Place /etc/bind/named.conf.local] *********************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [bind : Reload database] **************************************************
 skipping: [sekapictures-1]
@@ -5809,22 +5823,22 @@ TASK [bind : Set CNAME records] ************************************************
 skipping: [sekapictures-1] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
-skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
@@ -5849,26 +5863,26 @@ skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.156'}
 ok: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.156'})
 
 TASK [bind : Ensure bind9 is started] ******************************************
-ok: [sekapictures-2]
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [bind_exporter : Install bind-exporter] ***********************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [bind_exporter : Ensure bind-exporter is started] *************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [docker : Install Docker package] *****************************************
 ok: [sekapictures-1]
@@ -5877,8 +5891,8 @@ ok: [sekapictures-2]
 
 TASK [docker : iptables-persistent] ********************************************
 ok: [sekapictures-3]
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [docker : iptables-save -t mangle] ****************************************
 skipping: [sekapictures-1]
@@ -5896,9 +5910,9 @@ skipping: [sekapictures-2]
 skipping: [sekapictures-3]
 
 TASK [docker : Start Docker service] *******************************************
+ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
-ok: [sekapictures-3]
 
 PLAY [Nginx] *******************************************************************
 
@@ -5909,8 +5923,8 @@ ok: [sekapictures-3]
 
 TASK [nginx : Install nginx] ***************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [nginx : Place Nginx config] **********************************************
 ok: [sekapictures-1]
@@ -5918,19 +5932,19 @@ ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [nginx : Ensure Nginx is started] *****************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [nginx_exporter : prometheus-nginx-exporter] ******************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx_exporter : Restart Nginx] ******************************************
 skipping: [sekapictures-1]
@@ -5965,8 +5979,8 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [mysql : MySQL user] ******************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : MySQL user for replication] **************************************
 ok: [sekapictures-1]
@@ -5985,20 +5999,20 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [node_exporter : Ensure node_explorer is started] *************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_exporter : Install prometheus-mysqld-exporter] *********************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [mysql_exporter : Place my.cnf.j2] ****************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql_exporter : Create user exporter] ***********************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 skipping: [sekapictures-1]
@@ -6008,16 +6022,16 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [rsyslog : Place rsyslog.conf] ********************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_backup : Create /home/backup/mysql] ********************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [mysql_backup : MySQL user backup] ****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_backup : Place /home/backup/.my.cnf] *******************************
 ok: [sekapictures-1]
@@ -6030,8 +6044,8 @@ ok: [sekapictures-2]
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [agama : Create Agama /opt/agama] *****************************************
 ok: [sekapictures-1]
@@ -6046,16 +6060,16 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [agama : Agama Docker containers:"2"] *************************************
-ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-2] => (item=1)
-ok: [sekapictures-1] => (item=2)
+ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-2] => (item=2)
+ok: [sekapictures-1] => (item=2)
 
 TASK [agama : Start Agama containers:"2"] **************************************
 ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-2] => (item=1)
-ok: [sekapictures-1] => (item=2)
 ok: [sekapictures-2] => (item=2)
+ok: [sekapictures-1] => (item=2)
 
 TASK [node_exporter : Install node_exporters packages] *************************
 ok: [sekapictures-2]
@@ -6117,8 +6131,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [haproxy : Install haproxy] ***********************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : /etc/haproxy/haproxy.cfg] **************************************
 ok: [sekapictures-1]
@@ -6133,8 +6147,8 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : Haproxy exporter started] **************************************
 ok: [sekapictures-1]
@@ -6145,16 +6159,16 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : /etc/keepalived/keepalived.conf] ****************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : keepalived started] *****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [keepalived : Download keepalived exporter] *******************************
 skipping: [sekapictures-1]
@@ -6173,8 +6187,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : keepalived-exporter started] ********************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 PLAY [InfluxDB] ****************************************************************
 
@@ -6238,6 +6252,9 @@ ok: [sekapictures-3]
 TASK [influxdb_exporter : Download influxdb_exporter binary] *******************
 ok: [sekapictures-3]
 
+TASK [influxdb_exporter : change permissions] **********************************
+ok: [sekapictures-3]
+
 TASK [influxdb_exporter : Place prometheus-influxdb-stats-exporter.service] ****
 ok: [sekapictures-3]
 
@@ -6245,27 +6262,27 @@ TASK [influxdb_exporter : Reload daemon] ***************************************
 skipping: [sekapictures-3]
 
 TASK [influxdb_exporter : Start influxdb_exporter] *****************************
-changed: [sekapictures-3]
+ok: [sekapictures-3]
 
 PLAY RECAP *********************************************************************
 sekapictures-1             : ok=71   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
 sekapictures-2             : ok=71   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
-sekapictures-3             : ok=65   changed=1    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+sekapictures-3             : ok=66   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 
 + ansible all -b -m reboot -a test_command=uptime
-sekapictures-1 | CHANGED => {
-    "changed": true,
-    "elapsed": 66,
-    "rebooted": true
-}
 sekapictures-3 | CHANGED => {
     "changed": true,
-    "elapsed": 67,
+    "elapsed": 36,
+    "rebooted": true
+}
+sekapictures-1 | CHANGED => {
+    "changed": true,
+    "elapsed": 44,
     "rebooted": true
 }
 sekapictures-2 | CHANGED => {
     "changed": true,
-    "elapsed": 67,
+    "elapsed": 45,
     "rebooted": true
 }
 + ansible-playbook infra.yaml --diff
@@ -6273,31 +6290,31 @@ sekapictures-2 | CHANGED => {
 PLAY [Ansible connection test] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [test_connection : Ansible ping module] ***********************************
+ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
-ok: [sekapictures-3]
 
 PLAY [Initialization] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [init : Update APT cache] *************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [backup : Create user backup] *********************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
 ok: [sekapictures-1]
@@ -6305,47 +6322,47 @@ ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [backup : Create /home/backup/restore] ************************************
-ok: [sekapictures-2]
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [backup : Install Duplicity service with apt] *****************************
-ok: [sekapictures-2]
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 PLAY [Setup] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [setup] *******************************************************************
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 ok: [sekapictures-3]
-ok: [sekapictures-1]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [bind : Install bind9] ****************************************************
+ok: [sekapictures-2]
 ok: [sekapictures-3]
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 
 TASK [bind : Place bind9 configuration] ****************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [bind : Stop systemd-resolved] ********************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [bind : Delete resolv.conf link] ******************************************
@@ -6354,9 +6371,9 @@ skipping: [sekapictures-2]
 skipping: [sekapictures-3]
 
 TASK [bind : Place /etc/resolv.conf] *******************************************
-ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [bind : Place /var/cache/bind/] *******************************************
 skipping: [sekapictures-1] => (item=db.gleppy) 
@@ -6367,9 +6384,9 @@ ok: [sekapictures-3] => (item=db.gleppy)
 ok: [sekapictures-3] => (item=db.reverse)
 
 TASK [bind : Place /etc/bind/named.conf.local] *********************************
-ok: [sekapictures-3]
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [bind : Reload database] **************************************************
 skipping: [sekapictures-1]
@@ -6395,8 +6412,8 @@ skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}
 skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
@@ -6426,30 +6443,30 @@ ok: [sekapictures-2]
 
 TASK [bind_exporter : Install bind-exporter] ***********************************
 ok: [sekapictures-2]
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [bind_exporter : Ensure bind-exporter is started] *************************
-ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [docker : Install Docker package] *****************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [docker : iptables-persistent] ********************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [docker : iptables-save -t mangle] ****************************************
 skipping: [sekapictures-1]
@@ -6467,16 +6484,16 @@ skipping: [sekapictures-2]
 skipping: [sekapictures-3]
 
 TASK [docker : Start Docker service] *******************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 PLAY [Nginx] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [nginx : Install nginx] ***************************************************
 ok: [sekapictures-1]
@@ -6485,17 +6502,17 @@ ok: [sekapictures-2]
 
 TASK [nginx : Place Nginx config] **********************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [nginx : Ensure Nginx is started] *****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [nginx_exporter : prometheus-nginx-exporter] ******************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
@@ -6516,8 +6533,8 @@ ok: [sekapictures-2]
 PLAY [Database server] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : Install mysql packages] ******************************************
 ok: [sekapictures-1]
@@ -6528,8 +6545,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [mysql : Ensure mysql is started] *****************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : MySQL database] **************************************************
 ok: [sekapictures-1]
@@ -6560,12 +6577,12 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [mysql_exporter : Install prometheus-mysqld-exporter] *********************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_exporter : Place my.cnf.j2] ****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_exporter : Create user exporter] ***********************************
 ok: [sekapictures-1]
@@ -6575,8 +6592,8 @@ TASK [mysql_exporter : Pause for 10 sec] ***************************************
 skipping: [sekapictures-1]
 
 TASK [mysql_exporter : Start prometheus-mysqld-exporter] ***********************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [rsyslog : Place rsyslog.conf] ********************************************
 ok: [sekapictures-1]
@@ -6587,8 +6604,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [mysql_backup : MySQL user backup] ****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_backup : Place /home/backup/.my.cnf] *******************************
 ok: [sekapictures-1]
@@ -6609,12 +6626,12 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [agama : Download Ansible Dockerfile] *************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [agama : Build Agama docker image] ****************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [agama : Agama Docker containers:"2"] *************************************
 ok: [sekapictures-1] => (item=1)
@@ -6637,8 +6654,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [rsyslog : Place rsyslog.conf] ********************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 PLAY [Prometheus server] *******************************************************
 
@@ -6684,48 +6701,48 @@ ok: [sekapictures-3]
 PLAY [Haproxy] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : Install haproxy] ***********************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : /etc/haproxy/haproxy.cfg] **************************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [haproxy : Haproxy started] ***********************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : prometheus-haproxy-exporter] ***********************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [haproxy : Haproxy exporter started] **************************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : Install keepalived] *****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [keepalived : /etc/keepalived/keepalived.conf] ****************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [keepalived : keepalived started] *****************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [keepalived : Download keepalived exporter] *******************************
 skipping: [sekapictures-1]
@@ -6744,8 +6761,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : keepalived-exporter started] ********************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 PLAY [InfluxDB] ****************************************************************
 
@@ -6809,6 +6826,9 @@ ok: [sekapictures-3]
 TASK [influxdb_exporter : Download influxdb_exporter binary] *******************
 ok: [sekapictures-3]
 
+TASK [influxdb_exporter : change permissions] **********************************
+ok: [sekapictures-3]
+
 TASK [influxdb_exporter : Place prometheus-influxdb-stats-exporter.service] ****
 ok: [sekapictures-3]
 
@@ -6816,12 +6836,12 @@ TASK [influxdb_exporter : Reload daemon] ***************************************
 skipping: [sekapictures-3]
 
 TASK [influxdb_exporter : Start influxdb_exporter] *****************************
-changed: [sekapictures-3]
+ok: [sekapictures-3]
 
 PLAY RECAP *********************************************************************
 sekapictures-1             : ok=71   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
 sekapictures-2             : ok=71   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
-sekapictures-3             : ok=65   changed=1    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+sekapictures-3             : ok=66   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 
 + date
-E 20 dets  2021 14:00:17 EET
+E 20 dets  2021 18:29:11 EET
