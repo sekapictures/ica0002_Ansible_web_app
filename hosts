@@ -46,6 +46,6 @@ sekapictures-3
 sekapictures-3
 
 [all:vars]
-ansible_host=193.40.156.86
+ansible_host=193.40.156.67
 ansible_python_interpreter=python3
 ansible_user=ubuntu
