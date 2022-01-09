@@ -15,7 +15,7 @@ mysql_password: !vault |
 
 startup_name: gleppy.io
 
-backup_server: 192.168.42.156
+backup_server: 192.168.42.132
 
 route:
  - 1.1.1.1;
@@ -104,5 +104,5 @@ grafana_port: 8180
 # will be incrimented by 1, so result is agama_port + 1 
 agama_port: 8000
 
-# how many agama docker containers will be running
+# how many agama docker containers will be running 
 agama_instances: 2
