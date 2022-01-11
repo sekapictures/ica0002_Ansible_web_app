@@ -47,7 +47,7 @@ dns_cname_records:
   web2: "{{ groups['web_servers'][1] }}"
 
 dns_a_records:
-  backup: 192.168.42.156
+  backup: "{{ backup_server }}"
 
 mysql_exporter_pass: !vault |
           $ANSIBLE_VAULT;1.1;AES256

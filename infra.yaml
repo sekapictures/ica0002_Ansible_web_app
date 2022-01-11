@@ -39,6 +39,7 @@
     roles:
       - nginx
       - nginx_exporter
+    tags: nginx
 
   - name: Database server
     hosts: db_servers
