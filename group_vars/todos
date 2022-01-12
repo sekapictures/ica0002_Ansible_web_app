@@ -1,3 +1,0 @@
-make mysql restart
-restart all exporters
-start nginx exporter +

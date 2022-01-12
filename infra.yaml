@@ -10,6 +10,7 @@
     roles:
       - init
       - backup
+    tags: init
 
   - name: Setup
     hosts: all 
@@ -51,7 +52,7 @@
       # - nginx
       - mysql_exporter
       # - nginx_exporter
-      - rsyslog
+      # - rsyslog
       - mysql_backup
     tags: db
 
@@ -63,8 +64,15 @@
       # - nginx
       - node_exporter
       # - nginx_exporter
-      - rsyslog
+      # - rsyslog
     tags: web
+
+  - name: Telegraf logging
+    hosts: all 
+    become: yes
+    roles:
+      - rsyslog
+    tags: rsyslog
 
   - name: Prometheus server
     hosts: prometheus
@@ -92,6 +100,7 @@
     hosts: influxdb
     become: yes
     roles:
+      - node_exporter
       - influxdb
       - pinger
       - influxdb_backup
