@@ -1,4 +1,4 @@
-E 20 dets  2021 18:08:27 EET
+N 13 jaan  2022 08:52:57 EET
 + hostname
 seka-VirtualBox
 + ansible-playbook infra.yaml --diff
@@ -6,57 +6,57 @@ seka-VirtualBox
 PLAY [Ansible connection test] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [test_connection : Ansible ping module] ***********************************
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 PLAY [Initialization] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [init : Update APT cache] *************************************************
-changed: [sekapictures-3]
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
+changed: [sekapictures-3]
 
 TASK [backup : Create user backup] *********************************************
-changed: [sekapictures-3]
 changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-3]
 
 TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpd270r99w/known_hosts.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpxw8_t7_2/known_hosts.j2
 @@ -0,0 +1,2 @@
-+backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-+backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 \ No newline at end of file
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpxcvnsiwj/known_hosts.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpo9ilcypm/known_hosts.j2
 @@ -0,0 +1,2 @@
-+backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-+backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-\ No newline at end of file
-
-changed: [sekapictures-3]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpxvlc79ig/known_hosts.j2
-@@ -0,0 +1,2 @@
-+backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
-+backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBSne71MCp6CQCHURWe3CLud6vPDkLfL83Oab/giAI7O
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
 \ No newline at end of file
 
 changed: [sekapictures-2]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpsopgbuu7/known_hosts.j2
+@@ -0,0 +1,2 @@
++backup ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
++backup.gleppy.io ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEu6pFFWyuRrl4WGFPQGElYN9txwTGm2wSntcpVAaN90
+\ No newline at end of file
+
+changed: [sekapictures-3]
 
 TASK [backup : Create /home/backup/restore] ************************************
 --- before
@@ -72,7 +72,7 @@ TASK [backup : Create /home/backup/restore] ************************************
 +    "state": "directory"
  }
 
-changed: [sekapictures-1]
+changed: [sekapictures-3]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -86,7 +86,7 @@ changed: [sekapictures-1]
 +    "state": "directory"
  }
 
-changed: [sekapictures-3]
+changed: [sekapictures-1]
 --- before
 +++ after
 @@ -1,6 +1,6 @@
@@ -112,7 +112,7 @@ Suggested packages:
 The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
-0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+0 upgraded, 8 newly installed, 0 to remove and 142 not upgraded.
 changed: [sekapictures-3]
 The following additional packages will be installed:
   librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
@@ -123,7 +123,7 @@ Suggested packages:
 The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
-0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+0 upgraded, 8 newly installed, 0 to remove and 142 not upgraded.
 changed: [sekapictures-2]
 The following additional packages will be installed:
   librsync2 python3-bcrypt python3-fasteners python3-future python3-lockfile
@@ -134,7 +134,7 @@ Suggested packages:
 The following NEW packages will be installed:
   duplicity librsync2 python3-bcrypt python3-fasteners python3-future
   python3-lockfile python3-monotonic python3-paramiko
-0 upgraded, 8 newly installed, 0 to remove and 140 not upgraded.
+0 upgraded, 8 newly installed, 0 to remove and 142 not upgraded.
 changed: [sekapictures-1]
 
 PLAY [Setup] *******************************************************************
@@ -146,8 +146,8 @@ ok: [sekapictures-2]
 
 TASK [setup] *******************************************************************
 ok: [sekapictures-2]
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 
 PLAY [DNS server] **************************************************************
 
@@ -165,8 +165,8 @@ The following NEW packages will be installed:
   bind9 bind9-utils dns-root-data python3-dnspython python3-ply
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
-2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+2 upgraded, 5 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 The following additional packages will be installed:
   bind9-dnsutils bind9-libs dns-root-data python3-ply
 Suggested packages:
@@ -175,7 +175,7 @@ The following NEW packages will be installed:
   bind9 bind9-utils dns-root-data python3-dnspython python3-ply
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
-2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
+2 upgraded, 5 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 The following additional packages will be installed:
   bind9-dnsutils bind9-libs dns-root-data python3-ply
@@ -185,8 +185,8 @@ The following NEW packages will be installed:
   bind9 bind9-utils dns-root-data python3-dnspython python3-ply
 The following packages will be upgraded:
   bind9-dnsutils bind9-libs
-2 upgraded, 5 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+2 upgraded, 5 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 
 TASK [bind : Place bind9 configuration] ****************************************
 changed: [sekapictures-3]
@@ -194,39 +194,39 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [bind : Stop systemd-resolved] ********************************************
-changed: [sekapictures-2]
 changed: [sekapictures-3]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [bind : Delete resolv.conf link] ******************************************
-changed: [sekapictures-3]
 changed: [sekapictures-2]
+changed: [sekapictures-3]
 changed: [sekapictures-1]
 
 TASK [bind : Place /etc/resolv.conf] *******************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpnszoa3pe/resolv.conf
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp32hq7d6m/resolv.conf
 @@ -0,0 +1,3 @@
-+nameserver 192.168.42.61
-+nameserver 192.168.42.90
-+search gleppy.io
-\ No newline at end of file
-
-changed: [sekapictures-3]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpe21ewaif/resolv.conf
-@@ -0,0 +1,3 @@
-+nameserver 192.168.42.61
-+nameserver 192.168.42.90
++nameserver 192.168.42.152
++nameserver 192.168.42.156
 +search gleppy.io
 \ No newline at end of file
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp41c5okrl/resolv.conf
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpb4gxhb49/resolv.conf
 @@ -0,0 +1,3 @@
-+nameserver 192.168.42.61
-+nameserver 192.168.42.90
++nameserver 192.168.42.152
++nameserver 192.168.42.156
++search gleppy.io
+\ No newline at end of file
+
+changed: [sekapictures-3]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpph57ygn2/resolv.conf
+@@ -0,0 +1,3 @@
++nameserver 192.168.42.152
++nameserver 192.168.42.156
 +search gleppy.io
 \ No newline at end of file
 
@@ -238,11 +238,11 @@ skipping: [sekapictures-1] => (item=db.reverse)
 skipping: [sekapictures-2] => (item=db.gleppy) 
 skipping: [sekapictures-2] => (item=db.reverse) 
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpojukg3jl/db.gleppy
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpo01sdeuc/db.gleppy
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +gleppy.io.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
-+   161001     ; Serial
++   065438     ; Serial
 +			 604800		; Refresh
 +			  86400		; Retry
 +			2419200		; Expire
@@ -251,17 +251,17 @@ skipping: [sekapictures-2] => (item=db.reverse)
 +gleppy.io.	IN	NS sekapictures-1
 +gleppy.io.	IN	NS sekapictures-2
 +gleppy.io.	IN	NS sekapictures-3
-+sekapictures-1 IN A 192.168.42.61
-+sekapictures-2 IN A 192.168.42.90
-+sekapictures-3 IN A 192.168.42.136
++sekapictures-1 IN A 192.168.42.152
++sekapictures-2 IN A 192.168.42.156
++sekapictures-3 IN A 192.168.42.59
 
 changed: [sekapictures-3] => (item=db.gleppy)
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp_o8854pv/db.reverse
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp6wi6lo5x/db.reverse
 @@ -0,0 +1,14 @@
 +$TTL	604800
 +42.168.192.in-addr.arpa.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
-+   161001     ; Serial
++   065438     ; Serial
 +			 604800		; Refresh
 +			  86400		; Retry
 +			2419200		; Expire
@@ -270,15 +270,15 @@ changed: [sekapictures-3] => (item=db.gleppy)
 +42.168.192.in-addr.arpa.	IN	NS sekapictures-1.gleppy.io.
 +42.168.192.in-addr.arpa.	IN	NS sekapictures-2.gleppy.io.
 +42.168.192.in-addr.arpa.	IN	NS sekapictures-3.gleppy.io.
-+61 IN PTR sekapictures-1.gleppy.io.
-+90 IN PTR sekapictures-2.gleppy.io.
-+136 IN PTR sekapictures-3.gleppy.io.
++152 IN PTR sekapictures-1.gleppy.io.
++156 IN PTR sekapictures-2.gleppy.io.
++59 IN PTR sekapictures-3.gleppy.io.
 
 changed: [sekapictures-3] => (item=db.reverse)
 
 TASK [bind : Place /etc/bind/named.conf.local] *********************************
 --- before: /etc/bind/named.conf.local
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpcxzgck_u/named.conf.local.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp2qj110h8/named.conf.local.j2
 @@ -1,8 +1,14 @@
 -//
 -// Do any local configuration here
@@ -303,53 +303,53 @@ TASK [bind : Place /etc/bind/named.conf.local] *********************************
 
 changed: [sekapictures-3]
 --- before: /etc/bind/named.conf.local
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmprvwsssxb/named.conf.local.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpqk38_qm_/named.conf.local.j2
 @@ -1,8 +1,15 @@
 -//
 -// Do any local configuration here
 -//
 +zone "gleppy.io" {
 +    type slave;
-+    masters { 192.168.42.136; };
++    masters { 192.168.42.59; };
 +    file "db.gleppy";
 +};
  
 -// Consider adding the 1918 zones here, if they are not used in your
 -// organization
 -//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.136 {
++server 192.168.42.59 {
 +    keys { dns_transfer_key;};
 +};
  
 +zone "42.168.192.in-addr.arpa" {
 +    type slave;
-+    masters { 192.168.42.136; };
++    masters { 192.168.42.59; };
 +    file "db.reverse";
 +};
 
 changed: [sekapictures-1]
 --- before: /etc/bind/named.conf.local
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp_obd1vq4/named.conf.local.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmplh2l244b/named.conf.local.j2
 @@ -1,8 +1,15 @@
 -//
 -// Do any local configuration here
 -//
 +zone "gleppy.io" {
 +    type slave;
-+    masters { 192.168.42.136; };
++    masters { 192.168.42.59; };
 +    file "db.gleppy";
 +};
  
 -// Consider adding the 1918 zones here, if they are not used in your
 -// organization
 -//include "/etc/bind/zones.rfc1918";
-+server 192.168.42.136 {
++server 192.168.42.59 {
 +    keys { dns_transfer_key;};
 +};
  
 +zone "42.168.192.in-addr.arpa" {
 +    type slave;
-+    masters { 192.168.42.136; };
++    masters { 192.168.42.59; };
 +    file "db.reverse";
 +};
 
@@ -366,22 +366,22 @@ skipping: [sekapictures-1] => (item={'key': 'influxdb', 'value': 'sekapictures-3
 skipping: [sekapictures-1] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
-skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-2] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
-skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
@@ -399,33 +399,33 @@ changed: [sekapictures-3] => (item={'key': 'web1', 'value': 'sekapictures-1'})
 changed: [sekapictures-3] => (item={'key': 'web2', 'value': 'sekapictures-2'})
 
 TASK [bind : Set A records] ****************************************************
-skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
-skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
-changed: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.156'})
+skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.132'}) 
+skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.132'}) 
+changed: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.132'})
 
 TASK [bind : Ensure bind9 is started] ******************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [bind_exporter : Install bind-exporter] ***********************************
 The following NEW packages will be installed:
   prometheus-bind-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
-The following NEW packages will be installed:
-  prometheus-bind-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-1]
 The following NEW packages will be installed:
   prometheus-bind-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-3]
+The following NEW packages will be installed:
+  prometheus-bind-exporter
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-2]
 
 TASK [bind_exporter : Ensure bind-exporter is started] *************************
-ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 RUNNING HANDLER [bind : Place /var/cache/bind/db.gleppy] ***********************
 --- before: /var/cache/bind/db.gleppy (content)
@@ -433,8 +433,8 @@ RUNNING HANDLER [bind : Place /var/cache/bind/db.gleppy] ***********************
 @@ -1,6 +1,6 @@
  $TTL	604800
  gleppy.io.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
--   161001     ; Serial
-+                161001      	; Serial
+-   065438     ; Serial
++                065438      	; Serial
  			 604800		; Refresh
  			  86400		; Retry
  			2419200		; Expire
@@ -447,8 +447,8 @@ RUNNING HANDLER [bind : Place /var/cache/bind/db.reverse] **********************
 @@ -1,6 +1,6 @@
  $TTL	604800
  42.168.192.in-addr.arpa.	IN	SOA	sekapictures-3.gleppy.io. arsser.gleppy.io. (
--   161001     ; Serial
-+                161001      	; Serial
+-   065438     ; Serial
++                065438      	; Serial
  			 604800		; Refresh
  			  86400		; Retry
  			2419200		; Expire
@@ -457,8 +457,8 @@ changed: [sekapictures-3]
 
 RUNNING HANDLER [bind : Restart bind9 service] *********************************
 changed: [sekapictures-3]
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 RUNNING HANDLER [bind : Reload database] ***************************************
 changed: [sekapictures-3]
@@ -466,8 +466,8 @@ changed: [sekapictures-3]
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [docker : Install Docker package] *****************************************
@@ -480,8 +480,8 @@ Suggested packages:
 The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
-0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 10 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 The following additional packages will be installed:
   bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
   ubuntu-fan
@@ -491,7 +491,7 @@ Suggested packages:
 The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
-0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 10 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 The following additional packages will be installed:
   bridge-utils containerd dnsmasq-base libidn11 pigz python3-websocket runc
@@ -502,7 +502,12 @@ Suggested packages:
 The following NEW packages will be installed:
   bridge-utils containerd dnsmasq-base docker.io libidn11 pigz python3-docker
   python3-websocket runc ubuntu-fan
-0 upgraded, 10 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 10 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
+
+TASK [docker : add user to docker group] ***************************************
+changed: [sekapictures-3]
+changed: [sekapictures-2]
 changed: [sekapictures-1]
 
 TASK [docker : iptables-persistent] ********************************************
@@ -510,20 +515,20 @@ The following additional packages will be installed:
   netfilter-persistent
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 The following additional packages will be installed:
   netfilter-persistent
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 The following additional packages will be installed:
   netfilter-persistent
 The following NEW packages will be installed:
   iptables-persistent netfilter-persistent
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 
 TASK [docker : iptables-save -t mangle] ****************************************
 changed: [sekapictures-1]
@@ -532,7 +537,7 @@ changed: [sekapictures-3]
 
 TASK [docker : /var/local/iptables.mangle] *************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpyd1v06kr/iptables.mangle
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpyc6lmkz_/iptables.mangle
 @@ -0,0 +1,8 @@
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -545,7 +550,7 @@ TASK [docker : /var/local/iptables.mangle] *************************************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpmpb20na7/iptables.mangle
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp_6r7q5jk/iptables.mangle
 @@ -0,0 +1,8 @@
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -558,7 +563,7 @@ changed: [sekapictures-1]
 
 changed: [sekapictures-3]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpo35qan8p/iptables.mangle
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmplt1mzi4f/iptables.mangle
 @@ -0,0 +1,8 @@
 +*mangle
 +:PREROUTING ACCEPT [0:0]
@@ -587,20 +592,20 @@ mistake may lead the ansible controller to loose access to the hosts and never
 regain it before fixing firewall rules through a serial console, or any other
 way except SSH. Please set task attribute 'poll' (=15) to 0, and 'async' (=0)
 to a value >2 and not greater than 'ansible_timeout' (=15) (recommended).
-changed: [sekapictures-3]
 changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-3]
 
 TASK [docker : Start Docker service] *******************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 PLAY [Nginx] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [nginx : Install nginx] ***************************************************
@@ -616,8 +621,8 @@ The following NEW packages will be installed:
   libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
   libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
   libwebp6 libxpm4 nginx nginx-common nginx-core
-0 upgraded, 17 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 17 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-3]
 The following additional packages will be installed:
   fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
   libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
@@ -630,7 +635,7 @@ The following NEW packages will be installed:
   libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
   libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
   libwebp6 libxpm4 nginx nginx-common nginx-core
-0 upgraded, 17 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 17 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-2]
 The following additional packages will be installed:
   fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
@@ -644,12 +649,260 @@ The following NEW packages will be installed:
   libjpeg-turbo8 libjpeg8 libnginx-mod-http-image-filter
   libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libtiff5
   libwebp6 libxpm4 nginx nginx-common nginx-core
-0 upgraded, 17 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+0 upgraded, 17 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 
 TASK [nginx : Place Nginx config] **********************************************
 --- before: /etc/nginx/sites-enabled/default
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp3tcep93n/default.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmptrz2eroh/default.j2
+@@ -1,91 +1,36 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
+-
+-# Default server configuration
+-#
+ server {
+ 	listen 80 default_server;
+-	listen [::]:80 default_server;
+-
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
+-
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+-	server_name _;
++	server_name ubuntu@193.40.156.67;
+ 
+ 	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+-		try_files $uri $uri/ =404;
++		proxy_pass http://localhost:8001;
++		proxy_set_header Host $http_host;
+ 	}
+ 
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
++	location /node-metrics {
++		proxy_pass http://localhost:9100/metrics;
++	}
+ 
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
+-}
++	location /nginx-metrics {
++		proxy_pass http://localhost:9113/metrics;
++	}
+ 
+ 
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++	location /mysql-metrics {
++		proxy_pass http://localhost:9104/metrics;
++	}
++
++	location /bind-metrics {
++		proxy_pass http://localhost:9119/metrics;
++	}
++
++
++	location /haproxy-metrics {
++		proxy_pass http://localhost:9101/metrics;
++	}
++
++	location /keepalived-metrics {
++		proxy_pass http://localhost:9165/metrics;
++	}
++	
++}
+\ No newline at end of file
+
+changed: [sekapictures-1]
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpfk3y752q/default.j2
+@@ -1,91 +1,36 @@
+-##
+-# You should look at the following URL's in order to grasp a solid understanding
+-# of Nginx configuration files in order to fully unleash the power of Nginx.
+-# https://www.nginx.com/resources/wiki/start/
+-# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
+-# https://wiki.debian.org/Nginx/DirectoryStructure
+-#
+-# In most cases, administrators will remove this file from sites-enabled/ and
+-# leave it as reference inside of sites-available where it will continue to be
+-# updated by the nginx packaging team.
+-#
+-# This file will automatically load configuration files provided by other
+-# applications, such as Drupal or Wordpress. These applications will be made
+-# available underneath a path with that package name, such as /drupal8.
+-#
+-# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+-##
+-
+-# Default server configuration
+-#
+ server {
+ 	listen 80 default_server;
+-	listen [::]:80 default_server;
+-
+-	# SSL configuration
+-	#
+-	# listen 443 ssl default_server;
+-	# listen [::]:443 ssl default_server;
+-	#
+-	# Note: You should disable gzip for SSL traffic.
+-	# See: https://bugs.debian.org/773332
+-	#
+-	# Read up on ssl_ciphers to ensure a secure configuration.
+-	# See: https://bugs.debian.org/765782
+-	#
+-	# Self signed certs generated by the ssl-cert package
+-	# Don't use them in a production server!
+-	#
+-	# include snippets/snakeoil.conf;
+-
+-	root /var/www/html;
+-
+-	# Add index.php to the list if you are using PHP
+-	index index.html index.htm index.nginx-debian.html;
+-
+-	server_name _;
++	server_name ubuntu@193.40.156.67;
+ 
+ 	location / {
+-		# First attempt to serve request as file, then
+-		# as directory, then fall back to displaying a 404.
+-		try_files $uri $uri/ =404;
++		proxy_pass http://localhost:8001;
++		proxy_set_header Host $http_host;
+ 	}
+ 
+-	# pass PHP scripts to FastCGI server
+-	#
+-	#location ~ \.php$ {
+-	#	include snippets/fastcgi-php.conf;
+-	#
+-	#	# With php-fpm (or other unix sockets):
+-	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+-	#	# With php-cgi (or other tcp sockets):
+-	#	fastcgi_pass 127.0.0.1:9000;
+-	#}
++	location /node-metrics {
++		proxy_pass http://localhost:9100/metrics;
++	}
+ 
+-	# deny access to .htaccess files, if Apache's document root
+-	# concurs with nginx's one
+-	#
+-	#location ~ /\.ht {
+-	#	deny all;
+-	#}
+-}
++	location /nginx-metrics {
++		proxy_pass http://localhost:9113/metrics;
++	}
+ 
+ 
+-# Virtual Host configuration for example.com
+-#
+-# You can move that to a different file under sites-available/ and symlink that
+-# to sites-enabled/ to enable it.
+-#
+-#server {
+-#	listen 80;
+-#	listen [::]:80;
+-#
+-#	server_name example.com;
+-#
+-#	root /var/www/example.com;
+-#	index index.html;
+-#
+-#	location / {
+-#		try_files $uri $uri/ =404;
+-#	}
+-#}
++	location /mysql-metrics {
++		proxy_pass http://localhost:9104/metrics;
++	}
++
++	location /bind-metrics {
++		proxy_pass http://localhost:9119/metrics;
++	}
++
++
++	location /haproxy-metrics {
++		proxy_pass http://localhost:9101/metrics;
++	}
++
++	location /keepalived-metrics {
++		proxy_pass http://localhost:9165/metrics;
++	}
++	
++}
+\ No newline at end of file
+
+changed: [sekapictures-2]
+--- before: /etc/nginx/sites-enabled/default
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp4afrwgwg/default.j2
 @@ -1,91 +1,40 @@
 -##
 -# You should look at the following URL's in order to grasp a solid understanding
@@ -674,7 +927,7 @@ TASK [nginx : Place Nginx config] **********************************************
  server {
  	listen 80 default_server;
 -	listen [::]:80 default_server;
-+	server_name ubuntu@193.40.156.86;
++	server_name ubuntu@193.40.156.67;
  
 -	# SSL configuration
 -	#
@@ -776,277 +1029,29 @@ TASK [nginx : Place Nginx config] **********************************************
 \ No newline at end of file
 
 changed: [sekapictures-3]
---- before: /etc/nginx/sites-enabled/default
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp3b0xb3im/default.j2
-@@ -1,91 +1,36 @@
--##
--# You should look at the following URL's in order to grasp a solid understanding
--# of Nginx configuration files in order to fully unleash the power of Nginx.
--# https://www.nginx.com/resources/wiki/start/
--# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
--# https://wiki.debian.org/Nginx/DirectoryStructure
--#
--# In most cases, administrators will remove this file from sites-enabled/ and
--# leave it as reference inside of sites-available where it will continue to be
--# updated by the nginx packaging team.
--#
--# This file will automatically load configuration files provided by other
--# applications, such as Drupal or Wordpress. These applications will be made
--# available underneath a path with that package name, such as /drupal8.
--#
--# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
--##
--
--# Default server configuration
--#
- server {
- 	listen 80 default_server;
--	listen [::]:80 default_server;
--
--	# SSL configuration
--	#
--	# listen 443 ssl default_server;
--	# listen [::]:443 ssl default_server;
--	#
--	# Note: You should disable gzip for SSL traffic.
--	# See: https://bugs.debian.org/773332
--	#
--	# Read up on ssl_ciphers to ensure a secure configuration.
--	# See: https://bugs.debian.org/765782
--	#
--	# Self signed certs generated by the ssl-cert package
--	# Don't use them in a production server!
--	#
--	# include snippets/snakeoil.conf;
--
--	root /var/www/html;
--
--	# Add index.php to the list if you are using PHP
--	index index.html index.htm index.nginx-debian.html;
--
--	server_name _;
-+	server_name ubuntu@193.40.156.86;
- 
- 	location / {
--		# First attempt to serve request as file, then
--		# as directory, then fall back to displaying a 404.
--		try_files $uri $uri/ =404;
-+		proxy_pass http://localhost:8001;
-+		proxy_set_header Host $http_host;
- 	}
- 
--	# pass PHP scripts to FastCGI server
--	#
--	#location ~ \.php$ {
--	#	include snippets/fastcgi-php.conf;
--	#
--	#	# With php-fpm (or other unix sockets):
--	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
--	#	# With php-cgi (or other tcp sockets):
--	#	fastcgi_pass 127.0.0.1:9000;
--	#}
-+	location /node-metrics {
-+		proxy_pass http://localhost:9100/metrics;
-+	}
- 
--	# deny access to .htaccess files, if Apache's document root
--	# concurs with nginx's one
--	#
--	#location ~ /\.ht {
--	#	deny all;
--	#}
--}
-+	location /nginx-metrics {
-+		proxy_pass http://localhost:9113/metrics;
-+	}
- 
- 
--# Virtual Host configuration for example.com
--#
--# You can move that to a different file under sites-available/ and symlink that
--# to sites-enabled/ to enable it.
--#
--#server {
--#	listen 80;
--#	listen [::]:80;
--#
--#	server_name example.com;
--#
--#	root /var/www/example.com;
--#	index index.html;
--#
--#	location / {
--#		try_files $uri $uri/ =404;
--#	}
--#}
-+	location /mysql-metrics {
-+		proxy_pass http://localhost:9104/metrics;
-+	}
-+
-+	location /bind-metrics {
-+		proxy_pass http://localhost:9119/metrics;
-+	}
-+
-+
-+	location /haproxy-metrics {
-+		proxy_pass http://localhost:9101/metrics;
-+	}
-+
-+	location /keepalived-metrics {
-+		proxy_pass http://localhost:9165/metrics;
-+	}
-+	
-+}
-\ No newline at end of file
-
-changed: [sekapictures-1]
---- before: /etc/nginx/sites-enabled/default
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpy5fpx9vu/default.j2
-@@ -1,91 +1,36 @@
--##
--# You should look at the following URL's in order to grasp a solid understanding
--# of Nginx configuration files in order to fully unleash the power of Nginx.
--# https://www.nginx.com/resources/wiki/start/
--# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/
--# https://wiki.debian.org/Nginx/DirectoryStructure
--#
--# In most cases, administrators will remove this file from sites-enabled/ and
--# leave it as reference inside of sites-available where it will continue to be
--# updated by the nginx packaging team.
--#
--# This file will automatically load configuration files provided by other
--# applications, such as Drupal or Wordpress. These applications will be made
--# available underneath a path with that package name, such as /drupal8.
--#
--# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
--##
--
--# Default server configuration
--#
- server {
- 	listen 80 default_server;
--	listen [::]:80 default_server;
--
--	# SSL configuration
--	#
--	# listen 443 ssl default_server;
--	# listen [::]:443 ssl default_server;
--	#
--	# Note: You should disable gzip for SSL traffic.
--	# See: https://bugs.debian.org/773332
--	#
--	# Read up on ssl_ciphers to ensure a secure configuration.
--	# See: https://bugs.debian.org/765782
--	#
--	# Self signed certs generated by the ssl-cert package
--	# Don't use them in a production server!
--	#
--	# include snippets/snakeoil.conf;
--
--	root /var/www/html;
--
--	# Add index.php to the list if you are using PHP
--	index index.html index.htm index.nginx-debian.html;
--
--	server_name _;
-+	server_name ubuntu@193.40.156.86;
- 
- 	location / {
--		# First attempt to serve request as file, then
--		# as directory, then fall back to displaying a 404.
--		try_files $uri $uri/ =404;
-+		proxy_pass http://localhost:8001;
-+		proxy_set_header Host $http_host;
- 	}
- 
--	# pass PHP scripts to FastCGI server
--	#
--	#location ~ \.php$ {
--	#	include snippets/fastcgi-php.conf;
--	#
--	#	# With php-fpm (or other unix sockets):
--	#	fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
--	#	# With php-cgi (or other tcp sockets):
--	#	fastcgi_pass 127.0.0.1:9000;
--	#}
-+	location /node-metrics {
-+		proxy_pass http://localhost:9100/metrics;
-+	}
- 
--	# deny access to .htaccess files, if Apache's document root
--	# concurs with nginx's one
--	#
--	#location ~ /\.ht {
--	#	deny all;
--	#}
--}
-+	location /nginx-metrics {
-+		proxy_pass http://localhost:9113/metrics;
-+	}
- 
- 
--# Virtual Host configuration for example.com
--#
--# You can move that to a different file under sites-available/ and symlink that
--# to sites-enabled/ to enable it.
--#
--#server {
--#	listen 80;
--#	listen [::]:80;
--#
--#	server_name example.com;
--#
--#	root /var/www/example.com;
--#	index index.html;
--#
--#	location / {
--#		try_files $uri $uri/ =404;
--#	}
--#}
-+	location /mysql-metrics {
-+		proxy_pass http://localhost:9104/metrics;
-+	}
-+
-+	location /bind-metrics {
-+		proxy_pass http://localhost:9119/metrics;
-+	}
-+
-+
-+	location /haproxy-metrics {
-+		proxy_pass http://localhost:9101/metrics;
-+	}
-+
-+	location /keepalived-metrics {
-+		proxy_pass http://localhost:9165/metrics;
-+	}
-+	
-+}
-\ No newline at end of file
-
-changed: [sekapictures-2]
 
 TASK [nginx : Ensure Nginx is started] *****************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx_exporter : prometheus-nginx-exporter] ******************************
 The following NEW packages will be installed:
   prometheus-nginx-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-3]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-1]
 The following NEW packages will be installed:
   prometheus-nginx-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-3]
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 
 TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp73v53b24/exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp3xkf4byn/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +    listen 8080 default_server;
@@ -1057,7 +1062,7 @@ TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmps5pb7_50/exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp2qbtabax/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +    listen 8080 default_server;
@@ -1068,7 +1073,7 @@ changed: [sekapictures-1]
 
 changed: [sekapictures-3]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpwq0gotfh/exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpj1zlp8sk/exporter.j2
 @@ -0,0 +1,6 @@
 +server {
 +    listen 8080 default_server;
@@ -1080,9 +1085,9 @@ changed: [sekapictures-3]
 changed: [sekapictures-2]
 
 TASK [nginx_exporter : Restart Nginx] ******************************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
 changed: [sekapictures-3]
+changed: [sekapictures-2]
 
 TASK [nginx_exporter : Ensure nginx-exporter is started] ***********************
 changed: [sekapictures-1]
@@ -1091,8 +1096,8 @@ changed: [sekapictures-2]
 
 RUNNING HANDLER [nginx : Restart Nginx service] ********************************
 changed: [sekapictures-2]
-changed: [sekapictures-3]
 changed: [sekapictures-1]
+changed: [sekapictures-3]
 
 RUNNING HANDLER [nginx_exporter : Restart prometheus-nginx-exporter] ***********
 changed: [sekapictures-1]
@@ -1102,8 +1107,8 @@ changed: [sekapictures-2]
 PLAY [Database server] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql : Install mysql packages] ******************************************
 The following additional packages will be installed:
@@ -1124,8 +1129,8 @@ The following NEW packages will be installed:
   mecab-ipadic-utf8 mecab-utils mysql-client-8.0 mysql-client-core-8.0
   mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
   python3-pymysql
-0 upgraded, 26 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 26 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 The following additional packages will be installed:
   libcgi-fast-perl libcgi-pm-perl libencode-locale-perl libevent-core-2.1-7
   libevent-pthreads-2.1-7 libfcgi-perl libhtml-parser-perl libhtml-tagset-perl
@@ -1144,12 +1149,12 @@ The following NEW packages will be installed:
   mecab-ipadic-utf8 mecab-utils mysql-client-8.0 mysql-client-core-8.0
   mysql-common mysql-server mysql-server-8.0 mysql-server-core-8.0
   python3-pymysql
-0 upgraded, 26 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 26 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 
 TASK [mysql : Place mysql configuration] ***************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp5eo5vcf3/override.cnf
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpke24p750/override.cnf
 @@ -0,0 +1,7 @@
 +[mysqld]
 +bind-address = 0.0.0.0
@@ -1157,11 +1162,11 @@ TASK [mysql : Place mysql configuration] ***************************************
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 61
++server-id = 152
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpo5tc12z7/override.cnf
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpgi1k9bbq/override.cnf
 @@ -0,0 +1,7 @@
 +[mysqld]
 +bind-address = 0.0.0.0
@@ -1169,7 +1174,7 @@ changed: [sekapictures-1]
 +log-bin = /var/log/mysql/mysql-bin.log
 +relay-log = /var/log/mysql/mysql-relay.log
 +replicate-do-db = agama
-+server-id = 90
++server-id = 156
 
 changed: [sekapictures-2]
 
@@ -1182,8 +1187,8 @@ changed: [sekapictures-2]
 changed: [sekapictures-1]
 
 TASK [mysql : MySQL user] ******************************************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [mysql : MySQL user for replication] **************************************
 changed: [sekapictures-2]
@@ -1206,8 +1211,8 @@ Suggested packages:
 The following NEW packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl moreutils
   prometheus-node-exporter prometheus-node-exporter-collectors smartmontools
-0 upgraded, 7 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 7 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 The following additional packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl moreutils
   prometheus-node-exporter-collectors smartmontools
@@ -1216,8 +1221,8 @@ Suggested packages:
 The following NEW packages will be installed:
   libio-pty-perl libipc-run-perl libtime-duration-perl moreutils
   prometheus-node-exporter prometheus-node-exporter-collectors smartmontools
-0 upgraded, 7 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 7 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 
 TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-1]
@@ -1228,18 +1233,18 @@ The following additional packages will be installed:
   daemon
 The following NEW packages will be installed:
   daemon prometheus-mysqld-exporter
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-2]
 The following additional packages will be installed:
   daemon
 The following NEW packages will be installed:
   daemon prometheus-mysqld-exporter
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-1]
 
 TASK [mysql_exporter : Place my.cnf.j2] ****************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpmg9x5vhb/my.cnf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp1tfu45gn/my.cnf.j2
 @@ -0,0 +1,3 @@
 +[client]
 +user=exporter
@@ -1247,7 +1252,7 @@ TASK [mysql_exporter : Place my.cnf.j2] ****************************************
 
 changed: [sekapictures-2]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp3jzppkh6/my.cnf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpvj_l8zk8/my.cnf.j2
 @@ -0,0 +1,3 @@
 +[client]
 +user=exporter
@@ -1256,8 +1261,8 @@ changed: [sekapictures-2]
 changed: [sekapictures-1]
 
 TASK [mysql_exporter : Create user exporter] ***********************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 Pausing for 10 seconds
@@ -1266,38 +1271,6 @@ ok: [sekapictures-1]
 
 TASK [mysql_exporter : Start prometheus-mysqld-exporter] ***********************
 changed: [sekapictures-1]
-changed: [sekapictures-2]
-
-TASK [rsyslog : Place rsyslog.conf] ********************************************
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpl0fh1gpc/rsyslog.conf.j2
-@@ -0,0 +1,10 @@
-+$ActionQueueType LinkedList # use asynchronous processing
-+$ActionQueueFileName srvrfwd # set file name, also enables disk mode
-+$ActionResumeRetryCount -1 # infinite retries on insert failure
-+$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
-+
-+# forward over tcp with octet framing according to RFC 5425
-+#*.* @@(o)127.0.0.1:6514;RSYSLOG_SyslogProtocol23Format
-+
-+# uncomment to use udp according to RFC 5424
-+*.* @sekapictures-3:6514;RSYSLOG_SyslogProtocol23Format
-
-changed: [sekapictures-1]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp13j0tn_9/rsyslog.conf.j2
-@@ -0,0 +1,10 @@
-+$ActionQueueType LinkedList # use asynchronous processing
-+$ActionQueueFileName srvrfwd # set file name, also enables disk mode
-+$ActionResumeRetryCount -1 # infinite retries on insert failure
-+$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
-+
-+# forward over tcp with octet framing according to RFC 5425
-+#*.* @@(o)127.0.0.1:6514;RSYSLOG_SyslogProtocol23Format
-+
-+# uncomment to use udp according to RFC 5424
-+*.* @sekapictures-3:6514;RSYSLOG_SyslogProtocol23Format
-
 changed: [sekapictures-2]
 
 TASK [mysql_backup : Create /home/backup/mysql] ********************************
@@ -1344,15 +1317,16 @@ changed: [sekapictures-2]
 
 TASK [mysql_backup : Create /etc/cron.d/mysql-backup] **************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp8i7zwdxg/mysql-backup.j2
-@@ -0,0 +1,3 @@
-+10 22 * * 0 backup mysqldump agama > /home/backup/mysql/agama.sql
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp7yr095u3/mysql-backup.j2
+@@ -0,0 +1,4 @@
++10 22 * * * backup mysqldump agama > /home/backup/mysql/agama.sql
 +20 22 * * 0  backup duplicity --no-encryption full /home/backup/mysql/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
 +20 22 * * 1-6  backup duplicity --no-encryption incremental /home/backup/mysql/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
++00 22 28 * *  backup duplicity remove-older-than 1M rsync rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpl0bb547t/mysql-backup.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp23u5_enj/mysql-backup.j2
 @@ -0,0 +1 @@
 +
 
@@ -1375,22 +1349,18 @@ changed: [sekapictures-1] => (item=resetreplica)
 changed: [sekapictures-1] => (item=startreplica)
 
 RUNNING HANDLER [mysql_exporter : Restart prometheus-mysqld-exporter] **********
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 RUNNING HANDLER [mysql_exporter : Restart mysql service] ***********************
 changed: [sekapictures-2]
 changed: [sekapictures-1]
 
-RUNNING HANDLER [rsyslog : Restart rsyslog] ************************************
-changed: [sekapictures-1]
-changed: [sekapictures-2]
-
 PLAY [Web server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [agama : Create Agama /opt/agama] *****************************************
 --- before
@@ -1415,25 +1385,14 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [agama : Download Ansible Dockerfile] *************************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [agama : Build Agama docker image] ****************************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [agama : Agama Docker containers:"2"] *************************************
---- before
-+++ after
-@@ -1,4 +1,4 @@
- {
--    "exists": false,
--    "running": false
-+    "exists": true,
-+    "running": true
- }
-
-changed: [sekapictures-1] => (item=1)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1455,7 +1414,7 @@ changed: [sekapictures-2] => (item=1)
 +    "running": true
  }
 
-changed: [sekapictures-1] => (item=2)
+changed: [sekapictures-1] => (item=1)
 --- before
 +++ after
 @@ -1,4 +1,4 @@
@@ -1467,6 +1426,17 @@ changed: [sekapictures-1] => (item=2)
  }
 
 changed: [sekapictures-2] => (item=2)
+--- before
++++ after
+@@ -1,4 +1,4 @@
+ {
+-    "exists": false,
+-    "running": false
++    "exists": true,
++    "running": true
+ }
+
+changed: [sekapictures-1] => (item=2)
 
 TASK [agama : Start Agama containers:"2"] **************************************
 ok: [sekapictures-1] => (item=1)
@@ -1482,9 +1452,64 @@ TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
-TASK [rsyslog : Place rsyslog.conf] ********************************************
+PLAY [Telegraf logging] ********************************************************
+
+TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
+
+TASK [rsyslog : Place rsyslog.conf] ********************************************
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp06bpc6qe/rsyslog.conf.j2
+@@ -0,0 +1,10 @@
++$ActionQueueType LinkedList # use asynchronous processing
++$ActionQueueFileName srvrfwd # set file name, also enables disk mode
++$ActionResumeRetryCount -1 # infinite retries on insert failure
++$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
++
++# forward over tcp with octet framing according to RFC 5425
++#*.* @@(o)127.0.0.1:6514;RSYSLOG_SyslogProtocol23Format
++
++# uncomment to use udp according to RFC 5424
++*.* @sekapictures-3:6514;RSYSLOG_SyslogProtocol23Format
+
+changed: [sekapictures-1]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp81bsi2lm/rsyslog.conf.j2
+@@ -0,0 +1,10 @@
++$ActionQueueType LinkedList # use asynchronous processing
++$ActionQueueFileName srvrfwd # set file name, also enables disk mode
++$ActionResumeRetryCount -1 # infinite retries on insert failure
++$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
++
++# forward over tcp with octet framing according to RFC 5425
++#*.* @@(o)127.0.0.1:6514;RSYSLOG_SyslogProtocol23Format
++
++# uncomment to use udp according to RFC 5424
++*.* @sekapictures-3:6514;RSYSLOG_SyslogProtocol23Format
+
+changed: [sekapictures-2]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpo81b_lak/rsyslog.conf.j2
+@@ -0,0 +1,10 @@
++$ActionQueueType LinkedList # use asynchronous processing
++$ActionQueueFileName srvrfwd # set file name, also enables disk mode
++$ActionResumeRetryCount -1 # infinite retries on insert failure
++$ActionQueueSaveOnShutdown on # save in-memory data if rsyslog shuts down
++
++# forward over tcp with octet framing according to RFC 5425
++#*.* @@(o)127.0.0.1:6514;RSYSLOG_SyslogProtocol23Format
++
++# uncomment to use udp according to RFC 5424
++*.* @sekapictures-3:6514;RSYSLOG_SyslogProtocol23Format
+
+changed: [sekapictures-3]
+
+RUNNING HANDLER [rsyslog : Restart rsyslog] ************************************
+changed: [sekapictures-1]
+changed: [sekapictures-2]
+changed: [sekapictures-3]
 
 PLAY [Prometheus server] *******************************************************
 
@@ -1510,16 +1535,16 @@ The following NEW packages will be installed:
   libjs-rickshaw libnode64 libtime-duration-perl libtimedate-perl moreutils
   node-jquery nodejs nodejs-doc prometheus prometheus-node-exporter
   prometheus-node-exporter-collectors smartmontools
-0 upgraded, 27 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 27 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 
 TASK [prometheus : Place Prometheus config 1] **********************************
 --- before: /etc/default/prometheus
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp2ak3_y_8/prometheus
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp7m9o6j13/prometheus
 @@ -1,5 +1,5 @@
  # Set the command-line arguments to pass to the server.
 -ARGS=""
-+ARGS="--web.external-url http://"193.40.156.86":"13680"/prometheus"
++ARGS="--web.external-url http://"sekapictures-3":"5980"/prometheus"
  
  # Prometheus supports the following options:
  #  --config.file="/etc/prometheus/prometheus.yml"
@@ -1535,7 +1560,7 @@ changed: [sekapictures-3]
 
 TASK [prometheus : Place Prometheus config 2] **********************************
 --- before: /etc/prometheus/prometheus.yml
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp6uw9hjq8/prometheus.yml
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpjc2it4io/prometheus.yml
 @@ -1,44 +1,57 @@
 -# Sample config for Prometheus.
 -
@@ -1669,7 +1694,7 @@ changed: [sekapictures-3]
 TASK [grafana : Place Grafana dashboards] **************************************
 --- before
 +++ after: /home/seka/ica0002/roles/grafana/files/main.json
-@@ -0,0 +1,1268 @@
+@@ -0,0 +1,1254 @@
 +{
 +  "annotations": {
 +    "list": [
@@ -1704,48 +1729,41 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      },
 +      "fieldConfig": {
 +        "defaults": {
-+          "color": {
-+            "mode": "palette-classic"
-+          },
-+          "custom": {
-+            "axisLabel": "",
-+            "axisPlacement": "auto",
-+            "barAlignment": 0,
-+            "drawStyle": "line",
-+            "fillOpacity": 0,
-+            "gradientMode": "none",
-+            "hideFrom": {
-+              "legend": false,
-+              "tooltip": false,
-+              "viz": false
++          "mappings": [
++            {
++              "options": {
++                "from": 0.5,
++                "result": {
++                  "color": "orange",
++                  "index": 0,
++                  "text": "PASSIVE"
++                },
++                "to": 1
++              },
++              "type": "range"
 +            },
-+            "lineInterpolation": "linear",
-+            "lineWidth": 1,
-+            "pointSize": 5,
-+            "scaleDistribution": {
-+              "type": "linear"
-+            },
-+            "showPoints": "auto",
-+            "spanNulls": false,
-+            "stacking": {
-+              "group": "A",
-+              "mode": "none"
-+            },
-+            "thresholdsStyle": {
-+              "mode": "off"
++            {
++              "options": {
++                "from": 1,
++                "result": {
++                  "index": 1,
++                  "text": "ACTIVE"
++                },
++                "to": 2
++              },
++              "type": "range"
 +            }
-+          },
-+          "mappings": [],
++          ],
 +          "thresholds": {
 +            "mode": "absolute",
 +            "steps": [
 +              {
-+                "color": "green",
++                "color": "red",
 +                "value": null
 +              },
 +              {
-+                "color": "red",
-+                "value": 80
++                "color": "green",
++                "value": 0.5
 +              }
 +            ]
 +          }
@@ -1753,37 +1771,37 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "overrides": []
 +      },
 +      "gridPos": {
-+        "h": 8,
-+        "w": 12,
++        "h": 4,
++        "w": 7,
 +        "x": 0,
 +        "y": 0
 +      },
-+      "id": 23,
++      "id": 12,
 +      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "auto",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "last"
++          ],
++          "fields": "",
++          "values": false
 +        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
++        "textMode": "value_and_name"
 +      },
++      "pluginVersion": "8.3.3",
 +      "targets": [
 +        {
-+          "datasource": {
-+            "type": "prometheus",
-+            "uid": "PBFA97CFB590B2093"
-+          },
-+          "exemplar": true,
 +          "expr": "keepalived_vrrp_state",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}",
 +          "refId": "A"
 +        }
 +      ],
-+      "title": "Panel Title",
-+      "type": "timeseries"
++      "title": "Keepalived VRRP Status",
++      "type": "stat"
 +    },
 +    {
 +      "datasource": {
@@ -1828,15 +1846,15 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      },
 +      "gridPos": {
 +        "h": 8,
-+        "w": 12,
-+        "x": 12,
++        "w": 4,
++        "x": 7,
 +        "y": 0
 +      },
-+      "id": 8,
++      "id": 21,
 +      "options": {
-+        "colorMode": "value",
-+        "graphMode": "area",
-+        "justifyMode": "auto",
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
 +        "orientation": "auto",
 +        "reduceOptions": {
 +          "calcs": [
@@ -1848,13 +1866,97 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "text": {},
 +        "textMode": "auto"
 +      },
-+      "pluginVersion": "8.3.2",
++      "pluginVersion": "8.3.3",
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "haproxy_up",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "Haproxy",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "red",
++                "value": null
++              },
++              {
++                "color": "green",
++                "value": 0.5
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 4,
++        "w": 13,
++        "x": 11,
++        "y": 0
++      },
++      "id": 8,
++      "options": {
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "text": {},
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
 +          "expr": "nginx_up",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}",
 +          "refId": "A"
 +        }
 +      ],
@@ -1869,266 +1971,6 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      "fieldConfig": {
 +        "defaults": {
 +          "color": {
-+            "mode": "palette-classic"
-+          },
-+          "custom": {
-+            "axisLabel": "",
-+            "axisPlacement": "auto",
-+            "barAlignment": 0,
-+            "drawStyle": "line",
-+            "fillOpacity": 0,
-+            "gradientMode": "none",
-+            "hideFrom": {
-+              "legend": false,
-+              "tooltip": false,
-+              "viz": false
-+            },
-+            "lineInterpolation": "linear",
-+            "lineWidth": 1,
-+            "pointSize": 5,
-+            "scaleDistribution": {
-+              "type": "linear"
-+            },
-+            "showPoints": "auto",
-+            "spanNulls": false,
-+            "stacking": {
-+              "group": "A",
-+              "mode": "none"
-+            },
-+            "thresholdsStyle": {
-+              "mode": "off"
-+            }
-+          },
-+          "mappings": [],
-+          "thresholds": {
-+            "mode": "absolute",
-+            "steps": [
-+              {
-+                "color": "green",
-+                "value": null
-+              },
-+              {
-+                "color": "red",
-+                "value": 80
-+              }
-+            ]
-+          }
-+        },
-+        "overrides": []
-+      },
-+      "gridPos": {
-+        "h": 8,
-+        "w": 12,
-+        "x": 0,
-+        "y": 8
-+      },
-+      "id": 21,
-+      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
-+        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
-+      },
-+      "targets": [
-+        {
-+          "datasource": {
-+            "type": "prometheus",
-+            "uid": "PBFA97CFB590B2093"
-+          },
-+          "exemplar": true,
-+          "expr": "keepalived_up",
-+          "interval": "",
-+          "legendFormat": "",
-+          "refId": "A"
-+        }
-+      ],
-+      "title": "Keepalived",
-+      "type": "timeseries"
-+    },
-+    {
-+      "datasource": {
-+        "type": "prometheus",
-+        "uid": "PBFA97CFB590B2093"
-+      },
-+      "fieldConfig": {
-+        "defaults": {
-+          "color": {
-+            "mode": "palette-classic"
-+          },
-+          "custom": {
-+            "axisLabel": "",
-+            "axisPlacement": "auto",
-+            "barAlignment": 0,
-+            "drawStyle": "line",
-+            "fillOpacity": 0,
-+            "gradientMode": "none",
-+            "hideFrom": {
-+              "legend": false,
-+              "tooltip": false,
-+              "viz": false
-+            },
-+            "lineInterpolation": "linear",
-+            "lineWidth": 1,
-+            "pointSize": 5,
-+            "scaleDistribution": {
-+              "type": "linear"
-+            },
-+            "showPoints": "auto",
-+            "spanNulls": false,
-+            "stacking": {
-+              "group": "A",
-+              "mode": "none"
-+            },
-+            "thresholdsStyle": {
-+              "mode": "off"
-+            }
-+          },
-+          "mappings": [],
-+          "thresholds": {
-+            "mode": "absolute",
-+            "steps": [
-+              {
-+                "color": "green",
-+                "value": null
-+              },
-+              {
-+                "color": "red",
-+                "value": 80
-+              }
-+            ]
-+          }
-+        },
-+        "overrides": []
-+      },
-+      "gridPos": {
-+        "h": 9,
-+        "w": 12,
-+        "x": 12,
-+        "y": 8
-+      },
-+      "id": 9,
-+      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
-+        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
-+      },
-+      "targets": [
-+        {
-+          "exemplar": true,
-+          "expr": "rate(nginx_http_requests_total[1m])",
-+          "interval": "",
-+          "legendFormat": "",
-+          "refId": "A"
-+        }
-+      ],
-+      "title": "Nginx requests/minute",
-+      "type": "timeseries"
-+    },
-+    {
-+      "datasource": {
-+        "type": "prometheus",
-+        "uid": "PBFA97CFB590B2093"
-+      },
-+      "fieldConfig": {
-+        "defaults": {
-+          "color": {
-+            "mode": "palette-classic"
-+          },
-+          "custom": {
-+            "axisLabel": "",
-+            "axisPlacement": "auto",
-+            "barAlignment": 0,
-+            "drawStyle": "line",
-+            "fillOpacity": 0,
-+            "gradientMode": "none",
-+            "hideFrom": {
-+              "legend": false,
-+              "tooltip": false,
-+              "viz": false
-+            },
-+            "lineInterpolation": "linear",
-+            "lineWidth": 1,
-+            "pointSize": 5,
-+            "scaleDistribution": {
-+              "type": "linear"
-+            },
-+            "showPoints": "auto",
-+            "spanNulls": false,
-+            "stacking": {
-+              "group": "A",
-+              "mode": "none"
-+            },
-+            "thresholdsStyle": {
-+              "mode": "off"
-+            }
-+          },
-+          "mappings": [],
-+          "thresholds": {
-+            "mode": "absolute",
-+            "steps": [
-+              {
-+                "color": "green",
-+                "value": null
-+              },
-+              {
-+                "color": "red",
-+                "value": 80
-+              }
-+            ]
-+          }
-+        },
-+        "overrides": []
-+      },
-+      "gridPos": {
-+        "h": 8,
-+        "w": 12,
-+        "x": 0,
-+        "y": 16
-+      },
-+      "id": 19,
-+      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
-+        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
-+      },
-+      "targets": [
-+        {
-+          "datasource": {
-+            "type": "prometheus",
-+            "uid": "PBFA97CFB590B2093"
-+          },
-+          "exemplar": true,
-+          "expr": "haproxy_server_up",
-+          "interval": "",
-+          "legendFormat": "",
-+          "refId": "A"
-+        }
-+      ],
-+      "title": "Haproxy server status",
-+      "type": "timeseries"
-+    },
-+    {
-+      "datasource": {
-+        "type": "prometheus",
-+        "uid": "PBFA97CFB590B2093"
-+      },
-+      "fieldConfig": {
-+        "defaults": {
-+          "color": {
 +            "mode": "thresholds"
 +          },
 +          "mappings": [
@@ -2163,16 +2005,16 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "overrides": []
 +      },
 +      "gridPos": {
-+        "h": 8,
-+        "w": 12,
-+        "x": 12,
-+        "y": 17
++        "h": 4,
++        "w": 7,
++        "x": 0,
++        "y": 4
 +      },
-+      "id": 5,
++      "id": 20,
 +      "options": {
-+        "colorMode": "value",
-+        "graphMode": "area",
-+        "justifyMode": "auto",
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
 +        "orientation": "auto",
 +        "reduceOptions": {
 +          "calcs": [
@@ -2184,17 +2026,21 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "text": {},
 +        "textMode": "auto"
 +      },
-+      "pluginVersion": "8.3.2",
++      "pluginVersion": "8.3.3",
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
-+          "expr": "mysql_up",
++          "expr": "keepalived_up",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}",
 +          "refId": "A"
 +        }
 +      ],
-+      "title": "MySQL",
++      "title": "Keepalived ",
 +      "type": "stat"
 +    },
 +    {
@@ -2253,12 +2099,12 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "overrides": []
 +      },
 +      "gridPos": {
-+        "h": 8,
-+        "w": 12,
-+        "x": 0,
-+        "y": 24
++        "h": 7,
++        "w": 13,
++        "x": 11,
++        "y": 4
 +      },
-+      "id": 17,
++      "id": 9,
 +      "options": {
 +        "legend": {
 +          "calcs": [],
@@ -2276,13 +2122,13 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +            "uid": "PBFA97CFB590B2093"
 +          },
 +          "exemplar": true,
-+          "expr": "haproxy_up",
++          "expr": "rate(nginx_http_requests_total[1m])",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}",
 +          "refId": "A"
 +        }
 +      ],
-+      "title": "Haproxy",
++      "title": "Nginx requests/minute",
 +      "type": "timeseries"
 +    },
 +    {
@@ -2293,47 +2139,33 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      "fieldConfig": {
 +        "defaults": {
 +          "color": {
-+            "mode": "palette-classic"
++            "mode": "thresholds"
 +          },
-+          "custom": {
-+            "axisLabel": "",
-+            "axisPlacement": "auto",
-+            "barAlignment": 0,
-+            "drawStyle": "line",
-+            "fillOpacity": 0,
-+            "gradientMode": "none",
-+            "hideFrom": {
-+              "legend": false,
-+              "tooltip": false,
-+              "viz": false
-+            },
-+            "lineInterpolation": "linear",
-+            "lineWidth": 1,
-+            "pointSize": 5,
-+            "scaleDistribution": {
-+              "type": "linear"
-+            },
-+            "showPoints": "auto",
-+            "spanNulls": false,
-+            "stacking": {
-+              "group": "A",
-+              "mode": "none"
-+            },
-+            "thresholdsStyle": {
-+              "mode": "off"
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
 +            }
-+          },
-+          "mappings": [],
++          ],
 +          "thresholds": {
 +            "mode": "absolute",
 +            "steps": [
 +              {
-+                "color": "green",
++                "color": "red",
 +                "value": null
 +              },
 +              {
-+                "color": "red",
-+                "value": 80
++                "color": "green",
++                "value": 0.5
 +              }
 +            ]
 +          }
@@ -2342,116 +2174,122 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      },
 +      "gridPos": {
 +        "h": 9,
-+        "w": 12,
-+        "x": 12,
-+        "y": 25
-+      },
-+      "id": 7,
-+      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
-+        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
-+      },
-+      "targets": [
-+        {
-+          "exemplar": true,
-+          "expr": "rate(mysql_global_status_commands_total[1m])",
-+          "interval": "",
-+          "legendFormat": "",
-+          "refId": "A"
-+        }
-+      ],
-+      "title": "MySQL selects/minute",
-+      "type": "timeseries"
-+    },
-+    {
-+      "datasource": {
-+        "type": "prometheus",
-+        "uid": "PBFA97CFB590B2093"
-+      },
-+      "fieldConfig": {
-+        "defaults": {
-+          "color": {
-+            "mode": "palette-classic"
-+          },
-+          "custom": {
-+            "axisLabel": "",
-+            "axisPlacement": "auto",
-+            "barAlignment": 0,
-+            "drawStyle": "line",
-+            "fillOpacity": 0,
-+            "gradientMode": "none",
-+            "hideFrom": {
-+              "legend": false,
-+              "tooltip": false,
-+              "viz": false
-+            },
-+            "lineInterpolation": "linear",
-+            "lineWidth": 1,
-+            "pointSize": 5,
-+            "scaleDistribution": {
-+              "type": "linear"
-+            },
-+            "showPoints": "auto",
-+            "spanNulls": false,
-+            "stacking": {
-+              "group": "A",
-+              "mode": "none"
-+            },
-+            "thresholdsStyle": {
-+              "mode": "off"
-+            }
-+          },
-+          "mappings": [],
-+          "thresholds": {
-+            "mode": "absolute",
-+            "steps": [
-+              {
-+                "color": "green",
-+                "value": null
-+              },
-+              {
-+                "color": "red",
-+                "value": 80
-+              }
-+            ]
-+          }
-+        },
-+        "overrides": []
-+      },
-+      "gridPos": {
-+        "h": 8,
-+        "w": 12,
++        "w": 11,
 +        "x": 0,
-+        "y": 32
++        "y": 8
 +      },
-+      "id": 15,
++      "id": 22,
 +      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
 +        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
++        "text": {},
++        "textMode": "auto"
 +      },
++      "pluginVersion": "8.3.3",
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
-+          "expr": "influxdb_write_write_ok",
++          "expr": "haproxy_server_up",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}; {{server}}",
 +          "refId": "A"
 +        }
 +      ],
-+      "title": "InfluxDB write rate ",
-+      "type": "timeseries"
++      "title": "Haproxy server status",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "red",
++                "value": null
++              },
++              {
++                "color": "green",
++                "value": 0.5
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 4,
++        "w": 13,
++        "x": 11,
++        "y": 11
++      },
++      "id": 4,
++      "options": {
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "text": {},
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "bind_up",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "Bind9",
++      "type": "stat"
 +    },
 +    {
 +      "datasource": {
@@ -2510,9 +2348,9 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      },
 +      "gridPos": {
 +        "h": 9,
-+        "w": 12,
-+        "x": 12,
-+        "y": 34
++        "w": 13,
++        "x": 11,
++        "y": 15
 +      },
 +      "id": 6,
 +      "options": {
@@ -2527,10 +2365,14 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      },
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
 +          "expr": "rate(bind_resolver_queries_total[1m])",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}; {{type}}",
 +          "refId": "A"
 +        }
 +      ],
@@ -2563,12 +2405,12 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +            "lineStyle": {
 +              "fill": "solid"
 +            },
-+            "lineWidth": 1,
++            "lineWidth": 2,
 +            "pointSize": 5,
 +            "scaleDistribution": {
 +              "type": "linear"
 +            },
-+            "showPoints": "auto",
++            "showPoints": "never",
 +            "spanNulls": false,
 +            "stacking": {
 +              "group": "A",
@@ -2577,6 +2419,64 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +            "thresholdsStyle": {
 +              "mode": "off"
 +            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 7,
++        "w": 8,
++        "x": 0,
++        "y": 17
++      },
++      "id": 15,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom"
++        },
++        "tooltip": {
++          "mode": "single"
++        }
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "influxdb_write_write_ok",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "InfluxDB write rate ",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "description": "",
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
 +          },
 +          "mappings": [
 +            {
@@ -2605,39 +2505,50 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +                "value": 0.5
 +              }
 +            ]
-+          },
-+          "unit": "none"
++          }
 +        },
 +        "overrides": []
 +      },
 +      "gridPos": {
-+        "h": 8,
-+        "w": 12,
-+        "x": 0,
-+        "y": 40
++        "h": 7,
++        "w": 3,
++        "x": 8,
++        "y": 17
 +      },
-+      "id": 13,
++      "id": 23,
 +      "options": {
-+        "legend": {
-+          "calcs": [],
-+          "displayMode": "list",
-+          "placement": "bottom"
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
 +        },
-+        "tooltip": {
-+          "mode": "single"
-+        }
++        "text": {},
++        "textMode": "value_and_name"
 +      },
++      "pluginVersion": "8.3.3",
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
 +          "expr": "influxdb_exporter_stats_query_success",
++          "instant": false,
 +          "interval": "",
-+          "legendFormat": "",
++          "intervalFactor": 1,
++          "legendFormat": "{{instance}}",
 +          "refId": "A"
 +        }
 +      ],
 +      "title": "Influx Health",
-+      "type": "timeseries"
++      "type": "stat"
 +    },
 +    {
 +      "datasource": {
@@ -2698,7 +2609,7 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "h": 8,
 +        "w": 12,
 +        "x": 0,
-+        "y": 48
++        "y": 24
 +      },
 +      "id": 11,
 +      "options": {
@@ -2801,16 +2712,16 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "overrides": []
 +      },
 +      "gridPos": {
-+        "h": 8,
++        "h": 5,
 +        "w": 12,
-+        "x": 0,
-+        "y": 56
++        "x": 12,
++        "y": 24
 +      },
-+      "id": 4,
++      "id": 5,
 +      "options": {
-+        "colorMode": "value",
-+        "graphMode": "area",
-+        "justifyMode": "auto",
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
 +        "orientation": "auto",
 +        "reduceOptions": {
 +          "calcs": [
@@ -2822,17 +2733,21 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +        "text": {},
 +        "textMode": "auto"
 +      },
-+      "pluginVersion": "8.3.2",
++      "pluginVersion": "8.3.3",
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
-+          "expr": "bind_up",
++          "expr": "mysql_up",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}",
 +          "refId": "A"
 +        }
 +      ],
-+      "title": "Bind9",
++      "title": "MySQL",
 +      "type": "stat"
 +    },
 +    {
@@ -2893,10 +2808,10 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      "gridPos": {
 +        "h": 9,
 +        "w": 12,
-+        "x": 0,
-+        "y": 64
++        "x": 12,
++        "y": 29
 +      },
-+      "id": 2,
++      "id": 7,
 +      "options": {
 +        "legend": {
 +          "calcs": [],
@@ -2909,10 +2824,106 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +      },
 +      "targets": [
 +        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "rate(mysql_global_status_commands_total[1m])",
++          "interval": "",
++          "legendFormat": "{{instance}}; {{command}}",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL selects/minute",
++      "type": "timeseries"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "lineInterpolation": "linear",
++            "lineStyle": {
++              "fill": "solid"
++            },
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 8,
++        "w": 12,
++        "x": 0,
++        "y": 32
++      },
++      "id": 2,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom"
++        },
++        "tooltip": {
++          "mode": "single"
++        }
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
 +          "exemplar": true,
 +          "expr": "rate(node_cpu_seconds_total[1m])",
 +          "interval": "",
-+          "legendFormat": "",
++          "legendFormat": "{{instance}}; {{mode}}",
 +          "refId": "A"
 +        }
 +      ],
@@ -2921,7 +2932,7 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +    }
 +  ],
 +  "refresh": "5s",
-+  "schemaVersion": 33,
++  "schemaVersion": 34,
 +  "style": "dark",
 +  "tags": [],
 +  "templating": {
@@ -2935,7 +2946,7 @@ TASK [grafana : Place Grafana dashboards] **************************************
 +  "timezone": "",
 +  "title": "Main Dashboard",
 +  "uid": "KAM3W9dnk",
-+  "version": 6,
++  "version": 1,
 +  "weekStart": ""
 +}
 \ No newline at end of file
@@ -2943,455 +2954,527 @@ TASK [grafana : Place Grafana dashboards] **************************************
 changed: [sekapictures-3] => (item=main.json)
 --- before
 +++ after: /home/seka/ica0002/roles/grafana/files/mysql.json
-@@ -0,0 +1,449 @@
+@@ -0,0 +1,521 @@
 +{
-+    "annotations": {
-+      "list": [
-+        {
-+          "builtIn": 1,
-+          "datasource": "Prometheus",
-+          "enable": true,
-+          "hide": true,
-+          "iconColor": "rgba(0, 211, 255, 1)",
-+          "name": "Annotations & Alerts",
-+          "target": {
-+            "limit": 100,
-+            "matchAny": false,
-+            "tags": [],
-+            "type": "dashboard"
-+          },
++  "annotations": {
++    "list": [
++      {
++        "builtIn": 1,
++        "datasource": "Prometheus",
++        "enable": true,
++        "hide": true,
++        "iconColor": "rgba(0, 211, 255, 1)",
++        "name": "Annotations & Alerts",
++        "target": {
++          "limit": 100,
++          "matchAny": false,
++          "tags": [],
 +          "type": "dashboard"
-+        }
-+      ]
-+    },
-+    "editable": true,
-+    "fiscalYearStartMonth": 0,
-+    "gnetId": null,
-+    "graphTooltip": 0,
-+    "links": [],
-+    "liveNow": false,
-+    "panels": [
-+      {
-+        "datasource": "Prometheus",
-+        "fieldConfig": {
-+          "defaults": {
-+            "color": {
-+              "mode": "thresholds"
-+            },
-+            "mappings": [
-+              {
-+                "options": {
-+                  "0": {
-+                    "index": 1,
-+                    "text": "DOWN"
-+                  },
-+                  "1": {
-+                    "index": 0,
-+                    "text": "UP"
-+                  }
-+                },
-+                "type": "value"
-+              }
-+            ],
-+            "thresholds": {
-+              "mode": "absolute",
-+              "steps": [
-+                {
-+                  "color": "red",
-+                  "value": null
-+                },
-+                {
-+                  "color": "green",
-+                  "value": 0.5
-+                }
-+              ]
-+            }
-+          },
-+          "overrides": []
 +        },
-+        "gridPos": {
-+          "h": 8,
-+          "w": 12,
-+          "x": 0,
-+          "y": 0
-+        },
-+        "id": 5,
-+        "options": {
-+          "colorMode": "value",
-+          "graphMode": "area",
-+          "justifyMode": "auto",
-+          "orientation": "auto",
-+          "reduceOptions": {
-+            "calcs": [
-+              "lastNotNull"
-+            ],
-+            "fields": "",
-+            "values": false
-+          },
-+          "text": {},
-+          "textMode": "auto"
-+        },
-+        "pluginVersion": "8.2.5",
-+        "targets": [
-+          {
-+            "exemplar": true,
-+            "expr": "mysql_up",
-+            "interval": "",
-+            "legendFormat": "",
-+            "refId": "A"
-+          }
-+        ],
-+        "title": "MySQL",
-+        "type": "stat"
-+      },
-+      {
-+        "datasource": "Prometheus",
-+        "fieldConfig": {
-+          "defaults": {
-+            "color": {
-+              "mode": "palette-classic"
-+            },
-+            "custom": {
-+              "axisLabel": "",
-+              "axisPlacement": "auto",
-+              "barAlignment": 0,
-+              "drawStyle": "line",
-+              "fillOpacity": 0,
-+              "gradientMode": "none",
-+              "hideFrom": {
-+                "legend": false,
-+                "tooltip": false,
-+                "viz": false
-+              },
-+              "lineInterpolation": "linear",
-+              "lineWidth": 1,
-+              "pointSize": 5,
-+              "scaleDistribution": {
-+                "type": "linear"
-+              },
-+              "showPoints": "auto",
-+              "spanNulls": false,
-+              "stacking": {
-+                "group": "A",
-+                "mode": "none"
-+              },
-+              "thresholdsStyle": {
-+                "mode": "off"
-+              }
-+            },
-+            "mappings": [],
-+            "thresholds": {
-+              "mode": "absolute",
-+              "steps": [
-+                {
-+                  "color": "green",
-+                  "value": null
-+                },
-+                {
-+                  "color": "red",
-+                  "value": 80
-+                }
-+              ]
-+            }
-+          },
-+          "overrides": []
-+        },
-+        "gridPos": {
-+          "h": 9,
-+          "w": 12,
-+          "x": 12,
-+          "y": 0
-+        },
-+        "id": 7,
-+        "options": {
-+          "legend": {
-+            "calcs": [],
-+            "displayMode": "list",
-+            "placement": "bottom"
-+          },
-+          "tooltip": {
-+            "mode": "single"
-+          }
-+        },
-+        "targets": [
-+          {
-+            "exemplar": true,
-+            "expr": "rate(mysql_global_status_commands_total[1m])",
-+            "interval": "",
-+            "legendFormat": "",
-+            "refId": "A"
-+          }
-+        ],
-+        "title": "MySQL selects/minute",
-+        "type": "timeseries"
-+      },
-+      {
-+        "datasource": "Prometheus",
-+        "fieldConfig": {
-+          "defaults": {
-+            "color": {
-+              "mode": "palette-classic"
-+            },
-+            "custom": {
-+              "axisLabel": "",
-+              "axisPlacement": "auto",
-+              "barAlignment": 0,
-+              "drawStyle": "line",
-+              "fillOpacity": 0,
-+              "gradientMode": "none",
-+              "hideFrom": {
-+                "legend": false,
-+                "tooltip": false,
-+                "viz": false
-+              },
-+              "lineInterpolation": "linear",
-+              "lineWidth": 1,
-+              "pointSize": 5,
-+              "scaleDistribution": {
-+                "type": "linear"
-+              },
-+              "showPoints": "auto",
-+              "spanNulls": false,
-+              "stacking": {
-+                "group": "A",
-+                "mode": "none"
-+              },
-+              "thresholdsStyle": {
-+                "mode": "off"
-+              }
-+            },
-+            "mappings": [],
-+            "thresholds": {
-+              "mode": "absolute",
-+              "steps": [
-+                {
-+                  "color": "green",
-+                  "value": null
-+                },
-+                {
-+                  "color": "red",
-+                  "value": 80
-+                }
-+              ]
-+            }
-+          },
-+          "overrides": []
-+        },
-+        "gridPos": {
-+          "h": 8,
-+          "w": 12,
-+          "x": 0,
-+          "y": 8
-+        },
-+        "id": 13,
-+        "options": {
-+          "legend": {
-+            "calcs": [],
-+            "displayMode": "list",
-+            "placement": "bottom"
-+          },
-+          "tooltip": {
-+            "mode": "single"
-+          }
-+        },
-+        "targets": [
-+          {
-+            "exemplar": true,
-+            "expr": "mysql_slave_status_slave_io_running",
-+            "interval": "",
-+            "legendFormat": "",
-+            "refId": "A"
-+          },
-+          {
-+            "exemplar": true,
-+            "expr": "mysql_slave_status_slave_sql_running",
-+            "hide": false,
-+            "interval": "",
-+            "legendFormat": "",
-+            "refId": "B"
-+          }
-+        ],
-+        "title": "MySQL replication threads ",
-+        "type": "timeseries"
-+      },
-+      {
-+        "datasource": "Prometheus",
-+        "fieldConfig": {
-+          "defaults": {
-+            "color": {
-+              "mode": "palette-classic"
-+            },
-+            "custom": {
-+              "axisLabel": "",
-+              "axisPlacement": "auto",
-+              "barAlignment": 0,
-+              "drawStyle": "line",
-+              "fillOpacity": 0,
-+              "gradientMode": "none",
-+              "hideFrom": {
-+                "legend": false,
-+                "tooltip": false,
-+                "viz": false
-+              },
-+              "lineInterpolation": "linear",
-+              "lineWidth": 1,
-+              "pointSize": 5,
-+              "scaleDistribution": {
-+                "type": "linear"
-+              },
-+              "showPoints": "auto",
-+              "spanNulls": false,
-+              "stacking": {
-+                "group": "A",
-+                "mode": "none"
-+              },
-+              "thresholdsStyle": {
-+                "mode": "off"
-+              }
-+            },
-+            "mappings": [],
-+            "thresholds": {
-+              "mode": "absolute",
-+              "steps": [
-+                {
-+                  "color": "green",
-+                  "value": null
-+                },
-+                {
-+                  "color": "red",
-+                  "value": 80
-+                }
-+              ]
-+            }
-+          },
-+          "overrides": []
-+        },
-+        "gridPos": {
-+          "h": 8,
-+          "w": 12,
-+          "x": 12,
-+          "y": 9
-+        },
-+        "id": 9,
-+        "options": {
-+          "legend": {
-+            "calcs": [],
-+            "displayMode": "list",
-+            "placement": "bottom"
-+          },
-+          "tooltip": {
-+            "mode": "single"
-+          }
-+        },
-+        "targets": [
-+          {
-+            "exemplar": true,
-+            "expr": "mysql_global_variables_server_id",
-+            "interval": "",
-+            "legendFormat": "",
-+            "refId": "A"
-+          }
-+        ],
-+        "title": "MySQL server ID's",
-+        "type": "timeseries"
-+      },
-+      {
-+        "datasource": "Prometheus",
-+        "fieldConfig": {
-+          "defaults": {
-+            "color": {
-+              "mode": "palette-classic"
-+            },
-+            "custom": {
-+              "axisLabel": "",
-+              "axisPlacement": "auto",
-+              "barAlignment": 0,
-+              "drawStyle": "line",
-+              "fillOpacity": 0,
-+              "gradientMode": "none",
-+              "hideFrom": {
-+                "legend": false,
-+                "tooltip": false,
-+                "viz": false
-+              },
-+              "lineInterpolation": "linear",
-+              "lineWidth": 1,
-+              "pointSize": 5,
-+              "scaleDistribution": {
-+                "type": "linear"
-+              },
-+              "showPoints": "auto",
-+              "spanNulls": false,
-+              "stacking": {
-+                "group": "A",
-+                "mode": "none"
-+              },
-+              "thresholdsStyle": {
-+                "mode": "off"
-+              }
-+            },
-+            "mappings": [],
-+            "thresholds": {
-+              "mode": "absolute",
-+              "steps": [
-+                {
-+                  "color": "green",
-+                  "value": null
-+                },
-+                {
-+                  "color": "red",
-+                  "value": 80
-+                }
-+              ]
-+            }
-+          },
-+          "overrides": []
-+        },
-+        "gridPos": {
-+          "h": 8,
-+          "w": 12,
-+          "x": 0,
-+          "y": 16
-+        },
-+        "id": 11,
-+        "options": {
-+          "legend": {
-+            "calcs": [],
-+            "displayMode": "list",
-+            "placement": "bottom"
-+          },
-+          "tooltip": {
-+            "mode": "single"
-+          }
-+        },
-+        "targets": [
-+          {
-+            "exemplar": true,
-+            "expr": "mysql_global_variables_read_only",
-+            "interval": "",
-+            "legendFormat": "",
-+            "refId": "A"
-+          }
-+        ],
-+        "title": "MySQL server read only status ",
-+        "type": "timeseries"
++        "type": "dashboard"
 +      }
-+    ],
-+    "schemaVersion": 32,
-+    "style": "dark",
-+    "tags": [],
-+    "templating": {
-+      "list": []
++    ]
++  },
++  "editable": true,
++  "fiscalYearStartMonth": 0,
++  "graphTooltip": 0,
++  "id": 2,
++  "links": [],
++  "liveNow": false,
++  "panels": [
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "index": 1,
++                  "text": "DOWN"
++                },
++                "1": {
++                  "index": 0,
++                  "text": "UP"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "red",
++                "value": null
++              },
++              {
++                "color": "green",
++                "value": 0.5
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 5,
++        "w": 8,
++        "x": 0,
++        "y": 0
++      },
++      "id": 5,
++      "options": {
++        "colorMode": "background",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "text": {},
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "mysql_up",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL",
++      "type": "stat"
 +    },
-+    "time": {
-+      "from": "now-5m",
-+      "to": "now"
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "palette-classic"
++          },
++          "custom": {
++            "axisLabel": "",
++            "axisPlacement": "auto",
++            "barAlignment": 0,
++            "drawStyle": "line",
++            "fillOpacity": 0,
++            "gradientMode": "none",
++            "hideFrom": {
++              "legend": false,
++              "tooltip": false,
++              "viz": false
++            },
++            "lineInterpolation": "linear",
++            "lineWidth": 1,
++            "pointSize": 5,
++            "scaleDistribution": {
++              "type": "linear"
++            },
++            "showPoints": "auto",
++            "spanNulls": false,
++            "stacking": {
++              "group": "A",
++              "mode": "none"
++            },
++            "thresholdsStyle": {
++              "mode": "off"
++            }
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 10,
++        "w": 16,
++        "x": 8,
++        "y": 0
++      },
++      "id": 7,
++      "options": {
++        "legend": {
++          "calcs": [],
++          "displayMode": "list",
++          "placement": "bottom"
++        },
++        "tooltip": {
++          "mode": "single"
++        }
++      },
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "rate(mysql_global_status_commands_total[1m])",
++          "interval": "",
++          "legendFormat": "{{instance}}; {{command}}",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL selects/minute",
++      "type": "timeseries"
 +    },
-+    "timepicker": {},
-+    "timezone": "",
-+    "title": "MySQL Dashboard",
-+    "uid": "KAM3W9dnp",
-+    "version": 1
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 5,
++        "w": 8,
++        "x": 0,
++        "y": 5
++      },
++      "id": 9,
++      "options": {
++        "colorMode": "none",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "mysql_global_variables_server_id",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL server ID's",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "orange",
++                  "index": 1,
++                  "text": "Stopped"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "Running"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 6,
++        "x": 0,
++        "y": 10
++      },
++      "id": 13,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "mysql_slave_status_slave_io_running",
++          "interval": "",
++          "legendFormat": "",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL replica IO thread",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "orange",
++                  "index": 1,
++                  "text": "Stopped"
++                },
++                "1": {
++                  "color": "green",
++                  "index": 0,
++                  "text": "Running"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 6,
++        "x": 6,
++        "y": 10
++      },
++      "id": 15,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "mysql_slave_status_slave_sql_running",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL replica SQL thread",
++      "type": "stat"
++    },
++    {
++      "datasource": {
++        "type": "prometheus",
++        "uid": "PBFA97CFB590B2093"
++      },
++      "fieldConfig": {
++        "defaults": {
++          "color": {
++            "mode": "thresholds"
++          },
++          "mappings": [
++            {
++              "options": {
++                "0": {
++                  "color": "green",
++                  "index": 1,
++                  "text": "Read/write"
++                },
++                "1": {
++                  "color": "orange",
++                  "index": 0,
++                  "text": "Read only"
++                }
++              },
++              "type": "value"
++            }
++          ],
++          "thresholds": {
++            "mode": "absolute",
++            "steps": [
++              {
++                "color": "green",
++                "value": null
++              },
++              {
++                "color": "red",
++                "value": 80
++              }
++            ]
++          }
++        },
++        "overrides": []
++      },
++      "gridPos": {
++        "h": 6,
++        "w": 12,
++        "x": 12,
++        "y": 10
++      },
++      "id": 11,
++      "options": {
++        "colorMode": "value",
++        "graphMode": "none",
++        "justifyMode": "center",
++        "orientation": "auto",
++        "reduceOptions": {
++          "calcs": [
++            "lastNotNull"
++          ],
++          "fields": "",
++          "values": false
++        },
++        "textMode": "auto"
++      },
++      "pluginVersion": "8.3.3",
++      "targets": [
++        {
++          "datasource": {
++            "type": "prometheus",
++            "uid": "PBFA97CFB590B2093"
++          },
++          "exemplar": true,
++          "expr": "mysql_global_variables_read_only",
++          "interval": "",
++          "legendFormat": "{{instance}}",
++          "refId": "A"
++        }
++      ],
++      "title": "MySQL server read only status ",
++      "type": "stat"
++    }
++  ],
++  "schemaVersion": 34,
++  "style": "dark",
++  "tags": [],
++  "templating": {
++    "list": []
++  },
++  "time": {
++    "from": "now-5m",
++    "to": "now"
++  },
++  "timepicker": {},
++  "timezone": "",
++  "title": "MySQL Dashboard",
++  "uid": "KAM3W9dnp",
++  "version": 6,
++  "weekStart": ""
 +}
 \ No newline at end of file
 
@@ -4416,7 +4499,7 @@ changed: [sekapictures-3] => (item=pdashboard.yaml)
 
 TASK [grafana : Place Grafana datasources] *************************************
 --- before
-+++ after: /home/seka/ica0002/roles/grafana/files/prometheus.yaml
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmph3ocr2o1/prometheus.yaml.j2
 @@ -0,0 +1,21 @@
 +apiVersion: 1
 +
@@ -4425,22 +4508,22 @@ TASK [grafana : Place Grafana datasources] *************************************
 +    type: prometheus
 +    # Access mode - proxy (server in the UI) or direct (browser in the UI).
 +    access: proxy
-+    url: http://sekapictures-1:9090/prometheus
++    url: http://sekapictures-3:9090/prometheus
 +    editable: true
 +
 +  - name: InfluxDB
 +    type: influxdb
 +    access: proxy
 +    database: latency
-+    url: http://sekapictures-2:8086
++    url: http://sekapictures-3:8086
 +
 +  - name: InfluxDB-Telegraf
 +    type: influxdb
 +    access: proxy
 +    database: telegraf
-+    url: http://sekapictures-2:8086
++    url: http://sekapictures-3:8086
 
-changed: [sekapictures-3] => (item=prometheus.yaml)
+changed: [sekapictures-3]
 
 TASK [grafana : Grafana Docker container] **************************************
 --- before
@@ -4470,8 +4553,8 @@ changed: [sekapictures-3]
 PLAY [Haproxy] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [haproxy : Install haproxy] ***********************************************
 The following additional packages will be installed:
@@ -4480,20 +4563,20 @@ Suggested packages:
   vim-haproxy haproxy-doc
 The following NEW packages will be installed:
   haproxy liblua5.3-0
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 The following additional packages will be installed:
   liblua5.3-0
 Suggested packages:
   vim-haproxy haproxy-doc
 The following NEW packages will be installed:
   haproxy liblua5.3-0
-0 upgraded, 2 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 2 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 
 TASK [haproxy : /etc/haproxy/haproxy.cfg] **************************************
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpy7plz19v/haproxy.cfg.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpe3nv5nne/haproxy.cfg.j2
 @@ -1,34 +1,35 @@
  global
 -	log /dev/log	local0
@@ -4562,7 +4645,7 @@ TASK [haproxy : /etc/haproxy/haproxy.cfg] **************************************
 
 changed: [sekapictures-1]
 --- before: /etc/haproxy/haproxy.cfg
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpqyj6hrid/haproxy.cfg.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmppccbtma0/haproxy.cfg.j2
 @@ -1,34 +1,35 @@
  global
 -	log /dev/log	local0
@@ -4638,22 +4721,22 @@ ok: [sekapictures-2]
 TASK [haproxy : prometheus-haproxy-exporter] ***********************************
 The following NEW packages will be installed:
   prometheus-haproxy-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 The following NEW packages will be installed:
   prometheus-haproxy-exporter
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 
 TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpihm1kkcs/prometheus-haproxy-exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp7wlnfcu7/prometheus-haproxy-exporter.j2
 @@ -2,15 +2,15 @@
  # Due to shell scaping, to pass backslashes for regexes, you need to double
  # them (\\d for \d). If running under systemd, you need to double them again
  # (\\\\d to mean \d), and escape newlines too.
 -ARGS=""
-+ARGS="--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv""
++ARGS="--haproxy.scrape-uri="http://193.40.156.67:15288/stats;csv""
  
  # Prometheus-haproxy-exporter supports the following options:
 -#
@@ -4665,20 +4748,20 @@ TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
 +#--web.telemetry-path="/haproxy-metrics"
  #    Path under which to expose metrics.
 -#  --haproxy.scrape-uri="http://localhost/;csv"
-+#--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv"
++#--haproxy.scrape-uri="http://193.40.156.67:15288/stats;csv"
  #    URI on which to scrape HAProxy.
  #  --haproxy.ssl-verify
  #    Flag that enables SSL certificate verification for the scrape URI
 
 changed: [sekapictures-1]
 --- before: /etc/default/prometheus-haproxy-exporter
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp0539rbbn/prometheus-haproxy-exporter.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp8nd_dj50/prometheus-haproxy-exporter.j2
 @@ -2,15 +2,15 @@
  # Due to shell scaping, to pass backslashes for regexes, you need to double
  # them (\\d for \d). If running under systemd, you need to double them again
  # (\\\\d to mean \d), and escape newlines too.
 -ARGS=""
-+ARGS="--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv""
++ARGS="--haproxy.scrape-uri="http://193.40.156.67:15288/stats;csv""
  
  # Prometheus-haproxy-exporter supports the following options:
 -#
@@ -4690,7 +4773,7 @@ changed: [sekapictures-1]
 +#--web.telemetry-path="/haproxy-metrics"
  #    Path under which to expose metrics.
 -#  --haproxy.scrape-uri="http://localhost/;csv"
-+#--haproxy.scrape-uri="http://193.40.156.86:6188/stats;csv"
++#--haproxy.scrape-uri="http://193.40.156.67:15288/stats;csv"
  #    URI on which to scrape HAProxy.
  #  --haproxy.ssl-verify
  #    Flag that enables SSL certificate verification for the scrape URI
@@ -4710,8 +4793,8 @@ Suggested packages:
 The following NEW packages will be installed:
   ipvsadm keepalived libmysqlclient21 libnl-3-200 libnl-genl-3-200
   libsensors-config libsensors5 libsnmp-base libsnmp35
-0 upgraded, 9 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-2]
+0 upgraded, 9 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-1]
 The following additional packages will be installed:
   ipvsadm libmysqlclient21 libnl-3-200 libnl-genl-3-200 libsensors-config
   libsensors5 libsnmp-base libsnmp35
@@ -4720,40 +4803,12 @@ Suggested packages:
 The following NEW packages will be installed:
   ipvsadm keepalived libmysqlclient21 libnl-3-200 libnl-genl-3-200
   libsensors-config libsensors5 libsnmp-base libsnmp35
-0 upgraded, 9 newly installed, 0 to remove and 138 not upgraded.
-changed: [sekapictures-1]
+0 upgraded, 9 newly installed, 0 to remove and 140 not upgraded.
+changed: [sekapictures-2]
 
 TASK [keepalived : /etc/keepalived/keepalived.conf] ****************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp2wxvfsh7/keepalived.conf.j2
-@@ -0,0 +1,22 @@
-+vrrp_script check_haproxy {                 
-+    script "/usr/local/bin/haproxy_check" 
-+    weight 20                              
-+    interval 1               
-+}
-+vrrp_instance agama {             
-+    interface ens3
-+    virtual_router_id 65
-+        priority 100
-+        advert_int 1                            
-+    virtual_ipaddress {                     
-+        192.168.100.61/24                   
-+    }
-+    unicast_peer {
-+                                          
-+                        192.168.42.90
-+                                  
-+            }
-+    track_script {
-+        check_haproxy
-+    }
-+}
-\ No newline at end of file
-
-changed: [sekapictures-1]
---- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpmxrecfsh/keepalived.conf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpys3qye7f/keepalived.conf.j2
 @@ -0,0 +1,22 @@
 +vrrp_script check_haproxy {                 
 +    script "/usr/local/bin/haproxy_check" 
@@ -4766,10 +4821,10 @@ changed: [sekapictures-1]
 +        priority 99
 +        advert_int 1                            
 +    virtual_ipaddress {                     
-+        192.168.100.61/24                   
++        192.168.100.152/24                   
 +    }
 +    unicast_peer {
-+                        192.168.42.61
++                        192.168.42.152
 +                                  
 +                                          
 +            }
@@ -4780,36 +4835,64 @@ changed: [sekapictures-1]
 \ No newline at end of file
 
 changed: [sekapictures-2]
-
-TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp7pnj8lzn/haproxy_check.j2
-@@ -0,0 +1,2 @@
-+#!/bin/bash
-+ss -ntl | grep -q ':88 '
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpp3n9n9kq/keepalived.conf.j2
+@@ -0,0 +1,22 @@
++vrrp_script check_haproxy {                 
++    script "/usr/local/bin/haproxy_check" 
++    weight 20                              
++    interval 1               
++}
++vrrp_instance agama {             
++    interface ens3
++    virtual_router_id 65
++        priority 100
++        advert_int 1                            
++    virtual_ipaddress {                     
++        192.168.100.152/24                   
++    }
++    unicast_peer {
++                                          
++                        192.168.42.156
++                                  
++            }
++    track_script {
++        check_haproxy
++    }
++}
 \ No newline at end of file
 
 changed: [sekapictures-1]
+
+TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpp_wphmaf/haproxy_check.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpcmt1a6fq/haproxy_check.j2
 @@ -0,0 +1,2 @@
 +#!/bin/bash
 +ss -ntl | grep -q ':88 '
 \ No newline at end of file
 
 changed: [sekapictures-2]
+--- before
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp177_9j_a/haproxy_check.j2
+@@ -0,0 +1,2 @@
++#!/bin/bash
++ss -ntl | grep -q ':88 '
+\ No newline at end of file
+
+changed: [sekapictures-1]
 
 TASK [keepalived : keepalived started] *****************************************
 changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [keepalived : Download keepalived exporter] *******************************
-changed: [sekapictures-2]
 changed: [sekapictures-1]
+changed: [sekapictures-2]
 
 TASK [keepalived : Unzip keepalived exporter] **********************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 TASK [keepalived : Install keepalived exporter] ********************************
 changed: [sekapictures-1]
@@ -4817,7 +4900,7 @@ changed: [sekapictures-2]
 
 TASK [keepalived : Place keepalived-exporter.service] **************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpb6swoido/keepalived-exporter.service
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpnk8a_ahs/keepalived-exporter.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Keepalived exporter
@@ -4833,7 +4916,7 @@ TASK [keepalived : Place keepalived-exporter.service] **************************
 
 changed: [sekapictures-1]
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpewoo07ss/keepalived-exporter.service
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpkg7bsm3y/keepalived-exporter.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Keepalived exporter
@@ -4850,20 +4933,20 @@ changed: [sekapictures-1]
 changed: [sekapictures-2]
 
 TASK [keepalived : keepalived-exporter started] ********************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [haproxy : Restart haproxy] ************************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [haproxy : Restart prometheus-haproxy-exporter] ****************
 changed: [sekapictures-2]
 changed: [sekapictures-1]
 
 RUNNING HANDLER [keepalived : Restart keepalived] ******************************
-changed: [sekapictures-1]
 changed: [sekapictures-2]
+changed: [sekapictures-1]
 
 RUNNING HANDLER [keepalived : Reload daemon] ***********************************
 changed: [sekapictures-1]
@@ -4880,6 +4963,12 @@ changed: [sekapictures-1]
 PLAY [InfluxDB] ****************************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-3]
+
+TASK [node_exporter : Install node_exporters packages] *************************
+ok: [sekapictures-3]
+
+TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-3]
 
 TASK [influxdb : Check that the influxdb key exists] ***************************
@@ -4899,12 +4988,12 @@ changed: [sekapictures-3]
 TASK [influxdb : Install influxdb service with apt] ****************************
 The following NEW packages will be installed:
   influxdb
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 
 TASK [influxdb : Place influxdb.conf] ******************************************
 --- before: /etc/influxdb/influxdb.conf
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmprwjfreqm/influxdb.conf
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp_7_yil63/influxdb.conf
 @@ -1,596 +1,22 @@
 -### Welcome to the InfluxDB configuration file.
 -
@@ -5513,7 +5602,7 @@ changed: [sekapictures-3]
 TASK [influxdb : Install telegraf service with apt] ****************************
 The following NEW packages will be installed:
   telegraf
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 
 TASK [influxdb : Place telegraf.conf] ******************************************
@@ -5532,12 +5621,12 @@ changed: [sekapictures-3]
 TASK [pinger : Install  fping] *************************************************
 The following NEW packages will be installed:
   fping
-0 upgraded, 1 newly installed, 0 to remove and 138 not upgraded.
+0 upgraded, 1 newly installed, 0 to remove and 140 not upgraded.
 changed: [sekapictures-3]
 
 TASK [pinger : Place pinger.service] *******************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpn_91to9y/pinger.service
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpuw_ufhp6/pinger.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Pinging Machine
@@ -5550,13 +5639,12 @@ TASK [pinger : Place pinger.service] *******************************************
 +
 +[Install]
 +WantedBy=multi-user.target
-\ No newline at end of file
 
 changed: [sekapictures-3]
 
 TASK [pinger : Place pinger.sh script] *****************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp8iq17fa1/pinger.sh
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmpuu08_col/pinger.sh
 @@ -0,0 +1,26 @@
 +#!/bin/bash
 +
@@ -5608,7 +5696,7 @@ changed: [sekapictures-3]
 
 TASK [pinger : Place pinger.conf] **********************************************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp_jds99rg/pinger.conf.j2
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp8xwpd_u1/pinger.conf.j2
 @@ -0,0 +1,3 @@
 +database_url=http://sekapictures-3:8086
 +database_name=latency
@@ -5638,11 +5726,12 @@ changed: [sekapictures-3]
 
 TASK [influxdb_backup : Create /etc/cron.d/influxdb-backup] ********************
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmp43thy_yk/influxdb-backup.j2
-@@ -0,0 +1,3 @@
-+15 1 * * 0 backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
-+30 1 * * 0 backup duplicity --no-encryption full /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
-+30 1 * * 1-6 backup duplicity --no-encryption incremental /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmp163m96wk/influxdb-backup.j2
+@@ -0,0 +1,4 @@
++15 22 * * * backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
++30 22 * * 0 backup duplicity --no-encryption full /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
++30 22 * * 1-6 backup duplicity --no-encryption incremental /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
++05 22 28 * * backup duplicity remove-older-than 1M rsync rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
 
 changed: [sekapictures-3]
 
@@ -5665,7 +5754,7 @@ changed: [sekapictures-3]
 
 TASK [influxdb_exporter : Place prometheus-influxdb-stats-exporter.service] ****
 --- before
-+++ after: /home/seka/.ansible/tmp/ansible-local-2004d4one987/tmpbd9518n0/prometheus-influxdb-stats-exporter.service
++++ after: /home/seka/.ansible/tmp/ansible-local-511307p8x7sf2/tmprfxewvh1/prometheus-influxdb-stats-exporter.service
 @@ -0,0 +1,11 @@
 +[Unit]
 +Description=Influxdb stats exporter
@@ -5707,35 +5796,35 @@ RUNNING HANDLER [influxdb_exporter : Restart prometheus-influxdb-stats-exporter]
 changed: [sekapictures-3]
 
 PLAY RECAP *********************************************************************
-sekapictures-1             : ok=93   changed=69   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-sekapictures-2             : ok=92   changed=69   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
-sekapictures-3             : ok=88   changed=70   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+sekapictures-1             : ok=94   changed=70   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+sekapictures-2             : ok=93   changed=70   unreachable=0    failed=0    skipped=6    rescued=0    ignored=0   
+sekapictures-3             : ok=94   changed=73   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 
 + ansible-playbook infra.yaml --diff
 
 PLAY [Ansible connection test] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [test_connection : Ansible ping module] ***********************************
-ok: [sekapictures-3]
 ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 PLAY [Initialization] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [init : Update APT cache] *************************************************
+ok: [sekapictures-1]
 ok: [sekapictures-3]
 ok: [sekapictures-2]
-ok: [sekapictures-1]
 
 TASK [backup : Create user backup] *********************************************
 ok: [sekapictures-2]
@@ -5743,38 +5832,38 @@ ok: [sekapictures-1]
 ok: [sekapictures-3]
 
 TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
-ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
+ok: [sekapictures-1]
 
 TASK [backup : Create /home/backup/restore] ************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 
 TASK [backup : Install Duplicity service with apt] *****************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [Setup] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [setup] *******************************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [bind : Install bind9] ****************************************************
 ok: [sekapictures-1]
@@ -5787,9 +5876,9 @@ ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [bind : Stop systemd-resolved] ********************************************
-ok: [sekapictures-3]
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [bind : Delete resolv.conf link] ******************************************
 skipping: [sekapictures-1]
@@ -5797,8 +5886,8 @@ skipping: [sekapictures-2]
 skipping: [sekapictures-3]
 
 TASK [bind : Place /etc/resolv.conf] *******************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [bind : Place /var/cache/bind/] *******************************************
@@ -5810,9 +5899,9 @@ ok: [sekapictures-3] => (item=db.gleppy)
 ok: [sekapictures-3] => (item=db.reverse)
 
 TASK [bind : Place /etc/bind/named.conf.local] *********************************
+ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
-ok: [sekapictures-3]
 
 TASK [bind : Reload database] **************************************************
 skipping: [sekapictures-1]
@@ -5823,22 +5912,22 @@ TASK [bind : Set CNAME records] ************************************************
 skipping: [sekapictures-1] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-2] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
-skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
-skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
@@ -5858,9 +5947,9 @@ ok: [sekapictures-3] => (item={'key': 'web1', 'value': 'sekapictures-1'})
 ok: [sekapictures-3] => (item={'key': 'web2', 'value': 'sekapictures-2'})
 
 TASK [bind : Set A records] ****************************************************
-skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
-skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
-ok: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.156'})
+skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.132'}) 
+skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.132'}) 
+ok: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.132'})
 
 TASK [bind : Ensure bind9 is started] ******************************************
 ok: [sekapictures-1]
@@ -5873,26 +5962,31 @@ ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [bind_exporter : Ensure bind-exporter is started] *************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 ok: [sekapictures-3]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
-ok: [sekapictures-2]
 
 TASK [docker : Install Docker package] *****************************************
+ok: [sekapictures-2]
+ok: [sekapictures-3]
 ok: [sekapictures-1]
+
+TASK [docker : add user to docker group] ***************************************
 ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [docker : iptables-persistent] ********************************************
-ok: [sekapictures-3]
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [docker : iptables-save -t mangle] ****************************************
 skipping: [sekapictures-1]
@@ -5910,36 +6004,36 @@ skipping: [sekapictures-2]
 skipping: [sekapictures-3]
 
 TASK [docker : Start Docker service] *******************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [Nginx] *******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 ok: [sekapictures-3]
 
 TASK [nginx : Install nginx] ***************************************************
+ok: [sekapictures-2]
 ok: [sekapictures-1]
 ok: [sekapictures-3]
-ok: [sekapictures-2]
 
 TASK [nginx : Place Nginx config] **********************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [nginx : Ensure Nginx is started] *****************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx_exporter : prometheus-nginx-exporter] ******************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 ok: [sekapictures-1]
@@ -5953,8 +6047,8 @@ skipping: [sekapictures-3]
 
 TASK [nginx_exporter : Ensure nginx-exporter is started] ***********************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [Database server] *********************************************************
 
@@ -5963,28 +6057,28 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [mysql : Install mysql packages] ******************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : Place mysql configuration] ***************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : Ensure mysql is started] *****************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : MySQL database] **************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql : MySQL user] ******************************************************
 ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [mysql : MySQL user for replication] **************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : MySQL replica read only mode ON] *********************************
 skipping: [sekapictures-2]
@@ -5999,20 +6093,20 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [node_exporter : Ensure node_explorer is started] *************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql_exporter : Install prometheus-mysqld-exporter] *********************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [mysql_exporter : Place my.cnf.j2] ****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_exporter : Create user exporter] ***********************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql_exporter : Pause for 10 sec] ***************************************
 skipping: [sekapictures-1]
@@ -6021,21 +6115,17 @@ TASK [mysql_exporter : Start prometheus-mysqld-exporter] ***********************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
-TASK [rsyslog : Place rsyslog.conf] ********************************************
-ok: [sekapictures-1]
-ok: [sekapictures-2]
-
 TASK [mysql_backup : Create /home/backup/mysql] ********************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql_backup : MySQL user backup] ****************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql_backup : Place /home/backup/.my.cnf] *******************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql_backup : Create /etc/cron.d/mysql-backup] **************************
 ok: [sekapictures-1]
@@ -6060,28 +6150,36 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [agama : Agama Docker containers:"2"] *************************************
-ok: [sekapictures-2] => (item=1)
 ok: [sekapictures-1] => (item=1)
+ok: [sekapictures-2] => (item=1)
 ok: [sekapictures-2] => (item=2)
 ok: [sekapictures-1] => (item=2)
 
 TASK [agama : Start Agama containers:"2"] **************************************
-ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-2] => (item=1)
-ok: [sekapictures-2] => (item=2)
+ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-1] => (item=2)
+ok: [sekapictures-2] => (item=2)
 
 TASK [node_exporter : Install node_exporters packages] *************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
-TASK [rsyslog : Place rsyslog.conf] ********************************************
-ok: [sekapictures-1]
+PLAY [Telegraf logging] ********************************************************
+
+TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-2]
+ok: [sekapictures-1]
+ok: [sekapictures-3]
+
+TASK [rsyslog : Place rsyslog.conf] ********************************************
+ok: [sekapictures-2]
+ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 PLAY [Prometheus server] *******************************************************
 
@@ -6119,7 +6217,7 @@ ok: [sekapictures-3] => (item=syslog.json)
 ok: [sekapictures-3] => (item=pdashboard.yaml)
 
 TASK [grafana : Place Grafana datasources] *************************************
-ok: [sekapictures-3] => (item=prometheus.yaml)
+ok: [sekapictures-3]
 
 TASK [grafana : Grafana Docker container] **************************************
 ok: [sekapictures-3]
@@ -6143,16 +6241,16 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [haproxy : prometheus-haproxy-exporter] ***********************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [haproxy : Haproxy exporter started] **************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [keepalived : Install keepalived] *****************************************
 ok: [sekapictures-1]
@@ -6163,8 +6261,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [keepalived : keepalived started] *****************************************
 ok: [sekapictures-1]
@@ -6183,8 +6281,8 @@ skipping: [sekapictures-1]
 skipping: [sekapictures-2]
 
 TASK [keepalived : Place keepalived-exporter.service] **************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [keepalived : keepalived-exporter started] ********************************
 ok: [sekapictures-1]
@@ -6193,6 +6291,12 @@ ok: [sekapictures-2]
 PLAY [InfluxDB] ****************************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-3]
+
+TASK [node_exporter : Install node_exporters packages] *************************
+ok: [sekapictures-3]
+
+TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-3]
 
 TASK [influxdb : Check that the influxdb key exists] ***************************
@@ -6265,9 +6369,9 @@ TASK [influxdb_exporter : Start influxdb_exporter] *****************************
 ok: [sekapictures-3]
 
 PLAY RECAP *********************************************************************
-sekapictures-1             : ok=71   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
-sekapictures-2             : ok=71   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
-sekapictures-3             : ok=66   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+sekapictures-1             : ok=72   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
+sekapictures-2             : ok=72   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
+sekapictures-3             : ok=71   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 
 + ansible all -b -m reboot -a test_command=uptime
 sekapictures-3 | CHANGED => {
@@ -6275,14 +6379,14 @@ sekapictures-3 | CHANGED => {
     "elapsed": 36,
     "rebooted": true
 }
-sekapictures-1 | CHANGED => {
-    "changed": true,
-    "elapsed": 44,
-    "rebooted": true
-}
 sekapictures-2 | CHANGED => {
     "changed": true,
-    "elapsed": 45,
+    "elapsed": 37,
+    "rebooted": true
+}
+sekapictures-1 | CHANGED => {
+    "changed": true,
+    "elapsed": 49,
     "rebooted": true
 }
 + ansible-playbook infra.yaml --diff
@@ -6290,21 +6394,21 @@ sekapictures-2 | CHANGED => {
 PLAY [Ansible connection test] *************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [test_connection : Ansible ping module] ***********************************
+ok: [sekapictures-2]
 ok: [sekapictures-3]
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 
 PLAY [Initialization] **********************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [init : Update APT cache] *************************************************
 ok: [sekapictures-3]
@@ -6313,8 +6417,8 @@ ok: [sekapictures-2]
 
 TASK [backup : Create user backup] *********************************************
 ok: [sekapictures-1]
-ok: [sekapictures-2]
 ok: [sekapictures-3]
+ok: [sekapictures-2]
 
 TASK [backup : Place /home/backup/.ssh/known_hosts] ****************************
 ok: [sekapictures-1]
@@ -6322,8 +6426,8 @@ ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [backup : Create /home/backup/restore] ************************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 ok: [sekapictures-2]
 
 TASK [backup : Install Duplicity service with apt] *****************************
@@ -6339,21 +6443,21 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [setup] *******************************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 ok: [sekapictures-3]
 
 PLAY [DNS server] **************************************************************
 
 TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [bind : Install bind9] ****************************************************
 ok: [sekapictures-2]
-ok: [sekapictures-3]
 ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [bind : Place bind9 configuration] ****************************************
 ok: [sekapictures-1]
@@ -6371,9 +6475,9 @@ skipping: [sekapictures-2]
 skipping: [sekapictures-3]
 
 TASK [bind : Place /etc/resolv.conf] *******************************************
-ok: [sekapictures-3]
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [bind : Place /var/cache/bind/] *******************************************
 skipping: [sekapictures-1] => (item=db.gleppy) 
@@ -6384,8 +6488,8 @@ ok: [sekapictures-3] => (item=db.gleppy)
 ok: [sekapictures-3] => (item=db.reverse)
 
 TASK [bind : Place /etc/bind/named.conf.local] *********************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [bind : Reload database] **************************************************
@@ -6398,8 +6502,8 @@ skipping: [sekapictures-1] => (item={'key': 'grafana', 'value': 'sekapictures-3'
 skipping: [sekapictures-1] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'lb2', 'value': 'sekapictures-2'}) 
-skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'grafana', 'value': 'sekapictures-3'}) 
+skipping: [sekapictures-1] => (item={'key': 'mysql1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-2] => (item={'key': 'influxdb', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-1] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'lb1', 'value': 'sekapictures-1'}) 
@@ -6412,8 +6516,8 @@ skipping: [sekapictures-2] => (item={'key': 'mysql2', 'value': 'sekapictures-2'}
 skipping: [sekapictures-1] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns1', 'value': 'sekapictures-1'}) 
 skipping: [sekapictures-1] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
-skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-1] => (item={'key': 'web2', 'value': 'sekapictures-2'}) 
+skipping: [sekapictures-2] => (item={'key': 'ns2', 'value': 'sekapictures-2'}) 
 skipping: [sekapictures-2] => (item={'key': 'ns3', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'prometheus', 'value': 'sekapictures-3'}) 
 skipping: [sekapictures-2] => (item={'key': 'web1', 'value': 'sekapictures-1'}) 
@@ -6432,41 +6536,46 @@ ok: [sekapictures-3] => (item={'key': 'web1', 'value': 'sekapictures-1'})
 ok: [sekapictures-3] => (item={'key': 'web2', 'value': 'sekapictures-2'})
 
 TASK [bind : Set A records] ****************************************************
-skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
-skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.156'}) 
-ok: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.156'})
+skipping: [sekapictures-1] => (item={'key': 'backup', 'value': '192.168.42.132'}) 
+skipping: [sekapictures-2] => (item={'key': 'backup', 'value': '192.168.42.132'}) 
+ok: [sekapictures-3] => (item={'key': 'backup', 'value': '192.168.42.132'})
 
 TASK [bind : Ensure bind9 is started] ******************************************
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [bind_exporter : Install bind-exporter] ***********************************
-ok: [sekapictures-2]
-ok: [sekapictures-1]
 ok: [sekapictures-3]
+ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [bind_exporter : Ensure bind-exporter is started] *************************
+ok: [sekapictures-1]
 ok: [sekapictures-3]
 ok: [sekapictures-2]
-ok: [sekapictures-1]
 
 PLAY [Docker] ******************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-3]
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [docker : Install Docker package] *****************************************
 ok: [sekapictures-1]
 ok: [sekapictures-3]
 ok: [sekapictures-2]
 
-TASK [docker : iptables-persistent] ********************************************
+TASK [docker : add user to docker group] ***************************************
 ok: [sekapictures-1]
 ok: [sekapictures-3]
 ok: [sekapictures-2]
+
+TASK [docker : iptables-persistent] ********************************************
+ok: [sekapictures-2]
+ok: [sekapictures-1]
+ok: [sekapictures-3]
 
 TASK [docker : iptables-save -t mangle] ****************************************
 skipping: [sekapictures-1]
@@ -6497,13 +6606,13 @@ ok: [sekapictures-1]
 
 TASK [nginx : Install nginx] ***************************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx : Place Nginx config] **********************************************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx : Ensure Nginx is started] *****************************************
 ok: [sekapictures-1]
@@ -6511,9 +6620,9 @@ ok: [sekapictures-2]
 ok: [sekapictures-3]
 
 TASK [nginx_exporter : prometheus-nginx-exporter] ******************************
-ok: [sekapictures-3]
 ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 TASK [nginx_exporter : Place Nginx config for nginx-exporter] ******************
 ok: [sekapictures-1]
@@ -6527,14 +6636,14 @@ skipping: [sekapictures-3]
 
 TASK [nginx_exporter : Ensure nginx-exporter is started] ***********************
 ok: [sekapictures-1]
-ok: [sekapictures-3]
 ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [Database server] *********************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql : Install mysql packages] ******************************************
 ok: [sekapictures-1]
@@ -6549,12 +6658,12 @@ ok: [sekapictures-2]
 ok: [sekapictures-1]
 
 TASK [mysql : MySQL database] **************************************************
-ok: [sekapictures-1]
 ok: [sekapictures-2]
+ok: [sekapictures-1]
 
 TASK [mysql : MySQL user] ******************************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [mysql : MySQL user for replication] **************************************
 ok: [sekapictures-1]
@@ -6592,10 +6701,6 @@ TASK [mysql_exporter : Pause for 10 sec] ***************************************
 skipping: [sekapictures-1]
 
 TASK [mysql_exporter : Start prometheus-mysqld-exporter] ***********************
-ok: [sekapictures-2]
-ok: [sekapictures-1]
-
-TASK [rsyslog : Place rsyslog.conf] ********************************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
@@ -6626,8 +6731,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [agama : Download Ansible Dockerfile] *************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [agama : Build Agama docker image] ****************************************
 ok: [sekapictures-2]
@@ -6640,22 +6745,30 @@ ok: [sekapictures-1] => (item=2)
 ok: [sekapictures-2] => (item=2)
 
 TASK [agama : Start Agama containers:"2"] **************************************
-ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-2] => (item=1)
+ok: [sekapictures-1] => (item=1)
 ok: [sekapictures-1] => (item=2)
 ok: [sekapictures-2] => (item=2)
 
 TASK [node_exporter : Install node_exporters packages] *************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-1]
 ok: [sekapictures-2]
 
-TASK [rsyslog : Place rsyslog.conf] ********************************************
-ok: [sekapictures-2]
+PLAY [Telegraf logging] ********************************************************
+
+TASK [Gathering Facts] *********************************************************
 ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
+
+TASK [rsyslog : Place rsyslog.conf] ********************************************
+ok: [sekapictures-1]
+ok: [sekapictures-2]
+ok: [sekapictures-3]
 
 PLAY [Prometheus server] *******************************************************
 
@@ -6693,7 +6806,7 @@ ok: [sekapictures-3] => (item=syslog.json)
 ok: [sekapictures-3] => (item=pdashboard.yaml)
 
 TASK [grafana : Place Grafana datasources] *************************************
-ok: [sekapictures-3] => (item=prometheus.yaml)
+ok: [sekapictures-3]
 
 TASK [grafana : Grafana Docker container] **************************************
 ok: [sekapictures-3]
@@ -6721,8 +6834,8 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [haproxy : /etc/default/prometheus-haproxy-exporter] **********************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [haproxy : Haproxy exporter started] **************************************
 ok: [sekapictures-1]
@@ -6737,12 +6850,12 @@ ok: [sekapictures-1]
 ok: [sekapictures-2]
 
 TASK [keepalived : /usr/local/bin/haproxy_check] *******************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [keepalived : keepalived started] *****************************************
-ok: [sekapictures-2]
 ok: [sekapictures-1]
+ok: [sekapictures-2]
 
 TASK [keepalived : Download keepalived exporter] *******************************
 skipping: [sekapictures-1]
@@ -6767,6 +6880,12 @@ ok: [sekapictures-1]
 PLAY [InfluxDB] ****************************************************************
 
 TASK [Gathering Facts] *********************************************************
+ok: [sekapictures-3]
+
+TASK [node_exporter : Install node_exporters packages] *************************
+ok: [sekapictures-3]
+
+TASK [node_exporter : Ensure node_explorer is started] *************************
 ok: [sekapictures-3]
 
 TASK [influxdb : Check that the influxdb key exists] ***************************
@@ -6839,9 +6958,9 @@ TASK [influxdb_exporter : Start influxdb_exporter] *****************************
 ok: [sekapictures-3]
 
 PLAY RECAP *********************************************************************
-sekapictures-1             : ok=71   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
-sekapictures-2             : ok=71   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
-sekapictures-3             : ok=66   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
+sekapictures-1             : ok=72   changed=0    unreachable=0    failed=0    skipped=14   rescued=0    ignored=0   
+sekapictures-2             : ok=72   changed=0    unreachable=0    failed=0    skipped=13   rescued=0    ignored=0   
+sekapictures-3             : ok=71   changed=0    unreachable=0    failed=0    skipped=8    rescued=0    ignored=0   
 
 + date
-E 20 dets  2021 18:29:11 EET
+N 13 jaan  2022 09:13:45 EET

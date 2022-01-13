@@ -1,5 +1,6 @@
 {% if inventory_hostname != mysql_master -%}
-10 22 * * 0 backup mysqldump agama > /home/backup/mysql/agama.sql
+10 22 * * * backup mysqldump agama > /home/backup/mysql/agama.sql
 20 22 * * 0  backup duplicity --no-encryption full /home/backup/mysql/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
 20 22 * * 1-6  backup duplicity --no-encryption incremental /home/backup/mysql/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
+00 22 28 * *  backup duplicity remove-older-than 1M rsync rsync://sekapictures@backup.gleppy.io//home/sekapictures/mysql/
 {% endif -%}
