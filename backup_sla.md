@@ -62,6 +62,7 @@ It is possible to store 2 backup versions at the same time.
 Each 28 days the oldest backup version is deleted. 
 Having 2 version (7 days difference) version offsite is beneficial as random error may occur and one of the version may be not be sufficient. 
 Ansible repository is accessible from github.
+
 On-site backups are stored using different media types. 
 Main backup copies are stored on the machines directly for the quick access.
 Another copies are stored on the hard drives. 
