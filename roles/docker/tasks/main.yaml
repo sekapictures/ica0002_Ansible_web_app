@@ -37,6 +37,13 @@
     state: started
     enabled: yes
 
+- name: Log into DockerHub
+  docker_login:
+    username: sekapictures
+    password: "{{ docker_password }}"
+    email: sekapictures@gmail.com
+  no_log: true
+
 # - name: Change /var/run/docker.sock permissions
 #   ansible.builtin.file:
 #     path: /var/run/docker.sock
