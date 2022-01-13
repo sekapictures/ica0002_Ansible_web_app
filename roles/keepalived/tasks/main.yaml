@@ -1,4 +1,11 @@
 ---
+
+- name: Create user keepalived_script
+  ansible.builtin.user:
+    name: keepalived_script
+    create_home: yes
+    home: /home/keepalived_script
+
 - name: Install keepalived
   apt:
     name:
@@ -16,6 +23,8 @@
     dest: /usr/local/bin/haproxy_check
     src: haproxy_check.j2
     mode: '0744'
+    owner: keepalived_script
+    group: keepalived_script
   notify:
     - Restart keepalived
 

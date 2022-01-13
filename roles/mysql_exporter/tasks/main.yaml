@@ -13,6 +13,7 @@
   notify: 
     - Restart prometheus-mysqld-exporter
     - Restart mysql service
+  no_log: true
 
 - name: Create user exporter
   community.mysql.mysql_user:
