@@ -49,10 +49,7 @@
       - role: mysql 
         tags: mysql_tag
       - node_exporter
-      # - nginx
       - mysql_exporter
-      # - nginx_exporter
-      # - rsyslog
       - mysql_backup
     tags: db
 
@@ -61,10 +58,7 @@
     become: yes
     roles:
       - agama
-      # - nginx
       - node_exporter
-      # - nginx_exporter
-      # - rsyslog
     tags: web
 
   - name: Telegraf logging
@@ -93,8 +87,14 @@
     become: yes
     roles:
       - haproxy
-      - keepalived
     tags: haproxy
+
+  - name: Keepalived
+    hosts: keepalived
+    become: yes
+    roles:
+      - keepalived
+    tags: keepalived
 
   - name: InfluxDB
     hosts: influxdb

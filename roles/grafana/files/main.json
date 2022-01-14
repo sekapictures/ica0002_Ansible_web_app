@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 2,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -32,41 +32,43 @@
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [
             {
               "options": {
-                "from": 0.5,
-                "result": {
+                "1": {
                   "color": "orange",
                   "index": 0,
-                  "text": "PASSIVE"
+                  "text": "BACKUP"
                 },
-                "to": 1
+                "2": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "MASTER"
+                }
               },
-              "type": "range"
+              "type": "value"
             },
             {
               "options": {
-                "from": 1,
+                "match": "null",
                 "result": {
-                  "index": 1,
-                  "text": "ACTIVE"
-                },
-                "to": 2
+                  "color": "red",
+                  "index": 2,
+                  "text": "DOWN"
+                }
               },
-              "type": "range"
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "orange",
                 "value": null
-              },
-              {
-                "color": "green",
-                "value": 0.5
               }
             ]
           }
@@ -79,12 +81,12 @@
         "x": 0,
         "y": 0
       },
-      "id": 12,
+      "id": 25,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
+        "justifyMode": "center",
+        "orientation": "vertical",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -97,13 +99,33 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": false,
           "expr": "keepalived_vrrp_state",
+          "format": "time_series",
+          "instant": true,
           "interval": "",
+          "intervalFactor": 1,
           "legendFormat": "{{instance}}",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
-      "title": "Keepalived VRRP Status",
+      "title": "Keepalived VRRP state",
       "type": "stat"
     },
     {
@@ -1249,6 +1271,6 @@
   "timezone": "",
   "title": "Main Dashboard",
   "uid": "KAM3W9dnk",
-  "version": 1,
+  "version": 18,
   "weekStart": ""
 }

@@ -18,10 +18,10 @@
     src: keepalived.conf.j2
   notify: Restart keepalived
 
-- name: /usr/local/bin/haproxy_check
+- name: /usr/local/bin/keepalived_check
   template:
-    dest: /usr/local/bin/haproxy_check
-    src: haproxy_check.j2
+    dest: /usr/local/bin/keepalived_check
+    src: keepalived_check.j2
     mode: '0744'
     owner: keepalived_script
     group: keepalived_script

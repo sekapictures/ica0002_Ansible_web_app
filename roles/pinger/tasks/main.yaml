@@ -14,7 +14,7 @@
     force: yes
     owner: pinger
     group: pinger
-    mode: '0764'
+    mode: '0755'
   notify: 
     - Reload daemon
     - Start pinger
@@ -26,7 +26,7 @@
     force: yes
     owner: pinger
     group: pinger
-    mode: '0764'
+    mode: '0755'
   notify: 
     - Reload daemon
     - Restart pinger
@@ -37,14 +37,14 @@
     state: directory
     owner: pinger
     group: pinger
-    mode: '0764'
+    mode: '0755'
 
 - name: Place pinger.conf 
   ansible.builtin.template:
     src: pinger.conf.j2
     dest: /etc/pinger/pinger.conf
     force: yes
-    mode: '0764'
+    mode: '0755'
   notify: 
     - Reload daemon
     - Restart pinger
