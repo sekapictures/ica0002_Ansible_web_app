@@ -4,7 +4,7 @@ global_defs {
 }
 
 vrrp_script check_haproxy {                 
-    script "/usr/local/bin/keepalived_check" 
+    script "/home/keepalived_script/keepalived_check" 
     weight 20                              
     interval 1               
 }

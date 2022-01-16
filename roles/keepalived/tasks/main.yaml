@@ -18,9 +18,9 @@
     src: keepalived.conf.j2
   notify: Restart keepalived
 
-- name: /usr/local/bin/keepalived_check
+- name: /home/keepalived_script/keepalived_check
   template:
-    dest: /usr/local/bin/keepalived_check
+    dest: /home/keepalived_script/keepalived_check
     src: keepalived_check.j2
     mode: '0744'
     owner: keepalived_script
