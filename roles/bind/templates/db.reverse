@@ -1,5 +1,5 @@
 $TTL	604800
-42.168.192.in-addr.arpa.	IN	SOA	{{ dns_master }}.{{ startup_name }}. arsser.{{ startup_name }}. (
+42.168.192.in-addr.arpa.	IN	SOA	hostvars[groups['dns_master'][0]].{{ startup_name }}. arsser.{{ startup_name }}. (
    {{ dns_serial }}     ; Serial
 			 604800		; Refresh
 			  86400		; Retry

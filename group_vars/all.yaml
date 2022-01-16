@@ -1,6 +1,5 @@
 mysql_master: sekapictures-2
 prometheus_host: sekapictures-3
-dns_master: sekapictures-3
 influx_host: sekapictures-3
 mysql_database: agama
 mysql_user: agama
