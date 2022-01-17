@@ -50,6 +50,11 @@
     - "{{ db_name }}"
     - db.reverse
 
+- name: Ensure bind9 is started
+  ansible.builtin.service:
+    name: bind9
+    enabled: yes
+    state: started
 
 - name: Place /etc/bind/named.conf.local
   ansible.builtin.template:
@@ -107,9 +112,3 @@
 #   when: 
 #     - bind9_result.changed
 #     - inventory_hostname in groups['dns_master']
-
-- name: Ensure bind9 is started
-  ansible.builtin.service:
-    name: bind9
-    enabled: yes
-    state: started
