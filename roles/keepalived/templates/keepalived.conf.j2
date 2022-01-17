@@ -8,9 +8,6 @@ vrrp_script check_haproxy {
     weight 20                              
     interval 1               
 }
-static_routes {                             
-    192.168.100.0/24 dev ens3
-}
 
 vrrp_instance agama {             
     interface ens3

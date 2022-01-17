@@ -1,5 +1,6 @@
 mysql_master: sekapictures-2
 prometheus_host: sekapictures-3
+dns_master: sekapictures-3
 influx_host: sekapictures-3
 mysql_database: agama
 mysql_user: agama
@@ -13,6 +14,8 @@ mysql_password: !vault |
           3533
 
 startup_name: gleppy.io
+
+haproxy_port: 88
 
 backup_server: 192.168.42.132
 

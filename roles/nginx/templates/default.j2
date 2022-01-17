@@ -44,6 +44,12 @@ server {
 	}
 {% endif %}
 
+{% if inventory_hostname in groups['haproxy'] %}
+    location /stats {
+		proxy_pass http://localhost:{{ haproxy_port }}/stats;
+    }
+{% endif %}
+
 	location /haproxy-metrics {
 		proxy_pass http://localhost:9101/metrics;
 	}

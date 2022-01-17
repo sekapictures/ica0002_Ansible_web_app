@@ -1,11 +1,11 @@
-- name: Place /var/cache/bind/db.gleppy
+- name: Update serial on db
   ansible.builtin.lineinfile:
     path: '/var/cache/bind/{{ db_name }}'
     regexp: '; Serial'
     line: '                {{ dns_serial }}      	; Serial'
   when: inventory_hostname in groups['dns_master']
 
-- name: Place /var/cache/bind/db.reverse
+- name: Update serial on db reverse
   ansible.builtin.lineinfile:
     path: '/var/cache/bind/db.reverse'
     regexp: '; Serial'

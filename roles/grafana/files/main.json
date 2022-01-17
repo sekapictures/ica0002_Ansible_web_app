@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -470,27 +470,36 @@
             {
               "options": {
                 "0": {
+                  "color": "red",
                   "index": 1,
                   "text": "DOWN"
                 },
                 "1": {
+                  "color": "green",
                   "index": 0,
                   "text": "UP"
                 }
               },
               "type": "value"
+            },
+            {
+              "options": {
+                "match": "null",
+                "result": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "DOWN"
+                }
+              },
+              "type": "special"
             }
           ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "orange",
                 "value": null
-              },
-              {
-                "color": "green",
-                "value": 0.5
               }
             ]
           }
@@ -503,7 +512,7 @@
         "x": 0,
         "y": 8
       },
-      "id": 22,
+      "id": 26,
       "options": {
         "colorMode": "background",
         "graphMode": "none",
@@ -511,13 +520,12 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "last"
           ],
           "fields": "",
           "values": false
         },
-        "text": {},
-        "textMode": "auto"
+        "textMode": "value_and_name"
       },
       "pluginVersion": "8.3.3",
       "targets": [
@@ -526,11 +534,26 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "exemplar": true,
+          "exemplar": false,
           "expr": "haproxy_server_up",
+          "format": "time_series",
+          "instant": true,
           "interval": "",
-          "legendFormat": "{{instance}}; {{server}}",
+          "intervalFactor": 1,
+          "legendFormat": "{{instance}}: {{server}}",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "exemplar": true,
+          "expr": "",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "title": "Haproxy server status",
@@ -1271,6 +1294,6 @@
   "timezone": "",
   "title": "Main Dashboard",
   "uid": "KAM3W9dnk",
-  "version": 18,
+  "version": 2,
   "weekStart": ""
 }

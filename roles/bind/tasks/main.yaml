@@ -50,6 +50,7 @@
     - "{{ db_name }}"
     - db.reverse
 
+
 - name: Place /etc/bind/named.conf.local
   ansible.builtin.template:
     src: named.conf.local.j2
@@ -78,8 +79,9 @@
   loop: "{{ dns_cname_records | dict2items }}"
   when: inventory_hostname in groups['dns_master']
   notify: 
-    - Place /var/cache/bind/db.gleppy
-    - Place /var/cache/bind/db.reverse
+    - Update serial on db
+    - Update serial on db reverse
+    - Reload database
 
 - name: Set A records
   community.general.nsupdate:
@@ -94,8 +96,9 @@
   loop: "{{ dns_a_records | dict2items }}"
   when: inventory_hostname in groups['dns_master']
   notify: 
-    - Place /var/cache/bind/db.gleppy
-    - Place /var/cache/bind/db.reverse
+    - Update serial on db
+    - Update serial on db reverse
+    - Reload database
 
 # - name: Restart bind9 service
 #   ansible.builtin.service:
