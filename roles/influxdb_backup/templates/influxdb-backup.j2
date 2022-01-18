@@ -1,6 +1,6 @@
 {% if inventory_hostname == influx_host -%}
-15 22 * * * backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
-30 22 * * 0 backup duplicity --no-encryption full /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
-30 22 * * 1-6 backup duplicity --no-encryption incremental /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
-05 22 28 * * backup duplicity remove-older-than 1M rsync rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
+15 2 * * * backup rm -rf /home/backup/influxdb/*; influxd backup -portable -database telegraf /home/backup/influxdb
+30 2 * * 0 backup duplicity --no-encryption full /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
+30 2 * * 1-6 backup duplicity --no-encryption incremental /home/backup/influxdb/ rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
+05 2 28 * * backup duplicity remove-older-than 1M rsync rsync://sekapictures@backup.gleppy.io//home/sekapictures/influxdb/
 {% endif -%}
