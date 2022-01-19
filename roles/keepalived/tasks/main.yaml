@@ -33,33 +33,17 @@
     state: started
     enabled: yes
   
-- name: Download keepalived exporter 
-  get_url:
-    dest: /tmp/keepalived-exporter-1.2.0.linux-amd64.tar.gz
-    url: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
-    mode: '0555'
-  # register: keepalived_exporter
-
-- name: Unarchive keepalived_exporter
-  ansible.builtin.unarchive:
-    src: /tmp/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+- name: Download and unarchive keepalived exporter
+  unarchive:
+    src: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
     dest: /usr/local/bin/
     remote_src: yes
-  # register: keepalived_exporter
 
 - name: Install keepalived-exporter
   ansible.builtin.copy:
     src: /usr/local/bin/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
-    remote_src: yes
     dest: /usr/local/bin/
-
-# - name: Unzip keepalived exporter
-#   shell: tar xvzf keepalived-exporter-1.2.0.linux-amd64.tar.gz keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
-#   when: keepalived_installed.changed
-
-# - name: Install keepalived exporter 
-#   shell: sudo mv keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter /usr/local/bin/
-#   register: keepalived_exporter.changed
+    remote_src: yes
 
 - name: Place keepalived-exporter.service 
   ansible.builtin.template:
