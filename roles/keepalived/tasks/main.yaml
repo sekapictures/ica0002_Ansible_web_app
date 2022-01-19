@@ -1,63 +1,44 @@
----
+  - name: Install keepalived
+    ansible.builtin.apt:
+      name: keepalived
+      state: latest
 
-- name: Create user keepalived_script
-  ansible.builtin.user:
-    name: keepalived_script
-    create_home: yes
-    home: /home/keepalived_script
+  - name: /etc/keepalived/keepalived.conf
+    template:
+      src: keepalived.conf.j2
+      dest: /etc/keepalived/keepalived.conf
+    notify: Restart keepalived
 
-- name: Install keepalived
-  apt:
-    name:
-      - keepalived
+  - name: /home/keepalived_script/keepalived_check
+    template:
+      dest: /home/keepalived_script/keepalived_check
+      src: keepalived_check.j2
+      mode: '0744'
+      owner: keepalived_script
+      group: keepalived_script
+    notify:
+      - Restart keepalived
 
-- name: /etc/keepalived/keepalived.conf
-  template:
-    dest: /etc/keepalived/keepalived.conf
-    src: keepalived.conf.j2
-  notify: Restart keepalived
+  - name: Download and extract exporter
+    unarchive:
+      src: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
+      dest: /usr/local/bin # dest changed
+      remote_src: yes
 
-- name: /home/keepalived_script/keepalived_check
-  template:
-    dest: /home/keepalived_script/keepalived_check
-    src: keepalived_check.j2
-    mode: '0744'
-    owner: keepalived_script
-    group: keepalived_script
-  notify:
-    - Restart keepalived
-
-- name: keepalived started
-  service:
-    name: keepalived
-    state: started
-    enabled: yes
+  - name: Place keepalived-exporter.service 
+    template:
+      src: keepalived-exporter.service
+      dest: /etc/systemd/system/keepalived-exporter.service
+      mode: '0744'
+    notify: 
+      - Reload daemon
+      - Restart keepalived
   
-- name: Download and unarchive keepalived exporter
-  unarchive:
-    src: https://github.com/cafebazaar/keepalived-exporter/releases/download/v1.2.0/keepalived-exporter-1.2.0.linux-amd64.tar.gz
-    dest: /usr/local/bin/
-    remote_src: yes
-
-- name: Install keepalived-exporter
-  ansible.builtin.copy:
-    src: /usr/local/bin/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter
-    dest: /usr/local/bin/
-    remote_src: yes
-
-- name: Place keepalived-exporter.service 
-  ansible.builtin.template:
-    src: keepalived-exporter.service
-    dest: /etc/systemd/system/
-    mode: '0744'
-  notify: 
-    - Reload daemon
-    - Start keepalived-exporter.service
-    - Restart keepalived-exporter.service
-
-- name: keepalived-exporter started
-  service: 
-    name: keepalived-exporter
-    state: started
-    enabled: yes
-    
+  - name: Ensuring that Keepalived and exporter are running
+    service:
+      name: "{{ item }}"
+      state: started
+      enabled: yes
+    loop:
+      - keepalived
+      - keepalived-exporter

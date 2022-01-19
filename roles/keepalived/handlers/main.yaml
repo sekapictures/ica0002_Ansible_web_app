@@ -1,13 +1,9 @@
-- name: Restart keepalived
-  service:
-    name: keepalived
-    state: restarted
+---
+  - name: Reload daemon
+    ansible.builtin.systemd:
+      daemon_reload: yes
 
-- name: Reload daemon
-  shell: sudo systemctl daemon-reload
-
-- name: Start keepalived-exporter.service
-  shell: sudo service keepalived-exporter start
-
-- name: Restart keepalived-exporter.service
-  shell: sudo service keepalived-exporter restart
+  - name: Restart keepalived
+    ansible.builtin.service:
+      name: keepalived
+      state: restarted

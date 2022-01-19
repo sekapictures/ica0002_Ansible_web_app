@@ -1,11 +1,11 @@
 [Unit]
 Description=Keepalived exporter
+Documentation="https://github.com/cafebazaar/keepalived-exporter"
 After=network-online.target
 
 [Service]
 User=root
-Type=simple
-ExecStart=/usr/local/bin/keepalived-exporter
+ExecStart=/usr/local/bin/keepalived-exporter-1.2.0.linux-amd64/keepalived-exporter $ARGS
 
 [Install]
 WantedBy=multi-user.target
